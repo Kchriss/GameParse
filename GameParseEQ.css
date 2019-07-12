@@ -30,3 +30,6 @@
     transition: all 200ms linear;
     user-select: none;
 }
+header{
+    background-color: burlywood;
+}
