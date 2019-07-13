@@ -31,9 +31,28 @@ dropper.addEventListener('drop', function(e) {
     reader.onload = function(e) {
         // split by line in tab
         tabFile = e.target.result.toString().split(/\r\n|\r|\n/);
-        // "show must go on " a to do .... split data form each line .... get name player list( check for another way)
+        // "show must go on " a to do .... split data form each line .... get name player list( check for another way) //  postion after date log
         for (var i=0; i<tabFile.length; i++)
-           { document.getElementById('header1').innerText = tabFile[i]};
+        // note faire une recherche sur healed => pour determiner sa presence et ca position ...
+            // pour faire les substring et le check de la ligne renvoie des donnees extraite dans le tableau
+                // a etudier une tableau par type ??? ... mot cle : healed , slashes , pierces , begins//indexOf('Video' | 'Audio' )
+
+
+        {   var curser1 = tabFile[i].indexOf(']')+2;
+            var curser2 = tabFile[i].indexOf(' ', curser1);
+            var playerName= tabFile[i].substr(curser1,curser2-curser1);
+            var curser3 = tabFile[i].indexOf(' ', curser2+1);
+            var Actionheroes = tabFile[i].substr(curser2,curser3-curser2);
+            var curser4 = tabFile[i].indexOf(' ', curser3+1);
+            var PlayerHealed = tabFile[i].substr(curser3,curser4-curser3)=="himself"&&"itself"&&"herself"?tabFile[i].substr(curser3,curser4-curser3):playerName;
+            var curser5 = tabFile[i].indexOf(' ', curser4+1);
+            var NextWord = tabFile[i].substr(curser4,curser5-curser4)// =="for"?a finir;
+            var curser6 = tabFile[i].indexOf(' ', curser5+1);
+            var heal = tabFile[i].substr(curser5,curser6-curser5);
+            var curser7 = tabFile[i].indexOf(' ', curser6+1);
+            var Overheal = tabFile[i].substr(curser6,curser7-curser6);
+            document.getElementById('header1').innerText = curser4 +" "+ curser5 +" "+ curser6 +" "+ playerName+" "
+                + Actionheroes+ " "+ PlayerHealed +" "+ heal +" "+ Overheal};//tabFile[i] ;document.getElementById('header1').innerText +" " +};
         };
     reader.readAsText(files);
     // "show must go on "
