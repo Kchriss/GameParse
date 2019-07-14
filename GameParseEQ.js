@@ -1,12 +1,5 @@
-var ListPlayers;
-var ListClass;
-var ListSpells;
-var Heals;
-var HealsRecived;
-var Logfile;
-var HealsByspells;
+
 var CurrentPlayer;
-var playerName="";
 var HealType="";
 var FilePath;
 var files;
@@ -21,14 +14,15 @@ dropper.addEventListener('dragover', function(e) {
 dropper.addEventListener('drop', function(e) {
     e.preventDefault(); // allow  "drop"  fonction
     // data file
-    var files = e.dataTransfer.files[0];
+    files = e.dataTransfer.files[0];
     //get player name through file name
-    CurrentPlayer = (files.name).split('_');
+    let PlayerFileName = (files.name).split('_');
+    CurrentPlayer = PlayerFileName[1];
     // "show must go on "
-    document.getElementById('dropper').innerText= CurrentPlayer[1];// +" file vs item " + text[1];
+    document.getElementById('dropper').innerText= PlayerFileName[1];// +" file vs item " + text[1];
     document.getElementById('header1').innerText= "";
     // file reading and loading
-    reader = new FileReader();
+    let reader = new FileReader();
     reader.onload = function(e) {
         // split by line in tab
         tabFile = e.target.result.toString().split(/\r\n|\r|\n/);
@@ -40,35 +34,217 @@ dropper.addEventListener('drop', function(e) {
                     // piste a suivre.... cree un fonction du nommer du nom "trouver" pour la gestion du log ...
 
         {
-            var curserTag = tabFile[i].match(/backstabs|begins|crushes|frenzies|healed|hits|pierces|shoots|slashes|taken/gi);//test le mot cle et recupere sa valeur ! :p
-                var curser = tabFile[i].indexOf(curserTag, 0);
-                //var curser1,curser2,curser3,curser4,curser5,curser6,curser6_1,curser6_2,curser6_3,curser6_4,curser6_5,curser6_6,curser6_7,curser6_8;
-                var PlayerHealed;
-                var playerName;
-                var HealType;
-                var CritMessage;
-                var SpellCasted;
-                var OverHeal;
-                var AmountOfHeal;
-                //var PlayerHealedStr
-            if (curserTag!== null){// sorting by key word with indexof ....
-                switch(curserTag.toString().trim()){
+            let curserTag = tabFile[i].match(/backstabs|begins|crushes|frenzies|healed|hits|pierces|shoots|slashes|taken/gi);//test le mot cle et recupere sa valeur ! :p
+            let curser = tabFile[i].indexOf(curserTag, 0);
+            if (curserTag !== null) {// sorting by key word with indexof ....
+                switch (curserTag.toString().trim()) {
                     case "backstabs":
-                        document.getElementById('header1').innerText = curserTag+"-+-";
+                        let LogBackstabs = new Backstabs(i, curser, tabFile);
                         break;
                     case "begins":
-                        document.getElementById('header1').innerText = curserTag+"-+-";
+                        let LogBegins = new Begins(i, curser, tabFile);
                         break;
                     case "crushes":
-                        document.getElementById('header1').innerText = curserTag+"-+-";
+                        let LogCrushes = new Crushes(i, curser, tabFile);
                         break;
                     case "frenzies":
-                        document.getElementById('header1').innerText = curserTag+"-+-";
+                        let LogFrenzies = new Frenzies(i, curser, tabFile);
                         break;
                     case "healed":
-                            var LogHealed = new Healed();
+                        let LogHealed = new Healed(i, curser, tabFile);
+                        document.getElementById('header1').innerText += LogHealed.PlayerHealer() + " -+- " + curserTag + " -+- "
+                            + LogHealed.TargedHealed() + " -+- " + LogHealed.TypeOfHeal()
+                            + "\n";//+" -+- "+ AmountOfHeal+" -+- "+OverHeal+" -+- "+SpellCasted+" -+- "+CritMessage+" -+- "+curserOnDate+"\n";
+                        break;
+                    case "hits":
+                        let LogHits = new Hits(i, curser, tabFile);
+                        break;
+                    case "pierces":
+                        let LogPierces = new Pierces(i, curser, tabFile);
+                        break;
+                    case "shoots":
+                        let LogShoots = new Shoots(i, curser, tabFile);
+                        break;
+                    case "slashes":
+                        let LogSlashes = new Slashes(i, curser, tabFile);
+                        break;
+                    case "taken" :
+                        let LogTaken = new Taken(i, curser, tabFile);
+                        break;
 
-                        /*if(curser>45){
+                }
+            }
+
+        }//tabFile[i] ;document.getElementById('header1').innerText +" " +};
+        };
+    reader.readAsText(files);
+    // "show must go on "
+
+}, false);
+
+/*
+[Mon Jul 08 22:21:03 2019] Katercat healed Douxreve for 0 (5) hit points by Spiritual Squall Rk. III.
+[Mon Jul 08 22:21:03 2019] Xabober is surrounded by a holy light. Elocin healed Xabober for 1200 (24048) hit points by Hand of Holy Wrath VI Recourse. (Critical)
+[Mon Jul 08 22:21:03 2019] Venedar healed Folkken over time for 1128 hit points by Prophet's Gift of the Ruchu. (Lucky Critical)
+[Mon Jul 08 22:21:03 2019] Djess healed Wulerdar over time for 15758 (22116) hit points by Abundant Healing XLIX. (Lucky Critical)
+[Sun Jun 30 16:17:09 2019] Balthus healed Uaru for 0 (14323) hit points by Divine Rain III.
+[Mon Jul 08 22:21:03 2019] Katercat healed Anlak for 48008 (63059) hit points by Spiritual Squall Rk. III. (Critical)
+[Mon Jul 08 22:21:03 2019] Venedar healed Folkken over time for 1128 hit points by Prophet's Gift of the Ruchu. (Lucky Critical)
+*/
+class Taken {
+    constructor(i,curser,tabFile){
+        this.i=i;
+        this.curser=curser;
+        this.tabFile=tabFile;
+        this.playerDmged="";
+    };
+    PlayerDmged(){
+        let curser_1;
+        let curser_2;
+        let curser_3;
+        curser_1 = this.tabFile[this.i].lastIndexOf(' ',this.curser);
+        curser_2 = this.tabFile[this.i].lastIndexOf(' ',curser_1-1);
+        curser_3 = this.tabFile[this.i].lastIndexOf(' ',curser_2-1);
+        this.playerDmged= this.tabFile[this.i].substr(curser_3,curser_2-curser_3);//extraction du nom du joueur
+        if (this.playerDmged.trim()=="you")
+        {
+            this.playerDmged= CurrentPlayer;
+        }
+        return this.playerDmged;
+    }
+
+}
+class Backstabs{
+    constructor(i, curser, tabFile) {
+        this.i = i;
+        this.curser = curser;
+        this.tabFile = tabFile;
+    };
+}
+class Begins{
+    constructor(i, curser, tabFile) {
+        this.i = i;
+        this.curser = curser;
+        this.tabFile = tabFile;
+    };
+}
+class Crushes{
+    constructor(i, curser, tabFile) {
+        this.i = i;
+        this.curser = curser;
+        this.tabFile = tabFile;
+    };
+}
+class Frenzies{
+    constructor(i, curser, tabFile) {
+        this.i = i;
+        this.curser = curser;
+        this.tabFile = tabFile;
+    };
+}
+class Hits{
+    constructor(i, curser, tabFile) {
+        this.i = i;
+        this.curser = curser;
+        this.tabFile = tabFile;
+    };
+}
+class Pierces{
+    constructor(i, curser, tabFile) {
+        this.i = i;
+        this.curser = curser;
+        this.tabFile = tabFile;
+    };
+}
+class Shoots{
+    constructor(i, curser, tabFile) {
+        this.i = i;
+        this.curser = curser;
+        this.tabFile = tabFile;
+    };
+}
+class Slashes{
+    constructor(i, curser, tabFile) {
+        this.i = i;
+        this.curser = curser;
+        this.tabFile = tabFile;
+    };
+}
+class Healed {
+    constructor(i,curser,tabFile){
+        this.i=i;
+        this.curser=curser;
+        this.tabFile=tabFile;
+        this.playerHealer="";
+        this.playerHealed="";
+        this.curser_3 =0;
+        this.curser_4 =0;
+        this.curser_5=0;
+        this.curser_6=0;
+
+    };
+
+     PlayerHealer(){
+        let curser_1;
+        let curser_2;
+        curser_1 = this.tabFile[this.i].lastIndexOf(' ',this.curser);
+        curser_2 = this.tabFile[this.i].lastIndexOf(' ',curser_1-1);
+        this.playerHealer= this.tabFile[this.i].substr(curser_2,curser_1-curser_2);//extraction du nom du joueur
+        if (this.playerHealer.trim()=="you")
+        {
+             this.playerHealer= CurrentPlayer;
+        }
+        return this.playerHealer;
+    }
+    TargedHealed(){
+        this.curser_3 = this.tabFile[this.i].indexOf(' ',this.curser+1);
+        this.curser_4 = this.tabFile[this.i].indexOf(' ',this.curser_3+1);
+        this.playerHealed= this.tabFile[this.i].substr(this.curser_3,this.curser_4-this.curser_3);//extraction du nom du joueur
+        if (this.playerHealed.trim()=="himself"||this.playerHealed.trim()=="itself"||this.playerHealed.trim()=="herself")
+        {
+            this.playerHealed= this.playerHealer;
+        }
+        else if(this.playerHealed.trim()=="you")
+        {
+            this.playerHealed= CurrentPlayer;
+        }
+        return this.playerHealed;
+    }
+    TypeOfHeal(){
+        this.curser_5 = this.tabFile[this.i].indexOf('for',this.curser_4+1);
+        this.curser_6 = this.tabFile[this.i].indexOf(' ',this.curser_5+1);
+        HealType= this.tabFile[this.i].substr(this.curser_4,this.curser_6-this.curser_4);//extraction du nom du joueur
+        return HealType;
+    }
+}
+
+//https://developer.mozilla.org/fr/docs/Learn/JavaScript/Objects/JSON
+//https://openclassrooms.com/forum/sujet/lire-un-fichier-texte-en-javascript-33614
+//https://openclassrooms.com/fr/courses/1916641-dynamisez-vos-sites-web-avec-javascript/1922300-lapi-file
+//http://www.script-tutorials.com/html5-drag-and-drop-multiple-file-uploader/
+//http://www.maximechaillou.com/simple-upload-en-drag-and-drop-avec-html5-jquery-php/
+//https://openclassrooms.com/fr/courses/1916641-dynamisez-vos-sites-web-avec-javascript/1922300-lapi-file
+//  extraire les données et les placer dans un tableau ... nom (ou you) heal ... overheal ... nom player healer '(ou myself... himself...) etc....
+/*
+{
+    "squadName": "Super hero squad",
+    "homeTown": "Metro City",
+    "formed": 2016,
+    "secretBase": "Super tower",
+    "active": true,
+    "playerLog": [
+    {
+        "PlayerName": "Hygie",
+        "Action": "healed",
+        "TargetHealed": [ heal,overheal],
+        "SpellUsed": "spellname",
+        "critical" : "luckycritical"
+    },
+    {
+        "name": "Madame Uppercut",
+        "age": 39,
+        "secretIdentity": "J......*/
+/*if(curser>45){
                             //cas des "log a rallonge"
                             curser1 = tabFile[i].indexOf('.')+2;
                             curser2 = tabFile[i].indexOf(' ', curser1);
@@ -171,120 +347,3 @@ dropper.addEventListener('drop', function(e) {
                             }
                             var curserOnDate = tabFile[i].substr(0,26)
                         }*/
-                        document.getElementById('header1').innerText+= LogHealed.PlayerHealer(i,curser,tabFile) +" -+- "+curserTag+" -+- "
-                            +LogHealed.TargedHealed(i,curser,tabFile)+" -+- "+LogHealed.TypeOfHeal(i,curser,tabFile)
-                                   +"\n";//+" -+- "+ AmountOfHeal+" -+- "+OverHeal+" -+- "+SpellCasted+" -+- "+CritMessage+" -+- "+curserOnDate+"\n";
-                        break;
-                    case "hits":
-                        document.getElementById('header1').innerText = curserTag+"-+-";
-                        break;
-                    case "pierces":
-                        document.getElementById('header1').innerText = curserTag+"-+-";
-                        break;
-                    case "shoots":
-                        document.getElementById('header1').innerText = curserTag+"-+-";
-                        break;
-                    case "slashes":
-                        document.getElementById('header1').innerText = curserTag+"-+-";
-                        break;
-                    case "taken" :
-                        document.getElementById('header1').innerText = curserTag+"-+-";
-                        break;
-                }
-            };
-        }//tabFile[i] ;document.getElementById('header1').innerText +" " +};
-        };
-    reader.readAsText(files);
-    // "show must go on "
-
-}, false);
-
-/*
-[Mon Jul 08 22:21:03 2019] Katercat healed Douxreve for 0 (5) hit points by Spiritual Squall Rk. III.
-[Mon Jul 08 22:21:03 2019] Xabober is surrounded by a holy light. Elocin healed Xabober for 1200 (24048) hit points by Hand of Holy Wrath VI Recourse. (Critical)
-[Mon Jul 08 22:21:03 2019] Venedar healed Folkken over time for 1128 hit points by Prophet's Gift of the Ruchu. (Lucky Critical)
-[Mon Jul 08 22:21:03 2019] Djess healed Wulerdar over time for 15758 (22116) hit points by Abundant Healing XLIX. (Lucky Critical)
-[Sun Jun 30 16:17:09 2019] Balthus healed Uaru for 0 (14323) hit points by Divine Rain III.
-[Mon Jul 08 22:21:03 2019] Katercat healed Anlak for 48008 (63059) hit points by Spiritual Squall Rk. III. (Critical)
-[Mon Jul 08 22:21:03 2019] Venedar healed Folkken over time for 1128 hit points by Prophet's Gift of the Ruchu. (Lucky Critical)
-*/
-
-class Healed {
-    constructor(i,curser,tabFile){
-        this.i=i;
-        this.curser=curser;
-        this.tabFile=tabFile;
-        this.curser_3 =0;
-        this.curser_4 =0;
-        this.curser_5=0;
-        this.curser_6=0;
-    };
-    t
-     PlayerHealer(i,curser,tabFile){
-        let curser_1;
-        let curser_2;
-        curser_1 = tabFile[i].lastIndexOf(' ',curser);
-        curser_2 = tabFile[i].lastIndexOf(' ',curser_1-1);
-        playerName= tabFile[i].substr(curser_2,curser_1-curser_2);//extraction du nom du joueur
-        return playerName;
-    }
-    TargedHealed(i,curser,tabFile){
-        //let curser_3;
-        //var curser_4;
-        this.curser_3 = tabFile[i].indexOf(' ',curser+1);
-        this.curser_4 = tabFile[i].indexOf(' ',this.curser_3+1);
-        playerName= tabFile[i].substr(this.curser_3,this.curser_4-this.curser_3);//extraction du nom du joueur
-        return playerName;
-    }
-    TypeOfHeal(i,curser,tabFile){
-
-        this.curser_5 = tabFile[i].indexOf('for',this.curser_4+1);
-        this.curser_6 = tabFile[i].indexOf(' ',this.curser_5+1);
-        HealType= tabFile[i].substr(this.curser_4,this.curser_6-this.curser_4);//extraction du nom du joueur
-        return HealType;
-    }
-}
-
-//https://developer.mozilla.org/fr/docs/Learn/JavaScript/Objects/JSON
-//https://openclassrooms.com/forum/sujet/lire-un-fichier-texte-en-javascript-33614
-//https://openclassrooms.com/fr/courses/1916641-dynamisez-vos-sites-web-avec-javascript/1922300-lapi-file
-//http://www.script-tutorials.com/html5-drag-and-drop-multiple-file-uploader/
-//http://www.maximechaillou.com/simple-upload-en-drag-and-drop-avec-html5-jquery-php/
-//https://openclassrooms.com/fr/courses/1916641-dynamisez-vos-sites-web-avec-javascript/1922300-lapi-file
-//  extraire les données et les placer dans un tableau ... nom (ou you) heal ... overheal ... nom player healer '(ou myself... himself...) etc....
-/*{   var curser=tabFile[i].indexOf('backstabs'|'begins'|'crushes'|'frenzies'|'healed'|'hits'|'pierces'|'shoots'|'slashes'|'taken');
-    if (curser>0){// sorting by key word with indexof ....
-        var curser1 = tabFile[i].indexOf(']')+2;
-        var curser2 = tabFile[i].indexOf(' ', curser1);
-        var playerName= tabFile[i].substr(curser1,curser2-curser1);
-        var curser3 = tabFile[i].indexOf(' ', curser2+1);
-        var Actionheroes = tabFile[i].substr(curser2,curser3-curser2);
-        var curser4 = tabFile[i].indexOf(' ', curser3+1);
-        var PlayerHealed = tabFile[i].substr(curser3,curser4-curser3)=="himself"&&"itself"&&"herself"?tabFile[i].substr(curser3,curser4-curser3):playerName;
-        var curser5 = tabFile[i].indexOf(' ', curser4+1);
-        var NextWord = tabFile[i].substr(curser4,curser5-curser4)// =="for"?a finir;
-        var curser6 = tabFile[i].indexOf(' ', curser5+1);
-        var heal = tabFile[i].substr(curser5,curser6-curser5);
-        var curser7 = tabFile[i].indexOf(' ', curser6+1);
-        var Overheal = tabFile[i].substr(curser6,curser7-curser6);
-        document.getElementById('header1').innerText = curser4 +" "+ curser5 +" "+ curser6 +" "+ playerName+" "
-            + Actionheroes+ " "+ PlayerHealed +" "+ heal +" "+ Overheal};}//tabFile[i] ;document.getElementById('header1').innerText +" " +};
-};
-{
-    "squadName": "Super hero squad",
-    "homeTown": "Metro City",
-    "formed": 2016,
-    "secretBase": "Super tower",
-    "active": true,
-    "playerLog": [
-    {
-        "PlayerName": "Hygie",
-        "Action": "healed",
-        "TargetHealed": [ heal,overheal],
-        "SpellUsed": "spellname",
-        "critical" : "luckycritical"
-    },
-    {
-        "name": "Madame Uppercut",
-        "age": 39,
-        "secretIdentity": "J......*/
