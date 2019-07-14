@@ -54,7 +54,7 @@ dropper.addEventListener('drop', function(e) {
                         let LogHealed = new Healed(i, curser, tabFile);
                         document.getElementById('header1').innerText += LogHealed.PlayerHealer() + " -+- " + curserTag + " -+- "
                             + LogHealed.TargedHealed() + " -+- " + LogHealed.TypeOfHeal()
-                            + "\n";//+" -+- "+ AmountOfHeal+" -+- "+OverHeal+" -+- "+SpellCasted+" -+- "+CritMessage+" -+- "+curserOnDate+"\n";
+                            +" -+- "+ LogHealed.HealAmount()+" -+- "+LogHealed.OverHeal()+" -+- "+LogHealed.SpellsUsed()+" -+- "+LogHealed.CriticalHitMessage()+ " -+- "+LogHealed.Logtime()+"\n";
                         break;
                     case "hits":
                         let LogHits = new Hits(i, curser, tabFile);
@@ -75,22 +75,14 @@ dropper.addEventListener('drop', function(e) {
                 }
             }
 
-        }//tabFile[i] ;document.getElementById('header1').innerText +" " +};
+        }
         };
     reader.readAsText(files);
     // "show must go on "
 
 }, false);
 
-/*
-[Mon Jul 08 22:21:03 2019] Katercat healed Douxreve for 0 (5) hit points by Spiritual Squall Rk. III.
-[Mon Jul 08 22:21:03 2019] Xabober is surrounded by a holy light. Elocin healed Xabober for 1200 (24048) hit points by Hand of Holy Wrath VI Recourse. (Critical)
-[Mon Jul 08 22:21:03 2019] Venedar healed Folkken over time for 1128 hit points by Prophet's Gift of the Ruchu. (Lucky Critical)
-[Mon Jul 08 22:21:03 2019] Djess healed Wulerdar over time for 15758 (22116) hit points by Abundant Healing XLIX. (Lucky Critical)
-[Sun Jun 30 16:17:09 2019] Balthus healed Uaru for 0 (14323) hit points by Divine Rain III.
-[Mon Jul 08 22:21:03 2019] Katercat healed Anlak for 48008 (63059) hit points by Spiritual Squall Rk. III. (Critical)
-[Mon Jul 08 22:21:03 2019] Venedar healed Folkken over time for 1128 hit points by Prophet's Gift of the Ruchu. (Lucky Critical)
-*/
+
 class Taken {
     constructor(i,curser,tabFile){
         this.i=i;
@@ -177,20 +169,29 @@ class Healed {
         this.tabFile=tabFile;
         this.playerHealer="";
         this.playerHealed="";
-        this.curser_3 =0;
-        this.curser_4 =0;
-        this.curser_5=0;
-        this.curser_6=0;
-
+        this.curser_1=null;
+        this.curser_2=null;
+        this.curser_3=null;
+        this.curser_4=null;;
+        this.curser_5=null;
+        this.curser_6=null;
+        this.curser_7=null;
+        this.curser_8=null;
+        this.curser_9=null;
+        this.curser_10=null;
+        this.curser_11=null;
+        this.curser_12=null;
+        this.curser_13=null;
+        this.curser_14=null;
     };
 
      PlayerHealer(){
-        let curser_1;
-        let curser_2;
-        curser_1 = this.tabFile[this.i].lastIndexOf(' ',this.curser);
-        curser_2 = this.tabFile[this.i].lastIndexOf(' ',curser_1-1);
-        this.playerHealer= this.tabFile[this.i].substr(curser_2,curser_1-curser_2);//extraction du nom du joueur
-        if (this.playerHealer.trim()=="you")
+        this.curser_1;
+        this.curser_2;
+        this.curser_1 = this.tabFile[this.i].lastIndexOf(' ',this.curser);
+        this.curser_2 = this.tabFile[this.i].lastIndexOf(' ',this.curser_1-1);
+        this.playerHealer= this.tabFile[this.i].substr(this.curser_2,this.curser_1-this.curser_2);//extraction du nom du joueur
+        if (this.playerHealer.trim().toLowerCase()=="you")
         {
              this.playerHealer= CurrentPlayer;
         }
@@ -204,7 +205,7 @@ class Healed {
         {
             this.playerHealed= this.playerHealer;
         }
-        else if(this.playerHealed.trim()=="you")
+        else if(this.playerHealed.trim().toLowerCase()=="you")
         {
             this.playerHealed= CurrentPlayer;
         }
@@ -216,8 +217,78 @@ class Healed {
         HealType= this.tabFile[this.i].substr(this.curser_4,this.curser_6-this.curser_4);//extraction du nom du joueur
         return HealType;
     }
-}
+    HealAmount(){
+        this.curser_7 = this.tabFile[this.i].indexOf(' ',this.curser_6+1);
+        let HealOfHeal= this.tabFile[this.i].substr(this.curser_6,this.curser_7-this.curser_6);//extraction du nom du joueur
+        return HealOfHeal;
+    }
+    OverHeal(){
+        this.curser_8 = this.tabFile[this.i].indexOf(' ',this.curser_7+1);
+        let OverHealAmount= this.tabFile[this.i].substr(this.curser_7,2).trim();//extraction du nom du joueur
+        if (OverHealAmount!==null&&OverHealAmount=="(")
+        {
+            OverHealAmount =this.tabFile[this.i].substr(this.curser_7,this.curser_8-this.curser_7)
+        }
+        else{
+            OverHealAmount ="pas d'over heal"
+        }
+            return OverHealAmount;
+    }
+    SpellsUsed(){
+        let SpellsCasted="pas d'indication de spells";
+        this.curser_9 = this.tabFile[this.i].indexOf('by',this.curser_8);
 
+        if (this.curser_9>0&&this.curser_9!==null)
+        {
+            this.curser_10= this.tabFile[this.i].indexOf(' ',this.curser_9);
+            this.curser_11 = this.tabFile[this.i].indexOf('.',this.curser_10);
+            let spellrankchecking =this.tabFile[this.i].substr(this.curser_10,this.curser_11-this.curser_10).match(/rk/gi);
+            if(spellrankchecking!==null&&spellrankchecking=="Rk"){
+                this.curser_12 = this.tabFile[this.i].indexOf('.',this.curser_11+1);
+                SpellsCasted= this.tabFile[this.i].substr(this.curser_10,this.curser_12-this.curser_10);
+            }
+            else{
+                SpellsCasted= this.tabFile[this.i].substr(this.curser_10,this.curser_11-this.curser_10);
+            }
+
+        }
+        else{
+            SpellsCasted ="pas d'indication de spells"
+        }
+        return SpellsCasted;
+    }
+    CriticalHitMessage(){
+        let Critmess="pas de critique !!! ca change";
+        if(this.curser_10!==null){
+        this.curser_13 = this.tabFile[this.i].indexOf('(',this.curser_10);
+
+        if (  this.curser_13!==null&&this.curser_13>0)
+        {
+            this.curser_14= this.tabFile[this.i].indexOf(')',this.curser_13);
+               Critmess= this.tabFile[this.i].substr(this.curser_13,this.curser_14+1-this.curser_13);
+        }
+        else{
+            Critmess ="pas de critique !!! ca change"
+        }
+    }
+        return Critmess;
+    }
+    Logtime() {
+
+        let logtimer = this.tabFile[this.i].substr(this.tabFile[this.i].indexOf('[')+1, this.tabFile[this.i].indexOf(']') - this.tabFile[this.i].indexOf('[')-1);
+        return logtimer;
+    }
+}
+/*
+[Mon Jul 08 22:20:43 2019] Bellower healed itself for 0 (76) hit points.
+[Mon Jul 08 22:21:03 2019] Katercat healed Douxreve for 0 (5) hit points by Spiritual Squall Rk. III.
+[Mon Jul 08 22:21:03 2019] Xabober is surrounded by a holy light. Elocin healed Xabober for 1200 (24048) hit points by Hand of Holy Wrath VI Recourse. (Critical)
+[Mon Jul 08 22:21:03 2019] Venedar healed Folkken over time for 1128 hit points by Prophet's Gift of the Ruchu. (Lucky Critical)
+[Mon Jul 08 22:21:03 2019] Djess healed Wulerdar over time for 15758 (22116) hit points by Abundant Healing XLIX. (Lucky Critical)
+[Sun Jun 30 16:17:09 2019] Balthus healed Uaru for 0 (14323) hit points by Divine Rain III.
+[Mon Jul 08 22:21:03 2019] Katercat healed Anlak for 48008 (63059) hit points by Spiritual Squall Rk. III. (Critical)
+[Mon Jul 08 22:21:03 2019] Venedar healed Folkken over time for 1128 hit points by Prophet's Gift of the Ruchu. (Lucky Critical)
+*/
 //https://developer.mozilla.org/fr/docs/Learn/JavaScript/Objects/JSON
 //https://openclassrooms.com/forum/sujet/lire-un-fichier-texte-en-javascript-33614
 //https://openclassrooms.com/fr/courses/1916641-dynamisez-vos-sites-web-avec-javascript/1922300-lapi-file
