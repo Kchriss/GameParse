@@ -1,0 +1,32 @@
+[Mon Jul 08 22:21:03 2019] Katercat healed Douxreve for 0 (5) hit points by Spiritual Squall Rk. III. 
+[Mon Jul 08 22:21:03 2019] Xabober is surrounded by a holy light. Elocin healed Xabober for 1200 (24048) hit points by Hand of Holy Wrath VI Recourse. (Critical)
+[Mon Jul 08 22:21:03 2019] Venedar healed Folkken over time for 1128 hit points by Prophet's Gift of the Ruchu. (Lucky Critical)
+[Mon Jul 08 22:21:03 2019] Djess healed Wulerdar over time for 15758 (22116) hit points by Abundant Healing XLIX. (Lucky Critical)
+[Sun Jun 30 16:17:09 2019] Balthus healed Uaru for 0 (14323) hit points by Divine Rain III.
+[Mon Jul 08 22:21:03 2019] Katercat healed Anlak for 48008 (63059) hit points by Spiritual Squall Rk. III. (Critical)
+[Mon Jul 08 22:21:03 2019] Venedar healed Folkken over time for 1128 hit points by Prophet's Gift of the Ruchu. (Lucky Critical)
+[Sun Jun 30 16:17:09 2019] Balthus healed Ranpha for 0 (13641) hit points by Divine Rain III.
+[Sun Jun 30 16:17:09 2019] Balthus healed Zabaner for 0 (13641) hit points by Divine Rain III.
+[Sun Jun 30 16:17:09 2019] Balthus healed Yashoor`s warder for 0 (13641) hit points by Divine Rain III.
+[Sun Jun 30 16:17:09 2019] Balthus healed Yashoor for 0 (13641) hit points by Divine Rain III.
+[Sun Jun 30 16:17:09 2019] Balthus healed Barbwarrior for 0 (14323) hit points by Divine Rain III.
+[Sun Jun 30 16:17:09 2019] Balthus healed Macdamn for 0 (13641) hit points by Divine Rain III.
+[Sun Jun 30 16:17:09 2019] Balthus healed Reneca for 0 (14323) hit points by Divine Rain III.
+[Sun Jun 30 16:17:09 2019] Balthus healed Pfaffe for 0 (14323) hit points by Divine Rain III.
+[Sun Jun 30 16:17:09 2019] Balthus healed Venestar for 0 (13641) hit points by Divine Rain III.
+[Sun Jun 30 16:17:09 2019] you healed Venedar for 0 (13641) hit points by Divine Rain III.
+[Sun Jun 30 16:17:09 2019] Balthus healed Aivo for 0 (13641) hit points by Divine Rain III.
+[Sun Jun 30 16:17:09 2019] Balthus healed Zhay for 0 (13641) hit points by Divine Rain III.
+[Sun Jun 30 16:17:09 2019] A divine rain heals you. Balthus healed you for 0 (14323) hit points by Divine Rain III.
+[Sun Jun 30 16:17:09 2019] Balthus healed Koldanar for 0 (14323) hit points by Divine Rain III.
+[Sun Jun 30 16:17:09 2019] Balthus healed Makma for 0 (13641) hit points by Divine Rain III.
+[Sun Jun 30 16:17:09 2019] Balthus healed Laiane for 0 (13641) hit points by Divine Rain III.
+[Sun Jun 30 16:17:09 2019] Balthus healed Zandy for 0 (13641) hit points by Divine Rain III.
+[Sun Jun 30 16:17:09 2019] Balthus healed Squishy for 0 (13641) hit points by Divine Rain III.
+[Sun Jun 30 16:17:09 2019] Balthus healed Lailah for 0 (14323) hit points by Divine Rain III.
+[Sun Jun 30 16:17:09 2019] Balthus healed Brumbaers for 0 (14323) hit points by Divine Rain III.
+[Sun Jun 30 16:17:08 2019] Hepp healed himself for 0 (1125) hit points.
+[Sun Jun 30 16:17:08 2019] Hepp healed himself for 0 (214) hit points.
+[Sun Jun 30 16:17:08 2019] Hepp healed himself for 0 (107) hit points.
+[Sun Jun 30 16:17:08 2019] Onde healed itself for 0 (1055) hit points.
+[Sun Jun 30 16:17:08 2019] Onde healed itself for 0 (1052) hit points.
