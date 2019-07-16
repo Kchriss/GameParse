@@ -2,7 +2,7 @@
     margin: 50px 10px 10px 50px;
     width: 400px;
     height: 250px;
-    background-color: #bdb532;
+    background-image: url("https://assets-cdn.daybreakgames.com/uploads/dcsclient/000/000/165/302.gif?v=1.0");
     border: 1px solid #111;
     border-radius: 10px;
     transition: all 200ms linear;
@@ -32,4 +32,16 @@
 }
 header{
     background-color: burlywood;
+}
+body{
+
+    background-image: url("https://assets-cdn.daybreakgames.com/uploads/dcsclient/000/000/165/301.gif?v=1.0");
+    background-repeat: no-repeat ;
+
+    background-position: center;
+    background-size: cover;
+
+}
+select{
+    width: 10em;
 }
