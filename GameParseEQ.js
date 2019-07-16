@@ -209,7 +209,7 @@ class Healed {
     PlayerHealer() {
         this.curser_1 = this.tabFile[this.i].lastIndexOf(' ', this.curser);
         this.curser_2 = this.tabFile[this.i].lastIndexOf(' ', this.curser_1 - 1);
-        this.playerHealer = this.tabFile[this.i].substr(this.curser_2, this.curser_1 - this.curser_2);//extraction du nom du joueur
+        this.playerHealer = this.tabFile[this.i].substr(this.curser_2, this.curser_1 - this.curser_2).trim();//extraction du nom du joueur
         if (this.playerHealer.trim().toLowerCase() == "you") {
             this.playerHealer = CurrentPlayer;
         }
@@ -219,7 +219,7 @@ class Healed {
     TargedHealed() {
         this.curser_3 = this.tabFile[this.i].indexOf(' ', this.curser + 1);
         this.curser_4 = this.tabFile[this.i].indexOf(' ', this.curser_3 + 1);
-        this.playerHealed = this.tabFile[this.i].substr(this.curser_3, this.curser_4 - this.curser_3);//extraction du nom du joueur
+        this.playerHealed = this.tabFile[this.i].substr(this.curser_3, this.curser_4 - this.curser_3).trim();//extraction du nom du joueur
         if (this.playerHealed.trim() == "himself" || this.playerHealed.trim() == "itself" || this.playerHealed.trim() == "herself") {
             this.playerHealed = this.playerHealer;
         } else if (this.playerHealed.trim().toLowerCase() == "you") {
@@ -264,7 +264,7 @@ class Healed {
         if (this.curser_9 > 0 && this.curser_9 !== null) {
             this.curser_10 = this.tabFile[this.i].indexOf(' ', this.curser_9);
             this.curser_11 = this.tabFile[this.i].indexOf('.', this.curser_10);
-            let spellrankchecking = this.tabFile[this.i].substr(this.curser_10, this.curser_11 - this.curser_10).match(/rk/gi).trim();
+            let spellrankchecking = this.tabFile[this.i].substr(this.curser_10, this.curser_11 - this.curser_10).match(/rk/gi);
             if (spellrankchecking !== null && spellrankchecking == "Rk") {
                 this.curser_12 = this.tabFile[this.i].indexOf('.', this.curser_11 + 1);
                 SpellsCasted = this.tabFile[this.i].substr(this.curser_10, this.curser_12 - this.curser_10).trim();
@@ -306,52 +306,38 @@ var txt = document.querySelector('p');
 btn.addEventListener('click', updateBtn);
 
 function updateBtn() {
-
     let listOfPlayerhealed = [...new Set(logHeal.map(x => x.healed))];
     let listOfPlayershealer = [...new Set(logHeal.map(y => y.healer))];
 
+    //map<U>(callbackfn: (value: T, index: number, array: T[]) => U, thisArg?: any): U[];
 menudropplayers('healed',listOfPlayerhealed);
 menudropplayers('healer',listOfPlayershealer);
 }
 
 
-function menudropplayers(players,playersList){
+function menudropplayers(players,playersList) {
 
-let dropdown = document.getElementById(players+'-dropdown');
-dropdown.length = 0;
+    let dropdown = document.getElementById(players + '-dropdown');
+    dropdown.length = 0;
 
-let defaultOption = document.createElement('option');
-defaultOption.text = 'Players '+players;
+    let defaultOption = document.createElement('option');
+    defaultOption.text = 'Players ' + players;
 
-dropdown.add(defaultOption);
-dropdown.selectedIndex = 0;
-                for (let i = 0; i < playersList.length; i++) {
-                    option = document.createElement('option');
-                    option.text = playersList[i];
-                    option.value = playersList[i];
-                    dropdown.add(option);
-                }
+    dropdown.add(defaultOption);
+    dropdown.selectedIndex = 0;
+    for (let i = 0; i < playersList.length; i++) {
+        option = document.createElement('option');
+        option.text = playersList[i];
+        option.value = playersList[i];
+        dropdown.add(option);
+    }
+    //dropdown.options[dropdown.selectedIndex].value = CurrentPlayer; /// option de value preselesctionner
+
 }
 
 
-
-/*bug avec les pets a corriger !!!!!! !!!!! >>>><<<<
-
-$.each(catalog.products, function(index, value) {
-    if ($.inArray(value.category, categories) === -1) {
-        categories.push(value.category);
-    }
-});
-
-
- */
 /*
-https://stackoverflow.com/questions/14446511/most-efficient-method-to-groupby-on-an-array-of-objects
-https://stackoverflow.com/questions/40774697/how-to-group-an-array-of-objects-by-key/40774906
-https://www.freecodecamp.org/news/15-useful-javascript-examples-of-map-reduce-and-filter-74cbbb5e0a1f/
-https://codeburst.io/grouping-array-data-json-ef96b438b927
 
-https://gist.github.com/JamieMason/0566f8412af9fe6a1d470aa1e089a752
  logHeal[i]={"id":i,"healer":logHealed.PlayerHealer(),"healed":logHealed.TargedHealed()
                                     ,"type":logHealed.TypeOfHeal(),"Heal":logHealed.HealAmount(),"overheal":logHealed.OverHeal()
                                     ,'spell':logHealed.SpellsUsed(),"crit":logHealed.CriticalHitMessage(),"logDate":logHealed.Logtime()};
@@ -365,47 +351,22 @@ https://gist.github.com/JamieMason/0566f8412af9fe6a1d470aa1e089a752
 [Sun Jun 30 16:17:09 2019] Balthus healed Uaru for 0 (14323) hit points by Divine Rain III.
 [Mon Jul 08 22:21:03 2019] Katercat healed Anlak for 48008 (63059) hit points by Spiritual Squall Rk. III. (Critical)
 [Mon Jul 08 22:21:03 2019] Venedar healed Folkken over time for 1128 hit points by Prophet's Gift of the Ruchu. (Lucky Critical)
-*/
+
 //https://developer.mozilla.org/fr/docs/Learn/JavaScript/Objects/JSON
 //https://openclassrooms.com/forum/sujet/lire-un-fichier-texte-en-javascript-33614
 //https://openclassrooms.com/fr/courses/1916641-dynamisez-vos-sites-web-avec-javascript/1922300-lapi-file
 //http://www.script-tutorials.com/html5-drag-and-drop-multiple-file-uploader/
+https://stackoverflow.com/questions/14446511/most-efficient-method-to-groupby-on-an-array-of-objects
+    https://stackoverflow.com/questions/40774697/how-to-group-an-array-of-objects-by-key/40774906
+        https://www.freecodecamp.org/news/15-useful-javascript-examples-of-map-reduce-and-filter-74cbbb5e0a1f/
+            https://codeburst.io/grouping-array-data-json-ef96b438b927
+                https://gist.github.com/JamieMason/0566f8412af9fe6a1d470aa1e089a752
 //http://www.maximechaillou.com/simple-upload-en-drag-and-drop-avec-html5-jquery-php/
 //https://openclassrooms.com/fr/courses/1916641-dynamisez-vos-sites-web-avec-javascript/1922300-lapi-file
+
 //  extraire les données et les placer dans un tableau ... nom (ou you) heal ... overheal ... nom player healer '(ou myself... himself...) etc....
-/*
-{
-    "squadName": "Super hero squad",
-    "homeTown": "Metro City",
-    "formed": 2016,
-    "secretBase": "Super tower",
-    "active": true,
-    "playerLog": [
-    {
 
-    },
-    {
-        "name": "Madame Uppercut",
-        "age": 39,
-        "secretIdentity": "J......*/
+https://stackoverflow.com/questions/11199653/javascript-sum-and-group-by-of-json-data
+http://learnjsdata.com/group_data.html
 
-/*
-action[backstabs]=new Object();
-action[begins]=new Object();
-action[crushes]=new Object();
-action[frenzies]=new Object();
-
-action[hits]=new Object();
-action[pierces]=new Object();
-action[shoots]=new Object();
-action[slashes]=new Object();
-action[taken]=new Object();
-
-
-
-
-playerLog[actionHealed] = ["PlayerName": "Hygie",
-    "Action": "healed",
-    "TargetHealed": [ heal,overheal],
-    "SpellUsed": "spellname",
-    "critical" : "luckycritical"]*/
+*/
