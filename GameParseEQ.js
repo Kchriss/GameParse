@@ -309,6 +309,14 @@ function updateBtn() {
     let listOfPlayerhealed = [...new Set(logHeal.map(x => x.healed))];
     let listOfPlayershealer = [...new Set(logHeal.map(y => y.healer))];
 
+
+    //var mySet= logHeal.filter(it => new RegExp('Hygie').test(it.healer));
+    //var mySet2= [...new Set(mySet.map(x => x.healed))];
+    var mySet2= [...new Set((logHeal.filter(it => new RegExp('Hygie').test(it.healer))).map(x => x.healed))]; // 2 in 1 !! :p
+    console.log([...mySet2]); // Will show you exactly the same Array as myArray
+
+
+
     //map<U>(callbackfn: (value: T, index: number, array: T[]) => U, thisArg?: any): U[];
 menudropplayers('healed',listOfPlayerhealed);
 menudropplayers('healer',listOfPlayershealer);
