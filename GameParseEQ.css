@@ -45,3 +45,10 @@ body{
 select{
     width: 10em;
 }
+#parseview{
+    position: center;
+    width: 30%;
+    height: 30%;
+    background-color: aliceblue;
+
+}

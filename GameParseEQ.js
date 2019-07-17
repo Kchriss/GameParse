@@ -17,7 +17,7 @@ dropper.addEventListener('drop', function (e) {
     files = e.dataTransfer.files[0];
     //get player name through file name
     let PlayerFileName = (files.name).split('_');
-    CurrentPlayer = PlayerFileName[1].trim();
+    CurrentPlayer = PlayerFileName[1];
     // "show must go on "
     document.getElementById('dropper').innerText = PlayerFileName[1];// +" file vs item " + text[1];
     document.getElementById('header1').innerText = "";
@@ -42,6 +42,7 @@ dropper.addEventListener('drop', function (e) {
     };
     reader.readAsText(files);
     // "show must go on "
+
 
 }, false);
 
@@ -243,7 +244,7 @@ class Healed {
     HealAmount() {
         this.curser_7 = this.tabFile[this.i].indexOf(' ', this.curser_6 + 1);
         let HealOfHeal = this.tabFile[this.i].substr(this.curser_6, this.curser_7 - this.curser_6).trim();//extraction du nom du joueur
-        return HealOfHeal;
+        return parseInt(HealOfHeal);
     }
 
     OverHeal() {
@@ -252,9 +253,9 @@ class Healed {
         if (OverHealAmount !== null && OverHealAmount == "(") {
             OverHealAmount = this.tabFile[this.i].substr(this.curser_7+2, this.curser_8-3 - this.curser_7).trim()
         } else {
-            OverHealAmount = ""
+            OverHealAmount = 0;
         }
-        return OverHealAmount;
+        return parseInt(OverHealAmount);
     }
 
     SpellsUsed() {
@@ -301,25 +302,39 @@ class Healed {
 }
 
 var btn = document.querySelector('input');
-var txt = document.querySelector('p');
 
 btn.addEventListener('click', updateBtn);
 
 function updateBtn() {
     let listOfPlayerhealed = [...new Set(logHeal.map(x => x.healed))];
     let listOfPlayershealer = [...new Set(logHeal.map(y => y.healer))];
+    menudropplayers('healed',listOfPlayerhealed);
+    menudropplayers('healer',listOfPlayershealer);
 
+    var mySet= logHeal.filter(it => new RegExp('Ginormus').test(it.healer));
 
-    //var mySet= logHeal.filter(it => new RegExp('Hygie').test(it.healer));
-    //var mySet2= [...new Set(mySet.map(x => x.healed))];
+    console.log([...mySet]);
+
+    var mySet2= [...new Set(mySet.map(x => x.healed))];
+
+    console.log([...mySet2]);
+
     var mySet2= [...new Set((logHeal.filter(it => new RegExp('Hygie').test(it.healer))).map(x => x.healed))]; // 2 in 1 !! :p
     console.log([...mySet2]); // Will show you exactly the same Array as myArray
 
+    let mySet3 = mySet.filter(it => new RegExp('Ranpha').test(it.healed));
 
 
+    console.log([...mySet3]);//.reduce((accumulator, currentValue) => accumulator.value + currentValue.value));
+    let total = 0;
+    let total2 = 0;
+    for (i = 0; i < mySet3.length; i++) {  //loop through the array
+        total += mySet3[i].Heal;  //Do the math!
+        total2+= mySet3[i].overheal;
+    }
+    console.log(total+" "+total2);
     //map<U>(callbackfn: (value: T, index: number, array: T[]) => U, thisArg?: any): U[];
-menudropplayers('healed',listOfPlayerhealed);
-menudropplayers('healer',listOfPlayershealer);
+
 }
 
 
@@ -327,23 +342,45 @@ function menudropplayers(players,playersList) {
 
     let dropdown = document.getElementById(players + '-dropdown');
     dropdown.length = 0;
-
     let defaultOption = document.createElement('option');
     defaultOption.text = 'Players ' + players;
-
     dropdown.add(defaultOption);
+    dropdown.addEventListener("change", addActivityItem, false)
     dropdown.selectedIndex = 0;
     for (let i = 0; i < playersList.length; i++) {
         option = document.createElement('option');
         option.text = playersList[i];
         option.value = playersList[i];
         dropdown.add(option);
+
     }
     //dropdown.options[dropdown.selectedIndex].value = CurrentPlayer; /// option de value preselesctionner
 
 }
+function addActivityItem(){
+    let e = document.getElementById('healer-dropdown');
+    let tagedhealer = e.options[e.selectedIndex].value;
+    let  mySet= logHeal.filter(it => new RegExp(tagedhealer).test(it.healer));
 
 
+
+    let total = 0;
+    let total2 = 0;
+    for (i = 0; i < mySet.length; i++) {  //loop through the array
+        total += mySet[i].Heal;  //Do the math!
+        total2+= mySet[i].overheal;
+    }
+    containerPlayer(tagedhealer,total,total2)
+    console.log([...mySet]);
+}
+
+function containerPlayer(tagedhealer,total,total2) {
+    let div=document.createElement('div');
+        div.name=tagedhealer;
+        div.id="parseview";
+        div.innerText = total+" "+total2;
+        document.body.appendChild(div);
+}
 /*
 
  logHeal[i]={"id":i,"healer":logHealed.PlayerHealer(),"healed":logHealed.TargedHealed()
