@@ -367,27 +367,19 @@ function addActivityItem(){
         let div = document.getElementById('parseview');
         div.innerText = "";
     }
-
-
     let total = 0;
     let total2 = 0;
     let playerTargetByHealer="";
     mySet2.forEach(function(element) {
-        let mySet3= logHeal.filter(it => new RegExp(targedhealer).test(it.healed));
-
-        for (i = 0; i < mySet3.length; i++) {  //loop through the array
-            total += mySet[i].Heal;  //Do the math!
-            total2+= mySet[i].overheal;
+        let mySet3= mySet.filter(it => new RegExp(element).test(it.healed));
+        for (let i = 0; i < mySet3.length; i++) {  //loop through the array
+            total += mySet3[i].Heal;  //Do the math!
+            total2+= mySet3[i].overheal;
         }
         playerTargetByHealer=element;
         containerPlayer(targedhealer,playerTargetByHealer,total,total2)
     });
-
-
-   //containerPlayer(tagedhealer,total,total2)
-    //console.log([...mySet]);
 }
-
 function containerPlayer(targedhealer,playerTargetByHealer,total,total2) {
 
         if (document.getElementById('parseview')==null){
