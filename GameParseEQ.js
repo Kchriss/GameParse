@@ -313,26 +313,26 @@ function updateBtn() {
 
     var mySet= logHeal.filter(it => new RegExp('Ginormus').test(it.healer));
 
-    console.log([...mySet]);
+    //console.log([...mySet]);
 
     var mySet2= [...new Set(mySet.map(x => x.healed))];
 
-    console.log([...mySet2]);
+    //console.log([...mySet2]);
 
     var mySet2= [...new Set((logHeal.filter(it => new RegExp('Hygie').test(it.healer))).map(x => x.healed))]; // 2 in 1 !! :p
-    console.log([...mySet2]); // Will show you exactly the same Array as myArray
+    //console.log([...mySet2]); // Will show you exactly the same Array as myArray
 
     let mySet3 = mySet.filter(it => new RegExp('Ranpha').test(it.healed));
 
 
-    console.log([...mySet3]);//.reduce((accumulator, currentValue) => accumulator.value + currentValue.value));
+    //console.log([...mySet3]);//.reduce((accumulator, currentValue) => accumulator.value + currentValue.value));
     let total = 0;
     let total2 = 0;
     for (i = 0; i < mySet3.length; i++) {  //loop through the array
         total += mySet3[i].Heal;  //Do the math!
         total2+= mySet3[i].overheal;
     }
-    console.log(total+" "+total2);
+   // console.log(total+" "+total2);
     //map<U>(callbackfn: (value: T, index: number, array: T[]) => U, thisArg?: any): U[];
 
 }
@@ -359,27 +359,47 @@ function menudropplayers(players,playersList) {
 }
 function addActivityItem(){
     let e = document.getElementById('healer-dropdown');
-    let tagedhealer = e.options[e.selectedIndex].value;
-    let  mySet= logHeal.filter(it => new RegExp(tagedhealer).test(it.healer));
+    let targedhealer = e.options[e.selectedIndex].value;
+    let mySet= logHeal.filter(it => new RegExp(targedhealer).test(it.healer));
+    let mySet2= [...new Set(mySet.map(x => x.healed))];
+    if (document.getElementById('parseview')!=null){
 
+        let div = document.getElementById('parseview');
+        div.innerText = "";
+    }
 
 
     let total = 0;
     let total2 = 0;
-    for (i = 0; i < mySet.length; i++) {  //loop through the array
-        total += mySet[i].Heal;  //Do the math!
-        total2+= mySet[i].overheal;
-    }
-    containerPlayer(tagedhealer,total,total2)
-    console.log([...mySet]);
+    let playerTargetByHealer="";
+    mySet2.forEach(function(element) {
+        let mySet3= logHeal.filter(it => new RegExp(targedhealer).test(it.healed));
+
+        for (i = 0; i < mySet3.length; i++) {  //loop through the array
+            total += mySet[i].Heal;  //Do the math!
+            total2+= mySet[i].overheal;
+        }
+        playerTargetByHealer=element;
+        containerPlayer(targedhealer,playerTargetByHealer,total,total2)
+    });
+
+
+   //containerPlayer(tagedhealer,total,total2)
+    //console.log([...mySet]);
 }
 
-function containerPlayer(tagedhealer,total,total2) {
-    let div=document.createElement('div');
-        div.name=tagedhealer;
-        div.id="parseview";
-        div.innerText = total+" "+total2;
-        document.body.appendChild(div);
+function containerPlayer(targedhealer,playerTargetByHealer,total,total2) {
+
+        if (document.getElementById('parseview')==null){
+            let div = document.createElement('div');
+            div.name=targedhealer;
+            div.id="parseview";
+            div.innerText =playerTargetByHealer+" "+total+" "+total2+"\n";
+            document.body.appendChild(div);}
+        else{
+            let div = document.getElementById('parseview');
+            div.innerText += playerTargetByHealer+" "+total+" "+total2 + "\n";
+        }
 }
 /*
 
