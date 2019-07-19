@@ -26,6 +26,8 @@ dropper.addEventListener('drop', function (e) {
     reader.onload = function (e) {
         // split by line in tab
         tabFile = e.target.result.toString().split(/\r\n|\r|\n/);
+
+
         // "show must go on " a to do .... split data form each line .... get name player list( check for another way) //  postion after date log
         for (var i = 0; i < tabFile.length; i++) {
             readerdigest(tabFile, i);
@@ -72,7 +74,8 @@ function readerdigest(tabFile, i) {
                 logHeal[i]={"id":i,"healer":logHealed.PlayerHealer(),"healed":logHealed.TargedHealed()
                                     ,"type":logHealed.TypeOfHeal(),"Heal":logHealed.HealAmount(),"overheal":logHealed.OverHeal()
                                     ,'spell':logHealed.SpellsUsed(),"crit":logHealed.CriticalHitMessage(),"logDate":logHealed.Logtime()};
-
+                let btn = document.getElementById('btn');
+                btn.style.visibility="visible";
 
                 break;
             case "hits":
@@ -306,8 +309,35 @@ var btn = document.querySelector('input');
 btn.addEventListener('click', updateBtn);
 
 function updateBtn() {
-    let listOfPlayerhealed = [...new Set(logHeal.map(x => x.healed))];
-    let listOfPlayershealer = [...new Set(logHeal.map(y => y.healer))];
+    //https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Date/parse
+
+    //>>>>> reduction de la tailler du tableau en fonction d'un temp a choisir ... derniere heure.. derniere 6 heure... fichier "entier ... etc....
+    ///// a mettre en place
+    let lastentry =logHeal.length-1;
+    let checkitme=24;
+    let logTimerLastEntry =logHeal[lastentry].logDate;
+    console.log(logTimerLastEntry);
+    let logSubTime1=logTimerLastEntry.indexOf(' ')+1;
+    let logSubTime2=logTimerLastEntry.indexOf(' ',logSubTime1)+1;
+    let logSubTime3=logTimerLastEntry.indexOf(' ',logSubTime2)+1;
+    let subTimeStr = logTimerLastEntry.substring(logSubTime3,logSubTime3+2);
+    if (subTimeStr>0){
+        logTimerLastEntry=logTimerLastEntry.replace(subTimeStr,subTimeStr-1)
+    }
+    else{
+        logTimerLastEntry=logTimerLastEntry.replace(subTimeStr,checkitme-1)
+    }
+
+
+
+
+    /*console.log(subTimeStr);
+    console.log(logTimerLastEntry);*/
+    let listOfPlayerhealed = [...new Set(logHeal.map(x => x.healed))].sort();
+    let listOfPlayershealer = [...new Set(logHeal.map(y => y.healer))].sort();
+
+
+
     menudropplayers('healed',listOfPlayerhealed);
     menudropplayers('healer',listOfPlayershealer);
 
@@ -345,6 +375,7 @@ function menudropplayers(players,playersList) {
     let defaultOption = document.createElement('option');
     defaultOption.text = 'Players ' + players;
     dropdown.add(defaultOption);
+    dropdown.style.visibility = "visible";
     dropdown.addEventListener("change", addActivityItem, false)
     dropdown.selectedIndex = 0;
     for (let i = 0; i < playersList.length; i++) {
@@ -387,7 +418,8 @@ function containerPlayer(targedhealer,playerTargetByHealer,total,total2) {
             div.name=targedhealer;
             div.id="parseview";
             div.innerText =playerTargetByHealer+" "+total+" "+total2+"\n";
-            document.body.appendChild(div);}
+            document.body.appendChild(div);
+        }
         else{
             let div = document.getElementById('parseview');
             div.innerText += playerTargetByHealer+" "+total+" "+total2 + "\n";
