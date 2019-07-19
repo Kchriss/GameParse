@@ -1,0 +1,57 @@
+.dropper {
+    margin: 50px 10px 10px 50px;
+    width: 400px;
+    height: 250px;
+    background-image: url("https://assets-cdn.daybreakgames.com/uploads/dcsclient/000/000/165/302.gif?v=1.0");
+    border: 1px solid #111;
+    border-radius: 10px;
+    transition: all 200ms linear;
+    text-align: center;
+    padding-top: 2em;
+
+}
+
+.drop_hover {
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.8) inset;
+}
+
+.draggable {
+    display: inline-block;
+    margin: 20px 10px 10px 20px;
+    padding-top: 20px;
+    width: 10%;
+    height: 10%;
+    color: #3D110F;
+    background-color: #822520;
+    border: 4px solid #3D110F;
+    text-align: center;
+    font-size: 2em;
+    cursor: move;
+    transition: all 200ms linear;
+    user-select: none;
+}
+header{
+    background-color: burlywood;
+}
+body{
+
+    background-image: url("https://assets-cdn.daybreakgames.com/uploads/dcsclient/000/000/165/301.gif?v=1.0");
+    background-repeat: no-repeat ;
+
+    background-position: center;
+    background-size: cover;
+
+}
+select{
+    width: 10em;
+}
+#parseview{
+
+    position:absolute;
+    top:10%;
+    left: 30%;
+    width: 30%;
+    height: 30%;
+    background-color: aliceblue;
+
+}

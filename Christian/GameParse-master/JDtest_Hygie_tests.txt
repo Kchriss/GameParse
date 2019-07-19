@@ -1,0 +1,311 @@
+[Mon Jul 08 22:21:03 2019] Katercat healed Douxreve for 0 (5) hit points by Spiritual Squall Rk. III. 
+[Mon Jul 08 22:21:03 2019] Xabober is surrounded by a holy light. Elocin healed Xabober for 1200 (24048) hit points by Hand of Holy Wrath VI Recourse. (Critical)
+[Mon Jul 08 22:21:03 2019] Venedar healed Folkken over time for 1128 hit points by Prophet's Gift of the Ruchu. (Lucky Critical)
+[Mon Jul 08 22:21:03 2019] Djess healed Wulerdar over time for 15758 (22116) hit points by Abundant Healing XLIX. (Lucky Critical)
+[Sun Jun 30 16:17:09 2019] Balthus healed Uaru for 0 (14323) hit points by Divine Rain III.
+[Mon Jul 08 22:21:03 2019] Katercat healed Anlak for 48008 (63059) hit points by Spiritual Squall Rk. III. (Critical)
+[Mon Jul 08 22:21:03 2019] Venedar healed Folkken over time for 1128 hit points by Prophet's Gift of the Ruchu. (Lucky Critical)
+[Sun Jun 30 16:17:09 2019] Balthus healed Ranpha for 0 (13641) hit points by Divine Rain III.
+[Sun Jun 30 16:17:09 2019] Balthus healed Zabaner for 0 (13641) hit points by Divine Rain III.
+[Sun Jun 30 16:17:09 2019] Balthus healed Yashoor`s warder for 0 (13641) hit points by Divine Rain III.
+[Sun Jun 30 16:17:09 2019] Balthus healed Yashoor for 0 (13641) hit points by Divine Rain III.
+[Sun Jun 30 16:17:09 2019] Balthus healed Barbwarrior for 0 (14323) hit points by Divine Rain III.
+[Sun Jun 30 16:17:09 2019] Balthus healed Macdamn for 0 (13641) hit points by Divine Rain III.
+[Sun Jun 30 16:17:09 2019] Balthus healed Reneca for 0 (14323) hit points by Divine Rain III.
+[Sun Jun 30 16:17:09 2019] Balthus healed Pfaffe for 0 (14323) hit points by Divine Rain III.
+[Sun Jun 30 16:17:09 2019] Balthus healed Venestar for 0 (13641) hit points by Divine Rain III.
+[Sun Jun 30 16:17:09 2019] you healed Venedar for 0 (13641) hit points by Divine Rain III.
+[Sun Jun 30 16:17:09 2019] Balthus healed Aivo for 0 (13641) hit points by Divine Rain III.
+[Sun Jun 30 16:17:09 2019] Balthus healed Zhay for 0 (13641) hit points by Divine Rain III.
+[Sun Jun 30 16:17:09 2019] A divine rain heals you. Balthus healed you for 0 (14323) hit points by Divine Rain III.
+[Sun Jun 30 16:17:09 2019] Balthus healed Koldanar for 0 (14323) hit points by Divine Rain III.
+[Sun Jun 30 16:17:09 2019] Balthus healed Makma for 0 (13641) hit points by Divine Rain III.
+[Sun Jun 30 16:17:09 2019] Balthus healed Laiane for 0 (13641) hit points by Divine Rain III.
+[Sun Jun 30 16:17:09 2019] Balthus healed Zandy for 0 (13641) hit points by Divine Rain III.
+[Sun Jun 30 16:17:09 2019] Balthus healed Squishy for 0 (13641) hit points by Divine Rain III.
+[Sun Jun 30 16:17:09 2019] Balthus healed Lailah for 0 (14323) hit points by Divine Rain III.
+[Sun Jun 30 16:17:09 2019] Balthus healed Brumbaers for 0 (14323) hit points by Divine Rain III.
+[Sun Jun 30 16:17:08 2019] Hepp healed himself for 0 (1125) hit points.
+[Sun Jun 30 16:17:08 2019] Hepp healed himself for 0 (214) hit points.
+[Sun Jun 30 16:17:08 2019] Hepp healed himself for 0 (107) hit points.
+[Sun Jun 30 16:17:08 2019] Onde healed itself for 0 (1055) hit points.
+[Sun Jun 30 16:17:08 2019] Onde healed itself for 0 (1052) hit points.
+[Mon Jul 08 22:20:42 2019] Artremas healed himself for 0 (59) hit points.
+[Mon Jul 08 22:20:42 2019] Artremas slashes Sparing Heart`s Flame for 5916 points of damage. (Flurry)
+[Mon Jul 08 22:20:42 2019] Morra slashes Sparing Heart`s Flame for 7520 points of damage.
+[Mon Jul 08 22:20:42 2019] Morra slashes Sparing Heart`s Flame for 3188 points of damage.
+[Mon Jul 08 22:20:42 2019] Morra slashes Sparing Heart`s Flame for 30220 points of damage. (Critical)
+[Mon Jul 08 22:20:42 2019] Brumbaers healed Ginormus over time for 0 (28360) hit points by Celestial Regeneration XXXIII. (Lucky Critical)
+[Mon Jul 08 22:20:42 2019] Ginormus healed itself over time for 0 (24002) hit points by Cloud of Renewal Rk. III. (Twincast)
+[Mon Jul 08 22:20:42 2019] Sparing Heart`s Flame is struck by vengeful spirits.
+[Mon Jul 08 22:20:42 2019] Barbwarrior healed himself over time for 6050 hit points by Concordant Vigor III.
+[Mon Jul 08 22:20:42 2019] Fantaghiroo healed Barbwarrior over time for 19516 (20000) hit points by Abundant Healing XLIX. (Critical)
+[Mon Jul 08 22:20:42 2019] Brumbaers healed Barbwarrior over time for 12500 hit points by Celestial Regeneration XXXIII.
+[Mon Jul 08 22:20:42 2019] Reneca healed Barbwarrior over time for 19516 (25190) hit points by Elixir of Wulthan Rk. III. (Lucky Critical)
+[Mon Jul 08 22:20:42 2019] Tykelle healed Zhay over time for 0 (9053) hit points by Dissident Roar 6.
+[Mon Jul 08 22:20:42 2019] Brumbaers healed Zhay over time for 0 (25000) hit points by Celestial Regeneration XXXIII. (Critical)
+[Mon Jul 08 22:20:42 2019] Reneca healed Zhay over time for 0 (23402) hit points by Elixir of Wulthan Rk. III. (Critical)
+[Mon Jul 08 22:20:42 2019] Zhay slashes Sparing Heart`s Flame for 3570 points of damage.
+[Mon Jul 08 22:20:42 2019] Zhay slashes Sparing Heart`s Flame for 5640 points of damage.
+[Mon Jul 08 22:20:42 2019] Zhay slashes Sparing Heart`s Flame for 4886 points of damage. (Lucky Critical Flurry)
+[Mon Jul 08 22:20:42 2019] Schalimar begins casting Spiritual Remedy Rk. III.
+[Mon Jul 08 22:20:42 2019] Sparing Heart`s Flame is rent by lion fangs.
+[Mon Jul 08 22:20:42 2019] Sparing Heart`s Flame quivers as a bolt of energy surges through them.
+[Mon Jul 08 22:20:42 2019] Furking healed himself for 0 (152) hit points.
+[Mon Jul 08 22:20:42 2019] Furking slashes Sparing Heart`s Flame for 15281 points of damage. (Lucky Critical)
+[Mon Jul 08 22:20:42 2019] Furking healed himself for 0 (382) hit points.
+[Mon Jul 08 22:20:42 2019] Furking slashes Sparing Heart`s Flame for 38204 points of damage. (Lucky Critical)
+[Mon Jul 08 22:20:42 2019] Sparing Heart`s Flame is struck by an axe.
+[Mon Jul 08 22:20:42 2019] Sparing Heart`s Flame quivers as a bolt of energy surges through them.
+[Mon Jul 08 22:20:42 2019] Sparing Heart`s Flame quivers as a bolt of energy surges through them.
+[Mon Jul 08 22:20:42 2019] Furking healed himself for 0 (560) hit points.
+[Mon Jul 08 22:20:42 2019] Furking crushes Sparing Heart`s Flame for 56067 points of damage. (Lucky Critical)
+[Mon Jul 08 22:20:42 2019] Furking healed himself for 0 (438) hit points.
+[Mon Jul 08 22:20:42 2019] Furking crushes Sparing Heart`s Flame for 43889 points of damage. (Critical)
+[Mon Jul 08 22:20:42 2019] Furking healed himself for 0 (661) hit points.
+[Mon Jul 08 22:20:42 2019] Furking crushes Sparing Heart`s Flame for 66176 points of damage. (Critical)
+[Mon Jul 08 22:20:42 2019] Furking healed himself for 0 (661) hit points.
+[Mon Jul 08 22:20:42 2019] Furking crushes Sparing Heart`s Flame for 66176 points of damage. (Critical Flurry)
+[Mon Jul 08 22:20:42 2019] Furking healed himself for 0 (311) hit points.
+[Mon Jul 08 22:20:42 2019] Furking crushes Sparing Heart`s Flame for 31157 points of damage. (Critical Flurry)
+[Mon Jul 08 22:20:42 2019] Zandy slashes Sparing Heart`s Flame for 39422 points of damage. (Lucky Critical)
+[Mon Jul 08 22:20:42 2019] Zandy slashes Sparing Heart`s Flame for 16796 points of damage. (Critical)
+[Mon Jul 08 22:20:42 2019] Zandy slashes Sparing Heart`s Flame for 33861 points of damage. (Strikethrough Critical)
+[Mon Jul 08 22:20:42 2019] Mocasin slashes Sparing Heart`s Flame for 11242 points of damage. (Critical)
+[Mon Jul 08 22:20:42 2019] Mocasin slashes Sparing Heart`s Flame for 23005 points of damage. (Critical)
+[Mon Jul 08 22:20:42 2019] Brumbaers healed Uaru over time for 0 (12500) hit points by Celestial Regeneration XXXIII.
+[Mon Jul 08 22:20:42 2019] Reneca healed Uaru over time for 0 (11701) hit points by Elixir of Wulthan Rk. III.
+[Mon Jul 08 22:20:42 2019] Fortunbas begins casting Stormjolt Vortex Rk. III.
+[Mon Jul 08 22:20:42 2019] Sparing Heart`s Flame is cursed by many fingers.
+[Mon Jul 08 22:20:42 2019] Pfaffe crushes Sparing Heart`s Flame for 10376 points of damage.
+[Mon Jul 08 22:20:42 2019] Pfaffe crushes Sparing Heart`s Flame for 20612 points of damage. (Critical)
+[Mon Jul 08 22:20:42 2019] Pfaffe crushes Sparing Heart`s Flame for 22407 points of damage. (Lucky Critical)
+[Mon Jul 08 22:20:42 2019] Pfaffe crushes Sparing Heart`s Flame for 19865 points of damage. (Flurry)
+[Mon Jul 08 22:20:42 2019] Pfaffe crushes Sparing Heart`s Flame for 21416 points of damage. (Lucky Critical Flurry)
+[Mon Jul 08 22:20:42 2019] Laiane shoots Sparing Heart`s Flame for 148807 points of damage. (Critical Double Bow Shot)
+[Mon Jul 08 22:20:43 2019] Folkken backstabs Sparing Heart`s Flame for 24697 points of damage. (Critical)
+[Mon Jul 08 22:20:43 2019] Folkken backstabs Sparing Heart`s Flame for 27205 points of damage.
+[Mon Jul 08 22:20:43 2019] Folkken backstabs Sparing Heart`s Flame for 39303 points of damage. (Lucky Critical)
+[Mon Jul 08 22:20:43 2019] Folkken backstabs Sparing Heart`s Flame for 14830 points of damage.
+[Mon Jul 08 22:20:43 2019] Sparing Heart`s Flame is rent by lion fangs.
+[Mon Jul 08 22:20:43 2019] Folkken slashes Sparing Heart`s Flame for 6329 points of damage.
+[Mon Jul 08 22:20:43 2019] Folkken pierces Sparing Heart`s Flame for 4253 points of damage.
+[Mon Jul 08 22:20:43 2019] Folkken pierces Sparing Heart`s Flame for 2445 points of damage.
+[Mon Jul 08 22:20:43 2019] Folkken pierces Sparing Heart`s Flame for 21430 points of damage. (Critical)
+[Mon Jul 08 22:20:43 2019] Folkken pierces Sparing Heart`s Flame for 5802 points of damage. (Flurry)
+[Mon Jul 08 22:20:43 2019] Folkken pierces Sparing Heart`s Flame for 22531 points of damage. (Lucky Critical Flurry)
+[Mon Jul 08 22:20:43 2019] Djess healed Wulerdar for 0 (186700) hit points by Mystical Intervention Rk. III. (Critical)
+[Mon Jul 08 22:20:43 2019] Sparing Heart`s Flame is struck by the wrath of divine intervention.
+[Mon Jul 08 22:20:43 2019] Djess is bathed in an alleviating burst.
+[Mon Jul 08 22:20:43 2019] Deillusional is soothed by Brell's Soothing Wave. Djess healed Deillusional for 0 (524) hit points by Brell's Sacred Soothing Wave.
+[Mon Jul 08 22:20:43 2019] Djess is invigorated by Brell's Invigorating Relief.
+[Mon Jul 08 22:20:43 2019] Makma is soothed by Brell's Soothing Wave. Djess healed Makma for 0 (524) hit points by Brell's Sacred Soothing Wave.
+[Mon Jul 08 22:20:43 2019] Djess is soothed by Brell's Soothing Wave. Djess healed herself for 0 (524) hit points by Brell's Sacred Soothing Wave.
+[Mon Jul 08 22:20:43 2019] Artremas is soothed by Brell's Soothing Wave. Djess healed Artremas for 0 (524) hit points by Brell's Sacred Soothing Wave.
+[Mon Jul 08 22:20:43 2019] Zandy is soothed by Brell's Soothing Wave. Djess healed Zandy for 524 hit points by Brell's Sacred Soothing Wave.
+[Mon Jul 08 22:20:43 2019] Wulerdar is soothed by Brell's Soothing Wave. Djess healed Wulerdar for 0 (524) hit points by Brell's Sacred Soothing Wave.
+[Mon Jul 08 22:20:43 2019] Zhay pierces Sparing Heart`s Flame for 2698 points of damage.
+[Mon Jul 08 22:20:43 2019] Zhay pierces Sparing Heart`s Flame for 17742 points of damage. (Critical)
+[Mon Jul 08 22:20:43 2019] Alarine shoots Sparing Heart`s Flame for 81309 points of damage. (Critical Double Bow Shot)
+[Mon Jul 08 22:20:43 2019] Wulerdar slashes Sparing Heart`s Flame for 9624 points of damage. (Strikethrough)
+[Mon Jul 08 22:20:43 2019] Wulerdar slashes Sparing Heart`s Flame for 33760 points of damage. (Critical)
+[Mon Jul 08 22:20:43 2019] Sparing Heart`s Flame is struck by magic.
+[Mon Jul 08 22:20:43 2019] Sparing Heart`s Flame quivers as a bolt of energy surges through them.
+[Mon Jul 08 22:20:43 2019] Rekniz pierces Sparing Heart`s Flame for 32716 points of damage. (Critical)
+[Mon Jul 08 22:20:43 2019] Rekniz pierces Sparing Heart`s Flame for 4467 points of damage.
+[Mon Jul 08 22:20:43 2019] Rekniz pierces Sparing Heart`s Flame for 7363 points of damage. (Lucky Critical)
+[Mon Jul 08 22:20:43 2019] Sparing Heart`s Flame is struck by venom.
+[Mon Jul 08 22:20:43 2019] Rekniz pierces Sparing Heart`s Flame for 7131 points of damage. (Critical)
+[Mon Jul 08 22:20:43 2019] Rekniz pierces Sparing Heart`s Flame for 32884 points of damage. (Critical)
+[Mon Jul 08 22:20:43 2019] Rekniz pierces Sparing Heart`s Flame for 9518 points of damage.
+[Mon Jul 08 22:20:43 2019] Rekniz pierces Sparing Heart`s Flame for 9518 points of damage. (Flurry)
+[Mon Jul 08 22:20:43 2019] Rekniz pierces Sparing Heart`s Flame for 14914 points of damage. (Critical Flurry)
+[Mon Jul 08 22:20:43 2019] Sparing Heart`s Flame suffers.
+[Mon Jul 08 22:20:43 2019] Tassio pierces Sparing Heart`s Flame for 3048 points of damage.
+[Mon Jul 08 22:20:43 2019] Tassio pierces Sparing Heart`s Flame for 29546 points of damage. (Lucky Critical)
+[Mon Jul 08 22:20:43 2019] Tassio pierces Sparing Heart`s Flame for 8099 points of damage.
+[Mon Jul 08 22:20:43 2019] Tassio pierces Sparing Heart`s Flame for 14985 points of damage. (Critical)
+[Mon Jul 08 22:20:43 2019] Alarine shoots Sparing Heart`s Flame for 70296 points of damage. (Lucky Critical Double Bow Shot)
+[Mon Jul 08 22:20:43 2019] Ginormus`s pet bites Sparing Heart`s Flame for 430 points of damage.
+[Mon Jul 08 22:20:43 2019] Ginormus`s pet bites Sparing Heart`s Flame for 461 points of damage.
+[Mon Jul 08 22:20:43 2019] Ginormus`s pet bites Sparing Heart`s Flame for 738 points of damage. (Critical Flurry)
+[Mon Jul 08 22:20:43 2019] Ginormus`s pet bites Sparing Heart`s Flame for 477 points of damage. (Lucky Critical)
+[Mon Jul 08 22:20:43 2019] Furking healed himself for 0 (290) hit points.
+[Mon Jul 08 22:20:43 2019] Furking slashes Sparing Heart`s Flame for 29006 points of damage. (Lucky Critical)
+[Mon Jul 08 22:20:43 2019] Furking healed himself for 0 (244) hit points.
+[Mon Jul 08 22:20:43 2019] Furking slashes Sparing Heart`s Flame for 24479 points of damage. (Lucky Critical)
+[Mon Jul 08 22:20:43 2019] Sparing Heart`s Flame is struck by an axe.
+[Mon Jul 08 22:20:43 2019] Fortunbas`s pet slashes Sparing Heart`s Flame for 162 points of damage.
+[Mon Jul 08 22:20:43 2019] Sparing Heart`s Flame is pierced by Wulerdar's thorns for 5066 points of non-melee damage.
+[Mon Jul 08 22:20:43 2019] Sparing Heart`s Flame hits Wulerdar for 34320 points of damage. (Strikethrough)
+[Mon Jul 08 22:20:43 2019] Sparing Heart`s Flame is pierced by Wulerdar's thorns for 5066 points of non-melee damage.
+[Mon Jul 08 22:20:43 2019] Sparing Heart`s Flame hits Wulerdar for 19469 points of damage.
+[Mon Jul 08 22:20:43 2019] Sparing Heart`s Flame is pierced by Wulerdar's thorns for 5066 points of non-melee damage.
+[Mon Jul 08 22:20:43 2019] Sparing Heart`s Flame hits Wulerdar for 26085 points of damage. (Strikethrough)
+[Mon Jul 08 22:20:43 2019] Tilail slashes Sparing Heart`s Flame for 5033 points of damage.
+[Mon Jul 08 22:20:43 2019] Tilail slashes Sparing Heart`s Flame for 5861 points of damage.
+[Mon Jul 08 22:20:43 2019] Barbwarrior's wounds fade. Schalimar healed Barbwarrior for 0 (103715) hit points by Spiritual Remedy Rk. III. (Lucky Critical)
+[Mon Jul 08 22:20:43 2019] Barbwarrior is covered in a soft healing light.
+[Mon Jul 08 22:20:43 2019] Koldanar bashes Sparing Heart`s Flame for 6068 points of damage. (Critical)
+[Mon Jul 08 22:20:43 2019] Tilail pierces Sparing Heart`s Flame for 24122 points of damage. (Lucky Critical)
+[Mon Jul 08 22:20:43 2019] Tilail pierces Sparing Heart`s Flame for 1273 points of damage.
+[Mon Jul 08 22:20:43 2019] Tilail pierces Sparing Heart`s Flame for 4625 points of damage.
+[Mon Jul 08 22:20:43 2019] Tilail pierces Sparing Heart`s Flame for 13918 points of damage. (Critical Flurry)
+[Mon Jul 08 22:20:43 2019] Tilail pierces Sparing Heart`s Flame for 5349 points of damage. (Flurry)
+[Mon Jul 08 22:20:43 2019] Koldanar slashes Sparing Heart`s Flame for 14110 points of damage.
+[Mon Jul 08 22:20:43 2019] Koldanar slashes Sparing Heart`s Flame for 12771 points of damage.
+[Mon Jul 08 22:20:43 2019] Morra pierces Sparing Heart`s Flame for 5606 points of damage.
+[Mon Jul 08 22:20:43 2019] Morra pierces Sparing Heart`s Flame for 29158 points of damage. (Critical)
+[Mon Jul 08 22:20:43 2019] Alarine slashes Sparing Heart`s Flame for 12650 points of damage.
+[Mon Jul 08 22:20:43 2019] Alarine slashes Sparing Heart`s Flame for 56874 points of damage. (Lucky Critical)
+[Mon Jul 08 22:20:43 2019] Alarine slashes Sparing Heart`s Flame for 10244 points of damage.
+[Mon Jul 08 22:20:43 2019] Alarine slashes Sparing Heart`s Flame for 10132 points of damage.
+[Mon Jul 08 22:20:43 2019] Sparing Heart`s Flame is cut by many blades.
+[Mon Jul 08 22:20:43 2019] Ginormus`s pet bashes Sparing Heart`s Flame for 308 points of damage.
+[Mon Jul 08 22:20:43 2019] Makma healed himself over time for 0 (12001) hit points by Elixir of Wulthan Rk. III.
+[Mon Jul 08 22:20:43 2019] Mocasin pierces Sparing Heart`s Flame for 22300 points of damage. (Lucky Critical)
+[Mon Jul 08 22:20:43 2019] Mocasin pierces Sparing Heart`s Flame for 5504 points of damage. (Critical)
+[Mon Jul 08 22:20:43 2019] Sparing Heart`s Flame suffers.
+[Mon Jul 08 22:20:43 2019] Bellower healed itself for 0 (217) hit points.(Critical)
+[Mon Jul 08 22:20:43 2019] Bellower pierces Sparing Heart`s Flame for 10863 points of damage. (Lucky Critical)
+[Mon Jul 08 22:20:43 2019] Bellower healed itself for 0 (186) hit points.
+[Mon Jul 08 22:20:43 2019] Bellower pierces Sparing Heart`s Flame for 9317 points of damage.
+[Mon Jul 08 22:20:43 2019] Sparing Heart`s Flame quivers as a bolt of energy surges through them.
+[Mon Jul 08 22:20:43 2019] Pfaffe is empowered.
+[Mon Jul 08 22:20:43 2019] Correctivo pierces Sparing Heart`s Flame for 6295 points of damage.
+[Mon Jul 08 22:20:43 2019] Correctivo pierces Sparing Heart`s Flame for 6092 points of damage. (Lucky Critical)
+[Mon Jul 08 22:20:43 2019] Sparing Heart`s Flame is struck by venom.
+[Mon Jul 08 22:20:43 2019] Sparing Heart`s Flame is struck by venom.
+[Mon Jul 08 22:20:43 2019] Sparing Heart`s Flame is rent by lion fangs.
+[Mon Jul 08 22:20:43 2019] Sparing Heart`s Flame quivers as a bolt of energy surges through them.
+[Mon Jul 08 22:20:43 2019] Sparing Heart`s Flame is struck by heavy punch!
+[Mon Jul 08 22:20:43 2019] Correctivo pierces Sparing Heart`s Flame for 2667 points of damage.
+[Mon Jul 08 22:20:43 2019] Correctivo pierces Sparing Heart`s Flame for 14140 points of damage. (Lucky Critical)
+[Mon Jul 08 22:20:43 2019] Correctivo pierces Sparing Heart`s Flame for 5727 points of damage. (Critical)
+[Mon Jul 08 22:20:43 2019] Correctivo pierces Sparing Heart`s Flame for 3197 points of damage. (Flurry)
+[Mon Jul 08 22:20:43 2019] Correctivo pierces Sparing Heart`s Flame for 5727 points of damage. (Critical Flurry)
+[Mon Jul 08 22:20:43 2019] Ginormus crushes Sparing Heart`s Flame for 1555 points of damage.
+[Mon Jul 08 22:20:43 2019] Ginormus crushes Sparing Heart`s Flame for 1555 points of damage.
+[Mon Jul 08 22:20:43 2019] Furking`s pet crushes Sparing Heart`s Flame for 734 points of damage.
+[Mon Jul 08 22:20:43 2019] Furking`s pet slashes Sparing Heart`s Flame for 694 points of damage.
+[Mon Jul 08 22:20:43 2019] Furking`s pet slashes Sparing Heart`s Flame for 741 points of damage.
+[Mon Jul 08 22:20:43 2019] Sparing Heart`s Flame is slashed by a phantom assailant.
+[Mon Jul 08 22:20:43 2019] Furking`s pet crushes Sparing Heart`s Flame for 1272 points of damage. (Flurry)
+[Mon Jul 08 22:20:43 2019] Furking`s pet slashes Sparing Heart`s Flame for 666 points of damage.
+[Mon Jul 08 22:20:43 2019] Furking`s pet slashes Sparing Heart`s Flame for 666 points of damage.
+[Mon Jul 08 22:20:43 2019] Sparing Heart`s Flame is slashed by a phantom assailant.
+[Mon Jul 08 22:20:43 2019] Correctivo's eyes gleam.
+[Mon Jul 08 22:20:43 2019] Skadedyr's eyes gleam.
+[Mon Jul 08 22:20:43 2019] Folkken's eyes gleam.
+[Mon Jul 08 22:20:43 2019] Blusterx`s warder's eyes gleam.
+[Mon Jul 08 22:20:43 2019] Blusterx's eyes gleam.
+[Mon Jul 08 22:20:43 2019] Tilail's eyes gleam.
+[Mon Jul 08 22:20:43 2019] Correctivo backstabs Sparing Heart`s Flame for 105665 points of damage. (Lucky Critical)
+[Mon Jul 08 22:20:43 2019] Sparing Heart`s Flame bellows in pain!
+[Mon Jul 08 22:20:43 2019] Correctivo backstabs Sparing Heart`s Flame for 31225 points of damage.
+[Mon Jul 08 22:20:43 2019] Correctivo backstabs Sparing Heart`s Flame for 46884 points of damage. (Critical)
+[Mon Jul 08 22:20:43 2019] Correctivo backstabs Sparing Heart`s Flame for 14853 points of damage.
+[Mon Jul 08 22:20:43 2019] Sparing Heart`s Flame suffers.
+[Mon Jul 08 22:20:43 2019] Bellower healed itself for 0 (316) hit points.
+[Mon Jul 08 22:20:43 2019] Bellower pierces Sparing Heart`s Flame for 15818 points of damage. (Critical)
+[Mon Jul 08 22:20:43 2019] Bellower healed itself for 0 (525) hit points.
+[Mon Jul 08 22:20:43 2019] Bellower pierces Sparing Heart`s Flame for 26274 points of damage. (Lucky Critical)
+[Mon Jul 08 22:20:43 2019] Bellower healed itself for 0 (76) hit points.
+[Mon Jul 08 22:20:43 2019] Bellower pierces Sparing Heart`s Flame for 3807 points of damage. (Flurry)
+[Mon Jul 08 22:20:43 2019] Ginormus healed Samui`s pet for 0 (62222) hit points by Spiritual Squall Rk. III. (Critical)
+[Mon Jul 08 22:20:43 2019] Ginormus healed Furking`s pet for 9195 (35800) hit points by Spiritual Squall Rk. III.
+[Mon Jul 08 22:20:43 2019] Ginormus healed Ginormus`s pet for 60950 (65882) hit points by Spiritual Squall Rk. III. (Critical)
+[Mon Jul 08 22:20:43 2019] Ginormus healed Ginormus`s pet for 34657 hit points by Spiritual Squall Rk. III.
+[Mon Jul 08 22:20:43 2019] Ginormus healed Ginormus`s pet for 60145 (60163) hit points by Spiritual Squall Rk. III. (Critical)
+[Mon Jul 08 22:20:43 2019] Ginormus healed Quatreh`s pet for 0 (34542) hit points by Spiritual Squall Rk. III.
+[Mon Jul 08 22:20:43 2019] Ginormus healed Fortunbas`s pet for 0 (61307) hit points by Spiritual Squall Rk. III. (Critical)
+[Mon Jul 08 22:20:43 2019] Ginormus healed itself for 0 (31455) hit points by Spiritual Squall Rk. III.
+[Mon Jul 08 22:20:43 2019] Ginormus healed Tassio for 0 (29166) hit points by Spiritual Squall Rk. III.
+[Mon Jul 08 22:20:43 2019] Ginormus healed Zhay for 0 (78299) hit points by Spiritual Squall Rk. III. (Lucky Critical)
+[Mon Jul 08 22:20:43 2019] Ginormus healed Samui for 0 (70872) hit points by Spiritual Squall Rk. III. (Lucky Critical)
+[Mon Jul 08 22:20:43 2019] Ginormus healed Correctivo for 0 (70720) hit points by Spiritual Squall Rk. III. (Lucky Critical)
+[Mon Jul 08 22:20:43 2019] Ginormus healed Skadedyr for 0 (73984) hit points by Spiritual Squall Rk. III. (Critical)
+[Mon Jul 08 22:20:43 2019] Ginormus healed Marnic for 0 (34282) hit points by Spiritual Squall Rk. III.
+[Mon Jul 08 22:20:43 2019] Ginormus healed Yashoor`s warder for 0 (69543) hit points by Spiritual Squall Rk. III. (Critical)
+[Mon Jul 08 22:20:43 2019] Ginormus healed Yashoor for 0 (30653) hit points by Spiritual Squall Rk. III.
+[Mon Jul 08 22:20:43 2019] Ginormus healed Noddenx for 6729 (149401) hit points by Spiritual Squall Rk. III. (Lucky Critical)
+[Mon Jul 08 22:20:43 2019] Ginormus healed Pfaffe for 0 (29166) hit points by Spiritual Squall Rk. III.
+[Mon Jul 08 22:20:43 2019] Ginormus healed Morra for 0 (63381) hit points by Spiritual Squall Rk. III. (Critical)
+[Mon Jul 08 22:20:43 2019] Ginormus healed Bellower for 0 (71967) hit points by Spiritual Squall Rk. III. (Lucky Critical)
+[Mon Jul 08 22:20:43 2019] Ginormus healed Uaru for 0 (65879) hit points by Spiritual Squall Rk. III. (Lucky Critical)
+[Mon Jul 08 22:20:43 2019] Ginormus healed Mocasin for 0 (33170) hit points by Spiritual Squall Rk. III.
+[Mon Jul 08 22:20:43 2019] Ginormus healed Barbwarrior for 0 (34314) hit points by Spiritual Squall Rk. III.
+[Mon Jul 08 22:20:43 2019] Ginormus healed Tykelle for 0 (63137) hit points by Spiritual Squall Rk. III. (Critical)
+[Mon Jul 08 22:20:43 2019] Ginormus healed Makma for 0 (62680) hit points by Spiritual Squall Rk. III. (Critical)
+[Mon Jul 08 22:20:43 2019] Ginormus healed Koldanar for 31433 (77306) hit points by Spiritual Squall Rk. III. (Lucky Critical)
+[Mon Jul 08 22:20:43 2019] Ginormus healed Rekniz for 0 (33970) hit points by Spiritual Squall Rk. III.
+[Mon Jul 08 22:20:43 2019] Ginormus healed Furking for 0 (28137) hit points by Spiritual Squall Rk. III.
+[Mon Jul 08 22:20:43 2019] Ginormus healed Folkken for 0 (33458) hit points by Spiritual Squall Rk. III.
+[Mon Jul 08 22:20:43 2019] Ginormus healed Artremas for 0 (28251) hit points by Spiritual Squall Rk. III.
+[Mon Jul 08 22:20:43 2019] Ginormus healed Hepp for 0 (28137) hit points by Spiritual Squall Rk. III.
+[Mon Jul 08 22:20:43 2019] Ginormus healed Quatreh for 0 (25428) hit points by Spiritual Squall Rk. III.
+[Mon Jul 08 22:20:43 2019] Ginormus healed Thancra for 167 (31943) hit points by Spiritual Squall Rk. III.
+[Mon Jul 08 22:20:43 2019] Ginormus healed Zandy for 5814 (67858) hit points by Spiritual Squall Rk. III. (Critical)
+[Mon Jul 08 22:20:43 2019] Ginormus healed Wulerdar for 34636 hit points by Spiritual Squall Rk. III.
+[Mon Jul 08 22:20:43 2019] Ginormus healed Tilail for 0 (30081) hit points by Spiritual Squall Rk. III.
+[Mon Jul 08 22:20:43 2019] Lailah begins casting Spiritual Squall Rk. III.
+[Mon Jul 08 22:20:43 2019] Tykelle healed Quatreh over time for 9053 hit points by Dissident Roar 6.
+[Mon Jul 08 22:20:43 2019] Reneca healed Quatreh over time for 23402 hit points by Elixir of Wulthan Rk. III. (Critical)
+[Mon Jul 08 22:20:43 2019] Brumbaers healed Quatreh over time for 28319 hit points by Celestial Regeneration XXXIII. (Lucky Critical)
+[Mon Jul 08 22:20:43 2019] Quatreh healed himself over time for 100 hit points by Strike of Savagery.
+[Mon Jul 08 22:20:43 2019] Morra slashes Sparing Heart`s Flame for 3675 points of damage.
+[Mon Jul 08 22:20:43 2019] Morra slashes Sparing Heart`s Flame for 7887 points of damage. (Critical)
+[Mon Jul 08 22:20:43 2019] You feel a quick touch of healing. You healed Hygie for 0 (72085) hit points by Syllable of Mending Rk. III.
+[Mon Jul 08 22:20:43 2019] Noddenx feels a quick touch of healing. You healed Noddenx for 0 (111734) hit points by Syllable of Mending Rk. III.
+[Mon Jul 08 22:20:43 2019] Koldanar feels a quick touch of healing. You healed Koldanar for 0 (64244) hit points by Syllable of Mending Rk. III.
+[Mon Jul 08 22:20:43 2019] Brumbaers feels a quick touch of healing. You healed Brumbaers for 0 (149009) hit points by Syllable of Mending Rk. III. (Lucky Critical)
+[Mon Jul 08 22:20:43 2019] Thancra feels a quick touch of healing. You healed Thancra for 0 (125453) hit points by Syllable of Mending Rk. III. (Critical)
+[Mon Jul 08 22:20:43 2019] A holy light surrounds you. You healed Hygie for 0 (23124) hit points by Holy Soothing. (Lucky Critical)
+[Mon Jul 08 22:20:43 2019] Noddenx is surrounded by a holy light. You healed Noddenx for 0 (38867) hit points by Holy Soothing. (Lucky Critical)
+[Mon Jul 08 22:20:43 2019] Koldanar is surrounded by a holy light. You healed Koldanar for 0 (11021) hit points by Holy Soothing.
+[Mon Jul 08 22:20:43 2019] Brumbaers is surrounded by a holy light. You healed Brumbaers for 0 (22750) hit points by Holy Soothing. (Lucky Critical)
+[Mon Jul 08 22:20:43 2019] Thancra is surrounded by a holy light. You healed Thancra for 0 (23128) hit points by Holy Soothing. (Lucky Critical)
+[Mon Jul 08 22:20:43 2019] You are blessed with Templar's Synergy.
+[Mon Jul 08 22:20:43 2019] Brumbaers healed Fortunbas over time for 0 (28568) hit points by Celestial Regeneration XXXIII. (Lucky Critical)
+[Mon Jul 08 22:20:43 2019] Ginormus`s pet bites Sparing Heart`s Flame for 338 points of damage.
+[Mon Jul 08 22:20:43 2019] Ginormus`s pet bites Sparing Heart`s Flame for 523 points of damage.
+[Mon Jul 08 22:20:43 2019] Thancra is blessed by life. Thancra healed herself for 0 (37793) hit points by Blessing of Life XXIII. (Critical)
+[Mon Jul 08 22:20:43 2019] Thancra slashes Sparing Heart`s Flame for 30576 points of damage.
+[Mon Jul 08 22:20:43 2019] Thancra slashes Sparing Heart`s Flame for 38317 points of damage. (Lucky Critical)
+[Mon Jul 08 22:20:43 2019] Thancra slashes Sparing Heart`s Flame for 119345 points of damage. (Lucky Critical)
+[Mon Jul 08 22:20:43 2019] Thancra slashes Sparing Heart`s Flame for 91244 points of damage. (Critical Flurry)
+[Mon Jul 08 22:20:43 2019] Zhay slashes Sparing Heart`s Flame for 24238 points of damage. (Critical)
+[Mon Jul 08 22:20:43 2019] Zhay slashes Sparing Heart`s Flame for 4574 points of damage.
+[Mon Jul 08 22:20:43 2019] Zhay slashes Sparing Heart`s Flame for 2433 points of damage. (Flurry)
+[Mon Jul 08 22:20:43 2019] Zhay slashes Sparing Heart`s Flame for 31933 points of damage. (Lucky Crippling Blow Flurry)
+[Mon Jul 08 22:20:43 2019] an inferno flare becomes more susceptible to damage.
+[Mon Jul 08 22:20:43 2019] An inferno flare is caught in a magical vortex.
+[Mon Jul 08 22:20:43 2019] An inferno flare's flesh is seared by flames.
+[Mon Jul 08 22:20:43 2019] An inferno flare's flesh is seared by flames.
+[Mon Jul 08 22:20:43 2019] Fortunbas is invigorated by Brell's Invigorating Relief.
+[Mon Jul 08 22:20:43 2019] Fortunbas is invigorated by Brell's Chromatic Strike.
+[Mon Jul 08 22:20:43 2019] Mocasin kicks Sparing Heart`s Flame for 58547 points of damage. (Lucky Critical)
+[Mon Jul 08 22:20:43 2019] Mocasin kicks Sparing Heart`s Flame for 1179 points of damage.
+[Mon Jul 08 22:20:43 2019] Brumbaers healed Bellower over time for 0 (12500) hit points by Celestial Regeneration XXXIII.
+[Mon Jul 08 22:20:43 2019] Ginormus healed Bellower over time for 0 (54130) hit points by Cloud of Renewal Rk. III. (Lucky Critical Twincast)
+[Mon Jul 08 22:20:43 2019] Zhay pierces Sparing Heart`s Flame for 1139 points of damage.
+[Mon Jul 08 22:20:43 2019] Zhay pierces Sparing Heart`s Flame for 7230 points of damage. (Lucky Crippling Blow)
+[Mon Jul 08 22:20:43 2019] Douxreve begins casting Delude Rk. III.
+[Mon Jul 08 22:20:43 2019] Mocasin slashes Sparing Heart`s Flame for 4446 points of damage.
+[Mon Jul 08 22:20:43 2019] Mocasin slashes Sparing Heart`s Flame for 4194 points of damage.
+[Mon Jul 08 22:20:43 2019] Noddenx slashes Sparing Heart`s Flame for 69401 points of damage. (Critical)
+[Mon Jul 08 22:20:43 2019] Noddenx slashes Sparing Heart`s Flame for 113311 points of damage. (Critical)
+[Mon Jul 08 22:20:43 2019] Noddenx slashes Sparing Heart`s Flame for 8928 points of damage.
+[Mon Jul 08 22:20:43 2019] Samui healed herself for 0 (236) hit points.
+[Mon Jul 08 22:20:43 2019] Samui slashes Sparing Heart`s Flame for 23657 points of damage. (Critical)
+[Mon Jul 08 22:20:43 2019] Sparing Heart`s Flame is struck by an axe.
+[Mon Jul 08 22:20:43 2019] Samui healed herself for 0 (646) hit points.
+[Mon Jul 08 22:20:43 2019] Samui crushes Sparing Heart`s Flame for 64668 points of damage. (Critical)
+[Mon Jul 08 22:20:43 2019] Samui healed herself for 0 (192) hit points.
+[Mon Jul 08 22:20:43 2019] Samui crushes Sparing Heart`s Flame for 19280 points of damage. (Critical)
+[Mon Jul 08 22:20:43 2019] Samui healed herself for 0 (73) hit points.
+[Mon Jul 08 22:20:43 2019] Samui crushes Sparing Heart`s Flame for 7379 points of damage.
+[Mon Jul 08 22:20:43 2019] Samui healed herself for 0 (601) hit points.
+[Mon Jul 08 22:20:43 2019] Samui crushes Sparing Heart`s Flame for 60162 points of damage. (Lucky Crippling Blow Flurry)
+[Mon Jul 08 22:20:43 2019] Samui healed herself for 0 (293) hit points.
+[Mon Jul 08 22:20:43 2019] Samui crushes Sparing Heart`s Flame for 29357 points of damage. (Lucky Critical Flurry)
