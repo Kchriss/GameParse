@@ -48,7 +48,7 @@ dropper.addEventListener('drop', function (e) {
 
 
 }, false);
-
+var k=0;
 
 function readerdigest(tabFile, i) {
     let curserTag = tabFile[i].match(/backstabs|begins|crushes|frenzies|healed|hits|pierces|shoots|slashes|taken/gi);//test le mot cle et recupere sa valeur ! :p
@@ -68,16 +68,17 @@ function readerdigest(tabFile, i) {
                 let LogFrenzies = new Frenzies(i, curser, tabFile);
                 break;
             case "healed":
+
                 let logHealed = new Healed(i, curser, tabFile);
                 /*    document.getElementById('header1').innerText += logHealed.PlayerHealer() + " -+- " + curserTag + " -+- "
                         + logHealed.TargedHealed() + " -+- " + logHealed.TypeOfHeal()
                         +" -+- "+ logHealed.HealAmount()+" -+- "+logHealed.OverHeal()+" -+- "+logHealed.SpellsUsed()+" -+- "+logHealed.CriticalHitMessage()+ " -+- "+logHealed.Logtime()+"\n";*/
-                logHeal[i]={"id":i,"healer":logHealed.PlayerHealer(),"healed":logHealed.TargedHealed()
+                logHeal[k]={"id":k,"healer":logHealed.PlayerHealer(),"healed":logHealed.TargedHealed()
                                     ,"type":logHealed.TypeOfHeal(),"Heal":logHealed.HealAmount(),"overheal":logHealed.OverHeal()
                                     ,'spell':logHealed.SpellsUsed(),"crit":logHealed.CriticalHitMessage(),"logDate":logHealed.Logtime()};
                 let btn = document.getElementById('btn');
                 btn.style.visibility="visible";
-
+                k++;
                 break;
             case "hits":
                 let LogHits = new Hits(i, curser, tabFile);
@@ -317,9 +318,19 @@ function updateBtn() {
     let lastentry =logHeal.length-1;
 
     let logTimerLastEntry =logHeal[lastentry].logDate;
-    let timeToCheck = logTimerLastEntry-3600;
-    timeFilter = logHeal.filter(it => (it.logDate)> timeToCheck)
-    console.log(logTimerLastEntry);
+    let timeToCheck = logTimerLastEntry-3600000;
+    let startCheck=0;
+    for (let j = 1; j < lastentry; j++)
+    {  //loop through the array
+
+        if(logHeal[j].logDate>=timeToCheck)
+        {
+            startCheck=j;
+            break;
+        }
+    }
+
+    timeFilter = logHeal.slice(startCheck,lastentry);
 
     let listOfPlayerhealed = [...new Set(timeFilter.map(x => x.healed))].sort();
     let listOfPlayershealer = [...new Set(timeFilter.map(y => y.healer))].sort();
@@ -329,28 +340,28 @@ function updateBtn() {
     menudropplayers('healed',listOfPlayerhealed);
     menudropplayers('healer',listOfPlayershealer);
 
-    var mySet= timeFilter.filter(it => new RegExp('Ginormus').test(it.healer));
-
-    //console.log([...mySet]);
-
-    var mySet2= [...new Set(mySet.map(x => x.healed))];
-
-    //console.log([...mySet2]);
-
-    var mySet2= [...new Set((timeFilter.filter(it => new RegExp('Hygie').test(it.healer))).map(x => x.healed))]; // 2 in 1 !! :p
-    //console.log([...mySet2]); // Will show you exactly the same Array as myArray
-
-    let mySet3 = mySet.filter(it => new RegExp('Ranpha').test(it.healed));
-
-
-    //console.log([...mySet3]);//.reduce((accumulator, currentValue) => accumulator.value + currentValue.value));
-    let total = 0;
-    let total2 = 0;
-    for (i = 0; i < mySet3.length; i++) {  //loop through the array
-        total += mySet3[i].Heal;  //Do the math!
-        total2+= mySet3[i].overheal;
-    }
-   // console.log(total+" "+total2);
+   //  var mySet= timeFilter.filter(it => new RegExp('Ginormus').test(it.healer));
+   //
+   //  //console.log([...mySet]);
+   //
+   //  var mySet2= [...new Set(mySet.map(x => x.healed))];
+   //
+   //  //console.log([...mySet2]);
+   //
+   //  var mySet2= [...new Set((timeFilter.filter(it => new RegExp('Hygie').test(it.healer))).map(x => x.healed))]; // 2 in 1 !! :p
+   //  //console.log([...mySet2]); // Will show you exactly the same Array as myArray
+   //
+   //  let mySet3 = mySet.filter(it => new RegExp('Ranpha').test(it.healed));
+   //
+   //
+   //  //console.log([...mySet3]);//.reduce((accumulator, currentValue) => accumulator.value + currentValue.value));
+   //  let total = 0;
+   //  let total2 = 0;
+   //  for (let j = 0; j < mySet3.length; j++) {  //loop through the array
+   //      total += mySet3[j].Heal;  //Do the math!
+   //      total2+= mySet3[j].overheal;
+   //  }
+   // // console.log(total+" "+total2);
     //map<U>(callbackfn: (value: T, index: number, array: T[]) => U, thisArg?: any): U[];
 
 }
@@ -394,6 +405,7 @@ function addActivityItem(){
         for (let i = 0; i < mySet3.length; i++) {  //loop through the array
             total += mySet3[i].Heal;  //Do the math!
             total2+= mySet3[i].overheal;
+
         }
         playerTargetByHealer=element;
         containerPlayer(targedhealer,playerTargetByHealer,total,total2)
@@ -405,12 +417,12 @@ function containerPlayer(targedhealer,playerTargetByHealer,total,total2) {
             let div = document.createElement('div');
             div.name=targedhealer;
             div.id="parseview";
-            div.innerText =playerTargetByHealer+" "+total+" "+total2+"\n";
+            div.innerText =playerTargetByHealer+" | "+" Heal : "+total +" |  HA : "+total2 +"\n";
             document.body.appendChild(div);
         }
         else{
             let div = document.getElementById('parseview');
-            div.innerText += playerTargetByHealer+" "+total+" "+total2 + "\n";
+            div.innerText += playerTargetByHealer+" | "+" Heal : "+total +" |  HA : "+total2 + "\n";
         }
 }
 /*
