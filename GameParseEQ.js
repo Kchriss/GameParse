@@ -4,6 +4,7 @@ var FilePath;
 var files;
 var tabFile;
 var logHeal=[];
+var timeFilter=[];
 
 var dropper = document.querySelector('#dropper');
 //drop zone for file event dragover and drop needed to get file data
@@ -300,7 +301,7 @@ class Healed {
     Logtime() {
 
         let logtimer = this.tabFile[this.i].substr(this.tabFile[this.i].indexOf('[') + 1, this.tabFile[this.i].indexOf(']') - this.tabFile[this.i].indexOf('[') - 1).trim();
-        return logtimer;
+        return new Date(logtimer).getTime();
     }
 }
 
@@ -314,34 +315,21 @@ function updateBtn() {
     //>>>>> reduction de la tailler du tableau en fonction d'un temp a choisir ... derniere heure.. derniere 6 heure... fichier "entier ... etc....
     ///// a mettre en place
     let lastentry =logHeal.length-1;
-    let checkitme=24;
+
     let logTimerLastEntry =logHeal[lastentry].logDate;
+    let timeToCheck = logTimerLastEntry-3600;
+    timeFilter = logHeal.filter(it => (it.logDate)> timeToCheck)
     console.log(logTimerLastEntry);
-    let logSubTime1=logTimerLastEntry.indexOf(' ')+1;
-    let logSubTime2=logTimerLastEntry.indexOf(' ',logSubTime1)+1;
-    let logSubTime3=logTimerLastEntry.indexOf(' ',logSubTime2)+1;
-    let subTimeStr = logTimerLastEntry.substring(logSubTime3,logSubTime3+2);
-    if (subTimeStr>0){
-        logTimerLastEntry=logTimerLastEntry.replace(subTimeStr,subTimeStr-1)
-    }
-    else{
-        logTimerLastEntry=logTimerLastEntry.replace(subTimeStr,checkitme-1)
-    }
 
-
-
-
-    /*console.log(subTimeStr);
-    console.log(logTimerLastEntry);*/
-    let listOfPlayerhealed = [...new Set(logHeal.map(x => x.healed))].sort();
-    let listOfPlayershealer = [...new Set(logHeal.map(y => y.healer))].sort();
+    let listOfPlayerhealed = [...new Set(timeFilter.map(x => x.healed))].sort();
+    let listOfPlayershealer = [...new Set(timeFilter.map(y => y.healer))].sort();
 
 
 
     menudropplayers('healed',listOfPlayerhealed);
     menudropplayers('healer',listOfPlayershealer);
 
-    var mySet= logHeal.filter(it => new RegExp('Ginormus').test(it.healer));
+    var mySet= timeFilter.filter(it => new RegExp('Ginormus').test(it.healer));
 
     //console.log([...mySet]);
 
@@ -349,7 +337,7 @@ function updateBtn() {
 
     //console.log([...mySet2]);
 
-    var mySet2= [...new Set((logHeal.filter(it => new RegExp('Hygie').test(it.healer))).map(x => x.healed))]; // 2 in 1 !! :p
+    var mySet2= [...new Set((timeFilter.filter(it => new RegExp('Hygie').test(it.healer))).map(x => x.healed))]; // 2 in 1 !! :p
     //console.log([...mySet2]); // Will show you exactly the same Array as myArray
 
     let mySet3 = mySet.filter(it => new RegExp('Ranpha').test(it.healed));
@@ -391,7 +379,7 @@ function menudropplayers(players,playersList) {
 function addActivityItem(){
     let e = document.getElementById('healer-dropdown');
     let targedhealer = e.options[e.selectedIndex].value;
-    let mySet= logHeal.filter(it => new RegExp(targedhealer).test(it.healer));
+    let mySet= timeFilter.filter(it => new RegExp(targedhealer).test(it.healer));
     let mySet2= [...new Set(mySet.map(x => x.healed))];
     if (document.getElementById('parseview')!=null){
 
@@ -462,3 +450,19 @@ https://stackoverflow.com/questions/11199653/javascript-sum-and-group-by-of-json
 http://learnjsdata.com/group_data.html
 
 */
+// let logSubTime1=logTimerLastEntry.indexOf(' ')+1;
+// let logSubTime2=logTimerLastEntry.indexOf(' ',logSubTime1)+1;
+// let logSubTime3=logTimerLastEntry.indexOf(' ',logSubTime2)+1;
+// let subTimeStr = logTimerLastEntry.substring(logSubTime3,logSubTime3+2);
+// if (subTimeStr>0){
+//     logTimerLastEntry=logTimerLastEntry.replace(subTimeStr,subTimeStr-1)
+// }
+// else{
+//     logTimerLastEntry=logTimerLastEntry.replace(subTimeStr,checkitme-1)
+// }
+
+
+
+
+/*console.log(subTimeStr);
+console.log(logTimerLastEntry);*/
