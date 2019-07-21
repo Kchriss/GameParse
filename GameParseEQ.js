@@ -75,8 +75,8 @@ function readerdigest(tabFile, i) {
                 logHeal[k]={"id":k,"healer":logHealed.PlayerHealer(),"healed":logHealed.TargedHealed()
                                     ,"type":logHealed.TypeOfHeal(),"Heal":logHealed.HealAmount(),"overheal":logHealed.OverHeal()
                                     ,'spell':logHealed.SpellsUsed(),"crit":logHealed.CriticalHitMessage(),"logDate":logHealed.Logtime()};
-                let btn = document.getElementById('btn');
-                btn.style.visibility="visible";
+                //let btn = document.getElementById('btn');
+                //btn.style.visibility="visible";
                 k++;
                 break;
             case "hits":
@@ -305,8 +305,10 @@ class Healed {
     }
 }
 
-let btn = document.querySelector('input');
-btn.addEventListener('click', updateBtn);
+//let btn = document.querySelector('input');
+//btn.addEventListener('click', updateBtn);
+let input =document.getElementById('radioInputChoice');
+input.step=0.1;
 let choice1 = document.getElementById('Choice1')
 choice1.addEventListener('click', updateBtn);
 var choice2 = document.getElementById('Choice2');
@@ -333,22 +335,30 @@ function updateBtn() {
     //https://stackoverflow.com/questions/256754/how-to-pass-arguments-to-addeventlistener-listener-function
     //>>>>> reduction de la tailler du tableau en fonction d'un temp a choisir ... derniere heure.. derniere 6 heure... fichier "entier ... etc....
     ///// a mettre en place
-
-    var test =this.value;
-
-    let lastentry =logHeal.length-1;
     let timeToCheck=0;
+    let startCheck=0;
+    var test =this.value;
+    let lastentry =logHeal.length-1;
     let logTimerLastEntry =logHeal[lastentry].logDate;
+   if (this.id =='Choice5')
+    {
+        let onChoice = parseFloat(document.getElementById('radioInputChoice').value);
+        timeToCheck = logTimerLastEntry-(3600000*onChoice);
+        console.log(onChoice)
+    }
+
+
+
     if (test>0){
      timeToCheck = logTimerLastEntry-(3600000*test);
     }
-    else if (test ==0 || test =="click to show"){
+    else if (test ===0 || test =="click to show"){
 
         let logTimer1stEntry =logHeal[0].logDate;
         timeToCheck=logTimer1stEntry;
 
         }
-    let startCheck=0;
+
     for (let j = 1; j < lastentry; j++)
     {  //loop through the array
 
@@ -457,6 +467,7 @@ https://stackoverflow.com/questions/14446511/most-efficient-method-to-groupby-on
         https://www.freecodecamp.org/news/15-useful-javascript-examples-of-map-reduce-and-filter-74cbbb5e0a1f/
             https://codeburst.io/grouping-array-data-json-ef96b438b927
                 https://gist.github.com/JamieMason/0566f8412af9fe6a1d470aa1e089a752
+                http://www.supportduweb.com/scripts_tutoriaux-code-source-48-systeme-d-039-onglets-en-javascript-x-html-et-css-dans-la-meme-page.html
 //http://www.maximechaillou.com/simple-upload-en-drag-and-drop-avec-html5-jquery-php/
 //https://openclassrooms.com/fr/courses/1916641-dynamisez-vos-sites-web-avec-javascript/1922300-lapi-file
 
