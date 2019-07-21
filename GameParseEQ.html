@@ -7,18 +7,48 @@
 
 </head>
 <body>
-<header id="header1">t</header>
+
 <div class="dropper" id="dropper" draggable="true">
 </div>
 <form>
-    <input type="button" id="btn" value="click to show" style="visibility:hidden">
+    <input type="button" id="btn" value="click to show" >
 </form>
 
-<select id="healer-dropdown" name="healer" style="visibility: hidden" >
+<select id="healer-dropdown" name="healer"  >
 </select>
-<select id="healed-dropdown" name="healed" style="visibility: hidden" >
+<select id="healed-dropdown" name="healed"  >
 </select>
+<form name="radiofrom">
+    <div id="choiceContainer">
+        <label for="Choice1">Last Hour</label>
+        <input type="radio" id="Choice1"
+               name="Choice" value="1">
 
+        <label for="Choice2">Last 6 hours</label>
+        <input type="radio" id="Choice2"
+               name="Choice" value="6">
+
+        <label for="Choice3">Last day</label>
+        <input type="radio" id="Choice3"
+               name="Choice" value="24">
+
+        <label for="Choice4">Last 7 days</label>
+        <input type="radio" id="Choice4"
+               name="Choice" value="168"><br>
+
+        <input type="number" id="radioInputChoice"step="0.1" min="0.1">
+        <label for="Choice5">Choice yourself</label>
+        <input type="radio" id="Choice5"
+               name="Choice" value="24" >
+
+        <label for="Choice6">The whole file (200Mb max)</label>
+        <input type="radio" id="Choice6"
+               name="Choice" value="0" >
+        <div>
+
+        </div>
+    </div>
+</form>
 </body>
 
 <script src="GameParseEQ.js"></script>

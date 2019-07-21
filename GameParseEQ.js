@@ -5,7 +5,6 @@ var files;
 var tabFile;
 var logHeal=[];
 var timeFilter=[];
-
 var dropper = document.querySelector('#dropper');
 //drop zone for file event dragover and drop needed to get file data
 dropper.addEventListener('dragover', function (e) {
@@ -21,7 +20,7 @@ dropper.addEventListener('drop', function (e) {
     CurrentPlayer = PlayerFileName[1];
     // "show must go on "
     document.getElementById('dropper').innerText = PlayerFileName[1];// +" file vs item " + text[1];
-    document.getElementById('header1').innerText = "";
+
     // file reading and loading
     let reader = new FileReader();
     reader.onload = function (e) {
@@ -306,19 +305,49 @@ class Healed {
     }
 }
 
-var btn = document.querySelector('input');
-
+let btn = document.querySelector('input');
 btn.addEventListener('click', updateBtn);
+let choice1 = document.getElementById('Choice1')
+choice1.addEventListener('click', updateBtn);
+var choice2 = document.getElementById('Choice2');
+choice2.addEventListener('click', updateBtn);
+var choice3 = document.getElementById('Choice3');
+choice3.addEventListener('click', updateBtn);
+var choice4 = document.getElementById('Choice4');
+choice4.addEventListener('click', updateBtn);
+var choice5 = document.getElementById('Choice5');
+choice5.addEventListener('click', updateBtn);
+var choice6 = document.getElementById('Choice6');
+choice6.addEventListener('click', updateBtn);
+
+
+
+
+
+
+
+
 
 function updateBtn() {
     //https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Date/parse
-
+    //https://stackoverflow.com/questions/256754/how-to-pass-arguments-to-addeventlistener-listener-function
     //>>>>> reduction de la tailler du tableau en fonction d'un temp a choisir ... derniere heure.. derniere 6 heure... fichier "entier ... etc....
     ///// a mettre en place
-    let lastentry =logHeal.length-1;
 
+    var test =this.value;
+
+    let lastentry =logHeal.length-1;
+    let timeToCheck=0;
     let logTimerLastEntry =logHeal[lastentry].logDate;
-    let timeToCheck = logTimerLastEntry-3600000;
+    if (test>0){
+     timeToCheck = logTimerLastEntry-(3600000*test);
+    }
+    else if (test ==0 || test =="click to show"){
+
+        let logTimer1stEntry =logHeal[0].logDate;
+        timeToCheck=logTimer1stEntry;
+
+        }
     let startCheck=0;
     for (let j = 1; j < lastentry; j++)
     {  //loop through the array
@@ -335,34 +364,8 @@ function updateBtn() {
     let listOfPlayerhealed = [...new Set(timeFilter.map(x => x.healed))].sort();
     let listOfPlayershealer = [...new Set(timeFilter.map(y => y.healer))].sort();
 
-
-
     menudropplayers('healed',listOfPlayerhealed);
     menudropplayers('healer',listOfPlayershealer);
-
-   //  var mySet= timeFilter.filter(it => new RegExp('Ginormus').test(it.healer));
-   //
-   //  //console.log([...mySet]);
-   //
-   //  var mySet2= [...new Set(mySet.map(x => x.healed))];
-   //
-   //  //console.log([...mySet2]);
-   //
-   //  var mySet2= [...new Set((timeFilter.filter(it => new RegExp('Hygie').test(it.healer))).map(x => x.healed))]; // 2 in 1 !! :p
-   //  //console.log([...mySet2]); // Will show you exactly the same Array as myArray
-   //
-   //  let mySet3 = mySet.filter(it => new RegExp('Ranpha').test(it.healed));
-   //
-   //
-   //  //console.log([...mySet3]);//.reduce((accumulator, currentValue) => accumulator.value + currentValue.value));
-   //  let total = 0;
-   //  let total2 = 0;
-   //  for (let j = 0; j < mySet3.length; j++) {  //loop through the array
-   //      total += mySet3[j].Heal;  //Do the math!
-   //      total2+= mySet3[j].overheal;
-   //  }
-   // // console.log(total+" "+total2);
-    //map<U>(callbackfn: (value: T, index: number, array: T[]) => U, thisArg?: any): U[];
 
 }
 
@@ -375,6 +378,7 @@ function menudropplayers(players,playersList) {
     defaultOption.text = 'Players ' + players;
     dropdown.add(defaultOption);
     dropdown.style.visibility = "visible";
+    dropdown.innerText="";
     dropdown.addEventListener("change", addActivityItem, false)
     dropdown.selectedIndex = 0;
     for (let i = 0; i < playersList.length; i++) {

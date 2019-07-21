@@ -57,3 +57,11 @@ select{
     box-shadow: -1px 1px 2px 1px rgba(71, 66, 70, 0.59);
 
 }
+
+#btn,#healer-dropdown,#healed-dropdown/*,#choiceContainer*/{
+    visibility: hidden;
+}
+#radioInputChoice{
+    width:4em;
+    text-align: right;
+}
