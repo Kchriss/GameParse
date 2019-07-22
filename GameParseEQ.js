@@ -432,6 +432,8 @@ function addActivityItem(){
         }
         playerTargetByHealer=element;
         containerPlayer(targedhealer,playerTargetByHealer,total,total2)
+        total=0;
+        total2=0;
     });
 }
 function containerPlayer(targedhealer,playerTargetByHealer,total,total2) {
