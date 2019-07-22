@@ -428,10 +428,11 @@ function addActivityItem(){
         for (let i = 0; i < mySet3.length; i++) {  //loop through the array
             total += mySet3[i].Heal;  //Do the math!
             total2+= mySet3[i].overheal;
-
         }
         playerTargetByHealer=element;
+        if(!RegExp("`s").test(element)){
         containerPlayer(targedhealer,playerTargetByHealer,total,total2)
+        }
         total=0;
         total2=0;
     });
