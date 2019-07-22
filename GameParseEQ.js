@@ -337,27 +337,36 @@ function updateBtn() {
     ///// a mettre en place
     let timeToCheck=0;
     let startCheck=0;
-    var test =this.value;
+
     let lastentry =logHeal.length-1;
-    let logTimerLastEntry =logHeal[lastentry].logDate;
-   if (this.id =='Choice5')
+    let    logTimerLastEntry =logHeal[lastentry].logDate;
+   /* if (this.id =='Choice5')
     {
         let onChoice = parseFloat(document.getElementById('radioInputChoice').value);
         timeToCheck = logTimerLastEntry-(3600000*onChoice);
         console.log(onChoice)
-    }
+    }*/
 
 
 
-    if (test>0){
-     timeToCheck = logTimerLastEntry-(3600000*test);
-    }
-    else if (test ===0 || test =="click to show"){
+
+   if (this.value===0){
 
         let logTimer1stEntry =logHeal[0].logDate;
         timeToCheck=logTimer1stEntry;
 
         }
+    else if( this.id =='Choice5')
+    {
+        let onChoice = parseFloat(document.getElementById('radioInputChoice').value);
+        timeToCheck = logTimerLastEntry-(3600000*onChoice);
+        console.log(onChoice)
+    }
+    else
+   {
+       //let test =;
+       timeToCheck = logTimerLastEntry-(3600000*this.value);
+   }
 
     for (let j = 1; j < lastentry; j++)
     {  //loop through the array
@@ -487,9 +496,9 @@ http://learnjsdata.com/group_data.html
 // else{
 //     logTimerLastEntry=logTimerLastEntry.replace(subTimeStr,checkitme-1)
 // }
+/*
+https://stackoverflow.com/questions/5041270/what-is-the-best-way-to-use-context-param-in-javascript
+https://developer.mozilla.org/fr/docs/Web/JavaScript/Les_diff%C3%A9rents_tests_d_%C3%A9galit%C3%A9
 
-
-
-
-/*console.log(subTimeStr);
+console.log(subTimeStr);
 console.log(logTimerLastEntry);*/
