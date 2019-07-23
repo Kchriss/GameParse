@@ -6,6 +6,7 @@ var tabFile;
 var logHeal=[];
 var timeFilter=[];
 var dropper = document.querySelector('#dropper');
+
 //drop zone for file event dragover and drop needed to get file data
 dropper.addEventListener('dragover', function (e) {
     e.preventDefault(); // allow  "drop"  fonction
@@ -415,13 +416,15 @@ function addActivityItem(){
     let targedhealer = e.options[e.selectedIndex].value;
     let mySet= timeFilter.filter(it => new RegExp(targedhealer).test(it.healer));
     let mySet2= [...new Set(mySet.map(x => x.healed))];
-    if (document.getElementById('parseview')!=null){
+    document.getElementById('container2').innerText = "";
+    document.getElementById('container3').innerText = "";
+    document.getElementById('container4').innerText = "";
+/*    if (document.getElementById('parseview')!=null){
 
         let div = document.getElementById('parseview');
         div.innerText = "";
-    }
-    let total = 0;
-    let total2 = 0;
+    }*/
+    let total = 0,total2 = 0,counter=0;
     let playerTargetByHealer="";
     mySet2.forEach(function(element) {
         let mySet3= mySet.filter(it => new RegExp(element).test(it.healed));
@@ -430,26 +433,56 @@ function addActivityItem(){
             total2+= mySet3[i].overheal;
         }
         playerTargetByHealer=element;
+        counter++;
         if(!RegExp("`s").test(element)){
-        containerPlayer(targedhealer,playerTargetByHealer,total,total2)
+        containerPlayer(targedhealer,playerTargetByHealer,total,total2,counter)
         }
-        total=0;
-        total2=0;
+        total=total2=0;
     });
 }
-function containerPlayer(targedhealer,playerTargetByHealer,total,total2) {
+function containerPlayer(targedhealer,playerTargetByHealer,total,total2,counter) {
+            if (counter<18) {
+                let div = document.createElement('div');
+                let br = document.createElement('br');
+                div.innerText = playerTargetByHealer + " | " + " Heal : " + total + " |  HA : " + total2;
+                document.getElementById('container2').appendChild(div);
+                document.getElementById('container2').appendChild(br);
+            }
+            else if (counter>=18&&counter<39){
+                let div = document.createElement('div');
+                let br = document.createElement('br');
+                div.innerText = playerTargetByHealer + " | " + " Heal : " + total + " |  HA : " + total2;
+                document.getElementById('container3').appendChild(div);
+                document.getElementById('container3').appendChild(br);
+            }
+            else if (counter>=39&&counter<61){
+                let div = document.createElement('div');
+                let br = document.createElement('br');
+                div.innerText = playerTargetByHealer + " | " + " Heal : " + total + " |  HA : " + total2;
+                document.getElementById('container4').appendChild(div);
+                document.getElementById('container4').appendChild(br);
+            }
+            else if (counter>=61&&counter<81) {
+                let div = document.createElement('div');
+                let br = document.createElement('br');
+                div.innerText = playerTargetByHealer + " | " + " Heal : " + total + " |  HA : " + total2;
+                document.getElementById('container5').appendChild(div);
+                document.getElementById('container5').appendChild(br);
+            }
 
-        if (document.getElementById('parseview')==null){
-            let div = document.createElement('div');
-            div.name=targedhealer;
-            div.id="parseview";
-            div.innerText =playerTargetByHealer+" | "+" Heal : "+total +" |  HA : "+total2 +"\n";
-            document.body.appendChild(div);
-        }
-        else{
-            let div = document.getElementById('parseview');
-            div.innerText += playerTargetByHealer+" | "+" Heal : "+total +" |  HA : "+total2 + "\n";
-        }
+}
+function openCity(evt, Name) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(Name).style.display = "block";
+    evt.currentTarget.className += " active";
 }
 /*
 

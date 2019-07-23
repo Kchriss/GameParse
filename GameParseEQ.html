@@ -13,45 +13,55 @@
     <h2> 200Mb max  </h2>
 </div>
 <div id="container1">
-<!--<form>
-    <input type="button" id="btn" value="click to show" >
-</form>-->
 
-<select id="healer-dropdown" name="healer"  >
-</select>
-<select id="healed-dropdown" name="healed"  >
-</select>
-<form name="radiofrom">
-    <div id="choiceContainer">
-        <label for="Choice1">Last Hour</label>
-        <input type="radio" id="Choice1"
-               name="Choice" value="1">
+    <select id="healer-dropdown" name="healer"  >
+    </select>
+    <select id="healed-dropdown" name="healed"  >
+    </select>
+    <form name="radiofrom">
+        <div id="choiceContainer">
+            <label for="Choice1">Last Hour</label>
+            <input type="radio" id="Choice1"
+                   name="Choice" value="1">
 
-        <label for="Choice2">Last 6 hours</label>
-        <input type="radio" id="Choice2"
-               name="Choice" value="6">
+            <label for="Choice2">Last 6 hours</label>
+            <input type="radio" id="Choice2"
+                   name="Choice" value="6">
 
-        <label for="Choice3">Last day</label>
-        <input type="radio" id="Choice3"
-               name="Choice" value="24">
+            <label for="Choice3">Last day</label>
+            <input type="radio" id="Choice3"
+                   name="Choice" value="24">
 
-        <label for="Choice4">Last 7 days</label>
-        <input type="radio" id="Choice4"
-               name="Choice" value="168"><br>
+            <label for="Choice4">Last 7 days</label>
+            <input type="radio" id="Choice4"
+                   name="Choice" value="168"><br>
 
-        <input type="number" id="radioInputChoice" min="0.1" >
-        <label for="Choice5">Choice yourself</label>
-        <input type="radio" id="Choice5"
-               name="Choice" value="24" >
+            <input type="number" id="radioInputChoice" min="0.1" >
+            <label for="Choice5">Choice yourself</label>
+            <input type="radio" id="Choice5"
+                   name="Choice" value="24" >
 
-        <label for="Choice6">The whole file (200Mb max)</label>
-        <input type="radio" id="Choice6"
-               name="Choice" value="0" >
-        <div>
+            <label for="Choice6">The whole file (200Mb max)</label>
+            <input type="radio" id="Choice6"
+                   name="Choice" value="0" >
+            <div>
 
+            </div>
         </div>
+    </form>
+</div >
+
+<div id="container6">
+    <div class="tab">
+        <button class="tablinks" onclick="openCity(event, 'container2')">1-19</button>
+        <button class="tablinks" onclick="openCity(event, 'container3')">20-39</button>
+        <button class="tablinks" onclick="openCity(event, 'container4')">40-59</button>
+        <button class="tablinks" onclick="openCity(event, 'container5')">60-79</button>
     </div>
-</form>
+    <div id="container2" class="tabcontent"></div>
+    <div id="container3" class="tabcontent"></div>
+    <div id="container4" class="tabcontent"></div>
+    <div id="container5" class="tabcontent"></div>
 </div>
 </body>
 
