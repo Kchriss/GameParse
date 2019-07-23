@@ -469,7 +469,7 @@ function addActivityItem(){
     let e = document.getElementById('healer-dropdown');
     let targedhealer = e.options[e.selectedIndex].value;
     let mySet= timeFilter.filter(it => new RegExp(targedhealer).test(it.healer));
-    let mySet2= [...new Set(mySet.map(x => x.healed))].sort();
+    let mySet2= [...new Set(mySet.map(x => x.healed))];
     document.getElementById('container2').innerText = "";
     document.getElementById('container3').innerText = "";
     document.getElementById('container4').innerText = "";
