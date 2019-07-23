@@ -74,8 +74,8 @@ function readerdigest(tabFile, i) {
                         + logHealed.TargedHealed() + " -+- " + logHealed.TypeOfHeal()
                         +" -+- "+ logHealed.HealAmount()+" -+- "+logHealed.OverHeal()+" -+- "+logHealed.SpellsUsed()+" -+- "+logHealed.CriticalHitMessage()+ " -+- "+logHealed.Logtime()+"\n";*/
                 logHeal[k]={"id":k,"healer":logHealed.PlayerHealer(),"healed":logHealed.TargedHealed()
-                                    ,"type":logHealed.TypeOfHeal(),"Heal":logHealed.HealAmount(),"overheal":logHealed.OverHeal()
-                                    ,'spell':logHealed.SpellsUsed(),"crit":logHealed.CriticalHitMessage(),"logDate":logHealed.Logtime()};
+                    ,"type":logHealed.TypeOfHeal(),"Heal":logHealed.HealAmount(),"overheal":logHealed.OverHeal()
+                    ,'spell':logHealed.SpellsUsed(),"crit":logHealed.CriticalHitMessage(),"logDate":logHealed.Logtime()};
                 //let btn = document.getElementById('btn');
                 //btn.style.visibility="visible";
                 k++;
@@ -341,22 +341,22 @@ function updateBtn() {
 
     let lastentry =logHeal.length-1;
     let    logTimerLastEntry =logHeal[lastentry].logDate;
-   /* if (this.id =='Choice5')
-    {
-        let onChoice = parseFloat(document.getElementById('radioInputChoice').value);
-        timeToCheck = logTimerLastEntry-(3600000*onChoice);
-        console.log(onChoice)
-    }*/
+    /* if (this.id =='Choice5')
+     {
+         let onChoice = parseFloat(document.getElementById('radioInputChoice').value);
+         timeToCheck = logTimerLastEntry-(3600000*onChoice);
+         console.log(onChoice)
+     }*/
 
 
 
 
-   if (this.value===0){
+    if (this.value===0){
 
         let logTimer1stEntry =logHeal[0].logDate;
         timeToCheck=logTimer1stEntry;
 
-        }
+    }
     else if( this.id =='Choice5')
     {
         let onChoice = parseFloat(document.getElementById('radioInputChoice').value);
@@ -364,10 +364,10 @@ function updateBtn() {
         console.log(onChoice)
     }
     else
-   {
-       //let test =;
-       timeToCheck = logTimerLastEntry-(3600000*this.value);
-   }
+    {
+        //let test =;
+        timeToCheck = logTimerLastEntry-(3600000*this.value);
+    }
 
     for (let j = 1; j < lastentry; j++)
     {  //loop through the array
@@ -415,15 +415,16 @@ function addActivityItem(){
     let e = document.getElementById('healer-dropdown');
     let targedhealer = e.options[e.selectedIndex].value;
     let mySet= timeFilter.filter(it => new RegExp(targedhealer).test(it.healer));
-    let mySet2= [...new Set(mySet.map(x => x.healed))];
+    let mySet2= [...new Set(mySet.map(x => x.healed).sort())];
     document.getElementById('container2').innerText = "";
     document.getElementById('container3').innerText = "";
     document.getElementById('container4').innerText = "";
-/*    if (document.getElementById('parseview')!=null){
+    document.getElementById('container5').innerText = "";
+    /*    if (document.getElementById('parseview')!=null){
 
-        let div = document.getElementById('parseview');
-        div.innerText = "";
-    }*/
+            let div = document.getElementById('parseview');
+            div.innerText = "";
+        }*/
     let total = 0,total2 = 0,counter=0;
     let playerTargetByHealer="";
     mySet2.forEach(function(element) {
@@ -435,41 +436,40 @@ function addActivityItem(){
         playerTargetByHealer=element;
         counter++;
         if(!RegExp("`s").test(element)){
-        containerPlayer(targedhealer,playerTargetByHealer,total,total2,counter)
+            containerPlayer(targedhealer,playerTargetByHealer,total,total2,counter)
         }
         total=total2=0;
     });
 }
 function containerPlayer(targedhealer,playerTargetByHealer,total,total2,counter) {
-            if (counter<18) {
-                let div = document.createElement('div');
-                let br = document.createElement('br');
-                div.innerText = playerTargetByHealer + " | " + " Heal : " + total + " |  HA : " + total2;
-                document.getElementById('container2').appendChild(div);
-                document.getElementById('container2').appendChild(br);
-            }
-            else if (counter>=18&&counter<39){
-                let div = document.createElement('div');
-                let br = document.createElement('br');
-                div.innerText = playerTargetByHealer + " | " + " Heal : " + total + " |  HA : " + total2;
-                document.getElementById('container3').appendChild(div);
-                document.getElementById('container3').appendChild(br);
-            }
-            else if (counter>=39&&counter<61){
-                let div = document.createElement('div');
-                let br = document.createElement('br');
-                div.innerText = playerTargetByHealer + " | " + " Heal : " + total + " |  HA : " + total2;
-                document.getElementById('container4').appendChild(div);
-                document.getElementById('container4').appendChild(br);
-            }
-            else if (counter>=61&&counter<81) {
-                let div = document.createElement('div');
-                let br = document.createElement('br');
-                div.innerText = playerTargetByHealer + " | " + " Heal : " + total + " |  HA : " + total2;
-                document.getElementById('container5').appendChild(div);
-                document.getElementById('container5').appendChild(br);
-            }
-
+    if (counter<18) {
+        let div = document.createElement('div');
+        let br = document.createElement('br');
+        div.innerText = playerTargetByHealer + " | " + " Heal : " + total + " |  HA : " + total2;
+        document.getElementById('container2').appendChild(div);
+        document.getElementById('container2').appendChild(br);
+    }
+    else if (counter>=18&&counter<39){
+        let div = document.createElement('div');
+        let br = document.createElement('br');
+        div.innerText = playerTargetByHealer + " | " + " Heal : " + total + " |  HA : " + total2;
+        document.getElementById('container3').appendChild(div);
+        document.getElementById('container3').appendChild(br);
+    }
+    else if (counter>=39&&counter<61){
+        let div = document.createElement('div');
+        let br = document.createElement('br');
+        div.innerText = playerTargetByHealer + " | " + " Heal : " + total + " |  HA : " + total2;
+        document.getElementById('container4').appendChild(div);
+        document.getElementById('container4').appendChild(br);
+    }
+    else if (counter>=61&&counter<81) {
+        let div = document.createElement('div');
+        let br = document.createElement('br');
+        div.innerText = playerTargetByHealer + " | " + " Heal : " + total + " |  HA : " + total2;
+        document.getElementById('container5').appendChild(div);
+        document.getElementById('container5').appendChild(br);
+    }
 }
 function openCity(evt, Name) {
     var i, tabcontent, tablinks;
