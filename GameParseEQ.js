@@ -452,6 +452,13 @@ function containerPlayer(targedhealer,playerTargetByHealer,total,total2) {
         }
 }
 /*
+
+ !!!!!!! Tabs,pills, dropdown !!!!!
+ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!https://www.w3schools.com/howto/howto_js_tabs.asp
+ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+
  !!!!!!! stream et map a voir !!!!!
  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -470,38 +477,24 @@ function containerPlayer(targedhealer,playerTargetByHealer,total,total2) {
 [Mon Jul 08 22:21:03 2019] Katercat healed Anlak for 48008 (63059) hit points by Spiritual Squall Rk. III. (Critical)
 [Mon Jul 08 22:21:03 2019] Venedar healed Folkken over time for 1128 hit points by Prophet's Gift of the Ruchu. (Lucky Critical)
 
-//https://developer.mozilla.org/fr/docs/Learn/JavaScript/Objects/JSON
-//https://openclassrooms.com/forum/sujet/lire-un-fichier-texte-en-javascript-33614
-//https://openclassrooms.com/fr/courses/1916641-dynamisez-vos-sites-web-avec-javascript/1922300-lapi-file
-//http://www.script-tutorials.com/html5-drag-and-drop-multiple-file-uploader/
+https://developer.mozilla.org/fr/docs/Learn/JavaScript/Objects/JSON
+https://openclassrooms.com/forum/sujet/lire-un-fichier-texte-en-javascript-33614
+https://openclassrooms.com/fr/courses/1916641-dynamisez-vos-sites-web-avec-javascript/1922300-lapi-file
+http://www.script-tutorials.com/html5-drag-and-drop-multiple-file-uploader/
 https://stackoverflow.com/questions/14446511/most-efficient-method-to-groupby-on-an-array-of-objects
-    https://stackoverflow.com/questions/40774697/how-to-group-an-array-of-objects-by-key/40774906
-        https://www.freecodecamp.org/news/15-useful-javascript-examples-of-map-reduce-and-filter-74cbbb5e0a1f/
-            https://codeburst.io/grouping-array-data-json-ef96b438b927
-                https://gist.github.com/JamieMason/0566f8412af9fe6a1d470aa1e089a752
-                http://www.supportduweb.com/scripts_tutoriaux-code-source-48-systeme-d-039-onglets-en-javascript-x-html-et-css-dans-la-meme-page.html
-//http://www.maximechaillou.com/simple-upload-en-drag-and-drop-avec-html5-jquery-php/
-//https://openclassrooms.com/fr/courses/1916641-dynamisez-vos-sites-web-avec-javascript/1922300-lapi-file
+https://stackoverflow.com/questions/40774697/how-to-group-an-array-of-objects-by-key/40774906
+https://www.freecodecamp.org/news/15-useful-javascript-examples-of-map-reduce-and-filter-74cbbb5e0a1f/
+https://codeburst.io/grouping-array-data-json-ef96b438b927
+https://gist.github.com/JamieMason/0566f8412af9fe6a1d470aa1e089a752
+http://www.supportduweb.com/scripts_tutoriaux-code-source-48-systeme-d-039-onglets-en-javascript-x-html-et-css-dans-la-meme-page.html
+http://www.maximechaillou.com/simple-upload-en-drag-and-drop-avec-html5-jquery-php/
+ttps://openclassrooms.com/fr/courses/1916641-dynamisez-vos-sites-web-avec-javascript/1922300-lapi-file
 
-//  extraire les données et les placer dans un tableau ... nom (ou you) heal ... overheal ... nom player healer '(ou myself... himself...) etc....
+ extraire les données et les placer dans un tableau ... nom (ou you) heal ... overheal ... nom player healer '(ou myself... himself...) etc....
 
 https://stackoverflow.com/questions/11199653/javascript-sum-and-group-by-of-json-data
 http://learnjsdata.com/group_data.html
 
-*/
-// let logSubTime1=logTimerLastEntry.indexOf(' ')+1;
-// let logSubTime2=logTimerLastEntry.indexOf(' ',logSubTime1)+1;
-// let logSubTime3=logTimerLastEntry.indexOf(' ',logSubTime2)+1;
-// let subTimeStr = logTimerLastEntry.substring(logSubTime3,logSubTime3+2);
-// if (subTimeStr>0){
-//     logTimerLastEntry=logTimerLastEntry.replace(subTimeStr,subTimeStr-1)
-// }
-// else{
-//     logTimerLastEntry=logTimerLastEntry.replace(subTimeStr,checkitme-1)
-// }
-/*
 https://stackoverflow.com/questions/5041270/what-is-the-best-way-to-use-context-param-in-javascript
 https://developer.mozilla.org/fr/docs/Web/JavaScript/Les_diff%C3%A9rents_tests_d_%C3%A9galit%C3%A9
-
-console.log(subTimeStr);
-console.log(logTimerLastEntry);*/
+*/
