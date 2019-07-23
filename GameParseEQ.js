@@ -4,9 +4,14 @@ var FilePath;
 var files;
 var tabFile;
 var logHeal=[];
+<<<<<<< HEAD
 var timeFilter=[];
 var dropper = document.querySelector('#dropper');
 
+=======
+
+var dropper = document.querySelector('#dropper');
+>>>>>>> 1396c224112e6f87f45c49184106efe6c1790082
 //drop zone for file event dragover and drop needed to get file data
 dropper.addEventListener('dragover', function (e) {
     e.preventDefault(); // allow  "drop"  fonction
@@ -18,17 +23,27 @@ dropper.addEventListener('drop', function (e) {
     files = e.dataTransfer.files[0];
     //get player name through file name
     let PlayerFileName = (files.name).split('_');
+<<<<<<< HEAD
     CurrentPlayer = PlayerFileName[1];
     // "show must go on "
     document.getElementById('dropper').innerText = PlayerFileName[1];// +" file vs item " + text[1];
 
+=======
+    CurrentPlayer = PlayerFileName[1].trim();
+    // "show must go on "
+    document.getElementById('dropper').innerText = PlayerFileName[1];// +" file vs item " + text[1];
+    document.getElementById('header1').innerText = "";
+>>>>>>> 1396c224112e6f87f45c49184106efe6c1790082
     // file reading and loading
     let reader = new FileReader();
     reader.onload = function (e) {
         // split by line in tab
         tabFile = e.target.result.toString().split(/\r\n|\r|\n/);
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 1396c224112e6f87f45c49184106efe6c1790082
         // "show must go on " a to do .... split data form each line .... get name player list( check for another way) //  postion after date log
         for (var i = 0; i < tabFile.length; i++) {
             readerdigest(tabFile, i);
@@ -46,9 +61,14 @@ dropper.addEventListener('drop', function (e) {
     reader.readAsText(files);
     // "show must go on "
 
+<<<<<<< HEAD
 
 }, false);
 var k=0;
+=======
+}, false);
+
+>>>>>>> 1396c224112e6f87f45c49184106efe6c1790082
 
 function readerdigest(tabFile, i) {
     let curserTag = tabFile[i].match(/backstabs|begins|crushes|frenzies|healed|hits|pierces|shoots|slashes|taken/gi);//test le mot cle et recupere sa valeur ! :p
@@ -68,17 +88,28 @@ function readerdigest(tabFile, i) {
                 let LogFrenzies = new Frenzies(i, curser, tabFile);
                 break;
             case "healed":
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1396c224112e6f87f45c49184106efe6c1790082
                 let logHealed = new Healed(i, curser, tabFile);
                 /*    document.getElementById('header1').innerText += logHealed.PlayerHealer() + " -+- " + curserTag + " -+- "
                         + logHealed.TargedHealed() + " -+- " + logHealed.TypeOfHeal()
                         +" -+- "+ logHealed.HealAmount()+" -+- "+logHealed.OverHeal()+" -+- "+logHealed.SpellsUsed()+" -+- "+logHealed.CriticalHitMessage()+ " -+- "+logHealed.Logtime()+"\n";*/
+<<<<<<< HEAD
                 logHeal[k]={"id":k,"healer":logHealed.PlayerHealer(),"healed":logHealed.TargedHealed()
                                     ,"type":logHealed.TypeOfHeal(),"Heal":logHealed.HealAmount(),"overheal":logHealed.OverHeal()
                                     ,'spell':logHealed.SpellsUsed(),"crit":logHealed.CriticalHitMessage(),"logDate":logHealed.Logtime()};
                 //let btn = document.getElementById('btn');
                 //btn.style.visibility="visible";
                 k++;
+=======
+                logHeal[i]={"id":i,"healer":logHealed.PlayerHealer(),"healed":logHealed.TargedHealed()
+                                    ,"type":logHealed.TypeOfHeal(),"Heal":logHealed.HealAmount(),"overheal":logHealed.OverHeal()
+                                    ,'spell':logHealed.SpellsUsed(),"crit":logHealed.CriticalHitMessage(),"logDate":logHealed.Logtime()};
+
+
+>>>>>>> 1396c224112e6f87f45c49184106efe6c1790082
                 break;
             case "hits":
                 let LogHits = new Hits(i, curser, tabFile);
@@ -215,7 +246,11 @@ class Healed {
     PlayerHealer() {
         this.curser_1 = this.tabFile[this.i].lastIndexOf(' ', this.curser);
         this.curser_2 = this.tabFile[this.i].lastIndexOf(' ', this.curser_1 - 1);
+<<<<<<< HEAD
         this.playerHealer = this.tabFile[this.i].substr(this.curser_2, this.curser_1 - this.curser_2).trim();//extraction du nom du joueur
+=======
+        this.playerHealer = this.tabFile[this.i].substr(this.curser_2, this.curser_1 - this.curser_2);//extraction du nom du joueur
+>>>>>>> 1396c224112e6f87f45c49184106efe6c1790082
         if (this.playerHealer.trim().toLowerCase() == "you") {
             this.playerHealer = CurrentPlayer;
         }
@@ -225,7 +260,11 @@ class Healed {
     TargedHealed() {
         this.curser_3 = this.tabFile[this.i].indexOf(' ', this.curser + 1);
         this.curser_4 = this.tabFile[this.i].indexOf(' ', this.curser_3 + 1);
+<<<<<<< HEAD
         this.playerHealed = this.tabFile[this.i].substr(this.curser_3, this.curser_4 - this.curser_3).trim();//extraction du nom du joueur
+=======
+        this.playerHealed = this.tabFile[this.i].substr(this.curser_3, this.curser_4 - this.curser_3);//extraction du nom du joueur
+>>>>>>> 1396c224112e6f87f45c49184106efe6c1790082
         if (this.playerHealed.trim() == "himself" || this.playerHealed.trim() == "itself" || this.playerHealed.trim() == "herself") {
             this.playerHealed = this.playerHealer;
         } else if (this.playerHealed.trim().toLowerCase() == "you") {
@@ -249,7 +288,11 @@ class Healed {
     HealAmount() {
         this.curser_7 = this.tabFile[this.i].indexOf(' ', this.curser_6 + 1);
         let HealOfHeal = this.tabFile[this.i].substr(this.curser_6, this.curser_7 - this.curser_6).trim();//extraction du nom du joueur
+<<<<<<< HEAD
         return parseInt(HealOfHeal);
+=======
+        return HealOfHeal;
+>>>>>>> 1396c224112e6f87f45c49184106efe6c1790082
     }
 
     OverHeal() {
@@ -258,9 +301,15 @@ class Healed {
         if (OverHealAmount !== null && OverHealAmount == "(") {
             OverHealAmount = this.tabFile[this.i].substr(this.curser_7+2, this.curser_8-3 - this.curser_7).trim()
         } else {
+<<<<<<< HEAD
             OverHealAmount = 0;
         }
         return parseInt(OverHealAmount);
+=======
+            OverHealAmount = ""
+        }
+        return OverHealAmount;
+>>>>>>> 1396c224112e6f87f45c49184106efe6c1790082
     }
 
     SpellsUsed() {
@@ -270,7 +319,11 @@ class Healed {
         if (this.curser_9 > 0 && this.curser_9 !== null) {
             this.curser_10 = this.tabFile[this.i].indexOf(' ', this.curser_9);
             this.curser_11 = this.tabFile[this.i].indexOf('.', this.curser_10);
+<<<<<<< HEAD
             let spellrankchecking = this.tabFile[this.i].substr(this.curser_10, this.curser_11 - this.curser_10).match(/rk/gi);
+=======
+            let spellrankchecking = this.tabFile[this.i].substr(this.curser_10, this.curser_11 - this.curser_10).match(/rk/gi).trim();
+>>>>>>> 1396c224112e6f87f45c49184106efe6c1790082
             if (spellrankchecking !== null && spellrankchecking == "Rk") {
                 this.curser_12 = this.tabFile[this.i].indexOf('.', this.curser_11 + 1);
                 SpellsCasted = this.tabFile[this.i].substr(this.curser_10, this.curser_12 - this.curser_10).trim();
@@ -302,6 +355,7 @@ class Healed {
     Logtime() {
 
         let logtimer = this.tabFile[this.i].substr(this.tabFile[this.i].indexOf('[') + 1, this.tabFile[this.i].indexOf(']') - this.tabFile[this.i].indexOf('[') - 1).trim();
+<<<<<<< HEAD
         return new Date(logtimer).getTime();
     }
 }
@@ -496,6 +550,64 @@ function openCity(evt, Name) {
  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
  http://cryto.net/~joepie91/blog/2015/05/04/functional-programming-in-javascript-map-filter-reduce/
+=======
+        return logtimer;
+    }
+}
+
+var btn = document.querySelector('input');
+var txt = document.querySelector('p');
+
+btn.addEventListener('click', updateBtn);
+
+function updateBtn() {
+
+    let listOfPlayerhealed = [...new Set(logHeal.map(x => x.healed))];
+    let listOfPlayershealer = [...new Set(logHeal.map(y => y.healer))];
+
+menudropplayers('healed',listOfPlayerhealed);
+menudropplayers('healer',listOfPlayershealer);
+}
+
+
+function menudropplayers(players,playersList){
+
+let dropdown = document.getElementById(players+'-dropdown');
+dropdown.length = 0;
+
+let defaultOption = document.createElement('option');
+defaultOption.text = 'Players '+players;
+
+dropdown.add(defaultOption);
+dropdown.selectedIndex = 0;
+                for (let i = 0; i < playersList.length; i++) {
+                    option = document.createElement('option');
+                    option.text = playersList[i];
+                    option.value = playersList[i];
+                    dropdown.add(option);
+                }
+}
+
+
+
+/*bug avec les pets a corriger !!!!!! !!!!! >>>><<<<
+
+$.each(catalog.products, function(index, value) {
+    if ($.inArray(value.category, categories) === -1) {
+        categories.push(value.category);
+    }
+});
+
+
+ */
+/*
+https://stackoverflow.com/questions/14446511/most-efficient-method-to-groupby-on-an-array-of-objects
+https://stackoverflow.com/questions/40774697/how-to-group-an-array-of-objects-by-key/40774906
+https://www.freecodecamp.org/news/15-useful-javascript-examples-of-map-reduce-and-filter-74cbbb5e0a1f/
+https://codeburst.io/grouping-array-data-json-ef96b438b927
+
+https://gist.github.com/JamieMason/0566f8412af9fe6a1d470aa1e089a752
+>>>>>>> 1396c224112e6f87f45c49184106efe6c1790082
  logHeal[i]={"id":i,"healer":logHealed.PlayerHealer(),"healed":logHealed.TargedHealed()
                                     ,"type":logHealed.TypeOfHeal(),"Heal":logHealed.HealAmount(),"overheal":logHealed.OverHeal()
                                     ,'spell':logHealed.SpellsUsed(),"crit":logHealed.CriticalHitMessage(),"logDate":logHealed.Logtime()};
@@ -509,6 +621,7 @@ function openCity(evt, Name) {
 [Sun Jun 30 16:17:09 2019] Balthus healed Uaru for 0 (14323) hit points by Divine Rain III.
 [Mon Jul 08 22:21:03 2019] Katercat healed Anlak for 48008 (63059) hit points by Spiritual Squall Rk. III. (Critical)
 [Mon Jul 08 22:21:03 2019] Venedar healed Folkken over time for 1128 hit points by Prophet's Gift of the Ruchu. (Lucky Critical)
+<<<<<<< HEAD
 
 https://developer.mozilla.org/fr/docs/Learn/JavaScript/Objects/JSON
 https://openclassrooms.com/forum/sujet/lire-un-fichier-texte-en-javascript-33614
@@ -531,3 +644,49 @@ http://learnjsdata.com/group_data.html
 https://stackoverflow.com/questions/5041270/what-is-the-best-way-to-use-context-param-in-javascript
 https://developer.mozilla.org/fr/docs/Web/JavaScript/Les_diff%C3%A9rents_tests_d_%C3%A9galit%C3%A9
 */
+=======
+*/
+//https://developer.mozilla.org/fr/docs/Learn/JavaScript/Objects/JSON
+//https://openclassrooms.com/forum/sujet/lire-un-fichier-texte-en-javascript-33614
+//https://openclassrooms.com/fr/courses/1916641-dynamisez-vos-sites-web-avec-javascript/1922300-lapi-file
+//http://www.script-tutorials.com/html5-drag-and-drop-multiple-file-uploader/
+//http://www.maximechaillou.com/simple-upload-en-drag-and-drop-avec-html5-jquery-php/
+//https://openclassrooms.com/fr/courses/1916641-dynamisez-vos-sites-web-avec-javascript/1922300-lapi-file
+//  extraire les données et les placer dans un tableau ... nom (ou you) heal ... overheal ... nom player healer '(ou myself... himself...) etc....
+/*
+{
+    "squadName": "Super hero squad",
+    "homeTown": "Metro City",
+    "formed": 2016,
+    "secretBase": "Super tower",
+    "active": true,
+    "playerLog": [
+    {
+
+    },
+    {
+        "name": "Madame Uppercut",
+        "age": 39,
+        "secretIdentity": "J......*/
+
+/*
+action[backstabs]=new Object();
+action[begins]=new Object();
+action[crushes]=new Object();
+action[frenzies]=new Object();
+
+action[hits]=new Object();
+action[pierces]=new Object();
+action[shoots]=new Object();
+action[slashes]=new Object();
+action[taken]=new Object();
+
+
+
+
+playerLog[actionHealed] = ["PlayerName": "Hygie",
+    "Action": "healed",
+    "TargetHealed": [ heal,overheal],
+    "SpellUsed": "spellname",
+    "critical" : "luckycritical"]*/
+>>>>>>> 1396c224112e6f87f45c49184106efe6c1790082
