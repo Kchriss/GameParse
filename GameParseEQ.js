@@ -70,14 +70,9 @@ function readerdigest(tabFile, i) {
             case "healed":
 
                 let logHealed = new Healed(i, curser, tabFile);
-                /*    document.getElementById('header1').innerText += logHealed.PlayerHealer() + " -+- " + curserTag + " -+- "
-                        + logHealed.TargedHealed() + " -+- " + logHealed.TypeOfHeal()
-                        +" -+- "+ logHealed.HealAmount()+" -+- "+logHealed.OverHeal()+" -+- "+logHealed.SpellsUsed()+" -+- "+logHealed.CriticalHitMessage()+ " -+- "+logHealed.Logtime()+"\n";*/
                 logHeal[k]={"id":k,"healer":logHealed.PlayerHealer(),"healed":logHealed.TargedHealed()
                     ,"type":logHealed.TypeOfHeal(),"Heal":logHealed.HealAmount(),"overheal":logHealed.OverHeal()
                     ,'spell':logHealed.SpellsUsed(),"crit":logHealed.CriticalHitMessage(),"logDate":logHealed.Logtime()};
-                //let btn = document.getElementById('btn');
-                //btn.style.visibility="visible";
                 k++;
                 break;
             case "hits":
@@ -301,7 +296,8 @@ class Healed {
 
     Logtime() {
 
-        let logtimer = this.tabFile[this.i].substr(this.tabFile[this.i].indexOf('[') + 1, this.tabFile[this.i].indexOf(']') - this.tabFile[this.i].indexOf('[') - 1).trim();
+        let logtimer = this.tabFile[this.i].substr(this.tabFile[this.i].indexOf('[') + 1
+            , this.tabFile[this.i].indexOf(']') - this.tabFile[this.i].indexOf('[') - 1).trim();
         return new Date(logtimer).getTime();
     }
 }
@@ -332,7 +328,7 @@ function updateBtn() {
     let lastentry =logHeal.length-1;
     let    logTimerLastEntry =logHeal[lastentry].logDate;
 
-    if (this.value===0){
+    if (this.value==="0"||this.value===0){
         timeToCheck= logHeal[0].logDate;
     }
     else if( this.id==='Choice5')
@@ -358,11 +354,6 @@ function updateBtn() {
     }
     timeFilter = logHeal.slice(startCheck,lastentry);
     let listOfPlayerhealed = [...new Set(timeFilter.map(x => x.healed))].sort();
-    //let mySet2222= listOfPlayerhealed.filter(it => new RegExp('`s').test(it.healed));
-
-
-
-
     let listOfPlayershealer = [...new Set(timeFilter.map(y => y.healer))].sort();
     menudropplayers('healed',listOfPlayerhealed);
     menudropplayers('healer',listOfPlayershealer);
@@ -389,11 +380,11 @@ function addActivityItem(){
     let targedhealer = e.options[e.selectedIndex].value;
     let mySet= timeFilter.filter(it => new RegExp(targedhealer).test(it.healer));
     let mySet2= [...new Set(mySet.map(x => x.healed))].sort();
-    document.getElementById('container2').innerText = "";
-    document.getElementById('container3').innerText = "";
-    document.getElementById('container4').innerText = "";
-    document.getElementById('container5').innerText = "";
-    document.getElementById('container7').innerText = "";
+    document.getElementById('containertb2').innerText = "";
+    document.getElementById('containertb3').innerText = "";
+    document.getElementById('containertb4').innerText = "";
+    document.getElementById('containertb5').innerText = "";
+    document.getElementById('containertb7').innerText = "";
     let total = 0,total2 = 0,counter=0;
     let playerTargetByHealer="";
     mySet2.forEach(function(element) {
@@ -403,8 +394,9 @@ function addActivityItem(){
             total2+= mySet3[i].overheal;
         }
         playerTargetByHealer=element;
-        counter++;
+
         if(!RegExp("`s").test(element)){
+            counter++;
             containerPlayer(targedhealer,playerTargetByHealer,total,total2,counter)
         }
         total=total2=0;
@@ -415,36 +407,36 @@ function containerPlayer(targedhealer,playerTargetByHealer,total,total2,counter)
         let div = document.createElement('div');
         let br = document.createElement('br');
         div.innerText = playerTargetByHealer + " | " + " Heal : " + total + " |  HA : " + total2;
-        document.getElementById('container2').appendChild(div);
-        document.getElementById('container2').appendChild(br);
+        document.getElementById('containertb2').appendChild(div);
+        document.getElementById('containertb2').appendChild(br);
     }
-    else if (counter>=18&&counter<39){
+    else if (counter>=18&&counter<35){
         let div = document.createElement('div');
         let br = document.createElement('br');
         div.innerText = playerTargetByHealer + " | " + " Heal : " + total + " |  HA : " + total2;
-        document.getElementById('container3').appendChild(div);
-        document.getElementById('container3').appendChild(br);
+        document.getElementById('containertb3').appendChild(div);
+        document.getElementById('containertb3').appendChild(br);
     }
-    else if (counter>=39&&counter<61){
+    else if (counter>=35&&counter<52){
         let div = document.createElement('div');
         let br = document.createElement('br');
         div.innerText = playerTargetByHealer + " | " + " Heal : " + total + " |  HA : " + total2;
-        document.getElementById('container4').appendChild(div);
-        document.getElementById('container4').appendChild(br);
+        document.getElementById('containertb4').appendChild(div);
+        document.getElementById('containertb4').appendChild(br);
     }
-    else if (counter>=61&&counter<81) {
+    else if (counter>=52&&counter<69) {
         let div = document.createElement('div');
         let br = document.createElement('br');
         div.innerText = playerTargetByHealer + " | " + " Heal : " + total + " |  HA : " + total2;
-        document.getElementById('container5').appendChild(div);
-        document.getElementById('container5').appendChild(br);
+        document.getElementById('containertb5').appendChild(div);
+        document.getElementById('containertb5').appendChild(br);
     }
     else if (counter>=81&&counter<101) {
         let div = document.createElement('div');
         let br = document.createElement('br');
         div.innerText = playerTargetByHealer + " | " + " Heal : " + total + " |  HA : " + total2;
-        document.getElementById('container5').appendChild(div);
-        document.getElementById('container5').appendChild(br);
+        document.getElementById('containertb5').appendChild(div);
+        document.getElementById('containertb5').appendChild(br);
     }
 }
 function openCity(evt, Name) {
@@ -460,7 +452,51 @@ function openCity(evt, Name) {
     document.getElementById(Name).style.display = "block";
     evt.currentTarget.className += " active";
 }
+
+
+//drop zone for file event dragover and drop needed to get file data
 /*
+
+var tablinks = document.querySelector('#tablinks');
+
+tablinks.addEventListener('click', function (e) {
+    e.preventDefault();
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById('container'+ this.elements.id).style.display = "block";
+    e.currentTarget.className += " active";
+}, false);
+/*
+var tablinks = document.querySelector('#tablinks');
+
+function openCity(evt, Name) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById('container'+ this.elements.id).style.display = "block";
+    e.currentTarget.className += " active";
+}
+tablinks.addEventListener('click',openCity(evt,Name));
+*/
+
+
+
+
+/*
+
 
  !!!!!!! Tabs,pills, dropdown !!!!!
  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!https://www.w3schools.com/howto/howto_js_tabs.asp
