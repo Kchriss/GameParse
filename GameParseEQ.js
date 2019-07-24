@@ -5,8 +5,8 @@ var files;
 var tabFile;
 var logHeal=[];
 var timeFilter=[];
-
 var dropper = document.querySelector('#dropper');
+
 //drop zone for file event dragover and drop needed to get file data
 dropper.addEventListener('dragover', function (e) {
     e.preventDefault(); // allow  "drop"  fonction
@@ -21,7 +21,7 @@ dropper.addEventListener('drop', function (e) {
     CurrentPlayer = PlayerFileName[1];
     // "show must go on "
     document.getElementById('dropper').innerText = PlayerFileName[1];// +" file vs item " + text[1];
-    document.getElementById('header1').innerText = "";
+
     // file reading and loading
     let reader = new FileReader();
     reader.onload = function (e) {
@@ -48,7 +48,7 @@ dropper.addEventListener('drop', function (e) {
 
 
 }, false);
-
+var k=0;
 
 function readerdigest(tabFile, i) {
     let curserTag = tabFile[i].match(/backstabs|begins|crushes|frenzies|healed|hits|pierces|shoots|slashes|taken/gi);//test le mot cle et recupere sa valeur ! :p
@@ -68,16 +68,17 @@ function readerdigest(tabFile, i) {
                 let LogFrenzies = new Frenzies(i, curser, tabFile);
                 break;
             case "healed":
+
                 let logHealed = new Healed(i, curser, tabFile);
                 /*    document.getElementById('header1').innerText += logHealed.PlayerHealer() + " -+- " + curserTag + " -+- "
                         + logHealed.TargedHealed() + " -+- " + logHealed.TypeOfHeal()
                         +" -+- "+ logHealed.HealAmount()+" -+- "+logHealed.OverHeal()+" -+- "+logHealed.SpellsUsed()+" -+- "+logHealed.CriticalHitMessage()+ " -+- "+logHealed.Logtime()+"\n";*/
-                logHeal[i]={"id":i,"healer":logHealed.PlayerHealer(),"healed":logHealed.TargedHealed()
+                logHeal[k]={"id":k,"healer":logHealed.PlayerHealer(),"healed":logHealed.TargedHealed()
                                     ,"type":logHealed.TypeOfHeal(),"Heal":logHealed.HealAmount(),"overheal":logHealed.OverHeal()
                                     ,'spell':logHealed.SpellsUsed(),"crit":logHealed.CriticalHitMessage(),"logDate":logHealed.Logtime()};
-                let btn = document.getElementById('btn');
-                btn.style.visibility="visible";
-
+                //let btn = document.getElementById('btn');
+                //btn.style.visibility="visible";
+                k++;
                 break;
             case "hits":
                 let LogHits = new Hits(i, curser, tabFile);
@@ -305,53 +306,86 @@ class Healed {
     }
 }
 
-var btn = document.querySelector('input');
+//let btn = document.querySelector('input');
+//btn.addEventListener('click', updateBtn);
+let input =document.getElementById('radioInputChoice');
+input.step=0.1;
+let choice1 = document.getElementById('Choice1')
+choice1.addEventListener('click', updateBtn);
+var choice2 = document.getElementById('Choice2');
+choice2.addEventListener('click', updateBtn);
+var choice3 = document.getElementById('Choice3');
+choice3.addEventListener('click', updateBtn);
+var choice4 = document.getElementById('Choice4');
+choice4.addEventListener('click', updateBtn);
+var choice5 = document.getElementById('Choice5');
+choice5.addEventListener('click', updateBtn);
+var choice6 = document.getElementById('Choice6');
+choice6.addEventListener('click', updateBtn);
 
-btn.addEventListener('click', updateBtn);
+
+
+
+
+
+
+
 
 function updateBtn() {
     //https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Date/parse
-
+    //https://stackoverflow.com/questions/256754/how-to-pass-arguments-to-addeventlistener-listener-function
     //>>>>> reduction de la tailler du tableau en fonction d'un temp a choisir ... derniere heure.. derniere 6 heure... fichier "entier ... etc....
     ///// a mettre en place
-    let lastentry =logHeal.length-1;
+    let timeToCheck=0;
+    let startCheck=0;
 
-    let logTimerLastEntry =logHeal[lastentry].logDate;
-    let timeToCheck = logTimerLastEntry-3600;
-    timeFilter = logHeal.filter(it => (it.logDate)> timeToCheck)
-    console.log(logTimerLastEntry);
+    let lastentry =logHeal.length-1;
+    let    logTimerLastEntry =logHeal[lastentry].logDate;
+   /* if (this.id =='Choice5')
+    {
+        let onChoice = parseFloat(document.getElementById('radioInputChoice').value);
+        timeToCheck = logTimerLastEntry-(3600000*onChoice);
+        console.log(onChoice)
+    }*/
+
+
+
+
+   if (this.value===0){
+
+        let logTimer1stEntry =logHeal[0].logDate;
+        timeToCheck=logTimer1stEntry;
+
+        }
+    else if( this.id =='Choice5')
+    {
+        let onChoice = parseFloat(document.getElementById('radioInputChoice').value);
+        timeToCheck = logTimerLastEntry-(3600000*onChoice);
+        console.log(onChoice)
+    }
+    else
+   {
+       //let test =;
+       timeToCheck = logTimerLastEntry-(3600000*this.value);
+   }
+
+    for (let j = 1; j < lastentry; j++)
+    {  //loop through the array
+
+        if(logHeal[j].logDate>=timeToCheck)
+        {
+            startCheck=j;
+            break;
+        }
+    }
+
+    timeFilter = logHeal.slice(startCheck,lastentry);
 
     let listOfPlayerhealed = [...new Set(timeFilter.map(x => x.healed))].sort();
     let listOfPlayershealer = [...new Set(timeFilter.map(y => y.healer))].sort();
 
-
-
     menudropplayers('healed',listOfPlayerhealed);
     menudropplayers('healer',listOfPlayershealer);
-
-    var mySet= timeFilter.filter(it => new RegExp('Ginormus').test(it.healer));
-
-    //console.log([...mySet]);
-
-    var mySet2= [...new Set(mySet.map(x => x.healed))];
-
-    //console.log([...mySet2]);
-
-    var mySet2= [...new Set((timeFilter.filter(it => new RegExp('Hygie').test(it.healer))).map(x => x.healed))]; // 2 in 1 !! :p
-    //console.log([...mySet2]); // Will show you exactly the same Array as myArray
-
-    let mySet3 = mySet.filter(it => new RegExp('Ranpha').test(it.healed));
-
-
-    //console.log([...mySet3]);//.reduce((accumulator, currentValue) => accumulator.value + currentValue.value));
-    let total = 0;
-    let total2 = 0;
-    for (i = 0; i < mySet3.length; i++) {  //loop through the array
-        total += mySet3[i].Heal;  //Do the math!
-        total2+= mySet3[i].overheal;
-    }
-   // console.log(total+" "+total2);
-    //map<U>(callbackfn: (value: T, index: number, array: T[]) => U, thisArg?: any): U[];
 
 }
 
@@ -364,6 +398,7 @@ function menudropplayers(players,playersList) {
     defaultOption.text = 'Players ' + players;
     dropdown.add(defaultOption);
     dropdown.style.visibility = "visible";
+    dropdown.innerText="";
     dropdown.addEventListener("change", addActivityItem, false)
     dropdown.selectedIndex = 0;
     for (let i = 0; i < playersList.length; i++) {
@@ -380,14 +415,17 @@ function addActivityItem(){
     let e = document.getElementById('healer-dropdown');
     let targedhealer = e.options[e.selectedIndex].value;
     let mySet= timeFilter.filter(it => new RegExp(targedhealer).test(it.healer));
-    let mySet2= [...new Set(mySet.map(x => x.healed))];
-    if (document.getElementById('parseview')!=null){
+    let mySet2= [...new Set(mySet.map(x => x.healed))].sort();
+    document.getElementById('container2').innerText = "";
+    document.getElementById('container3').innerText = "";
+    document.getElementById('container4').innerText = "";
+    document.getElementById('container5').innerText = "";
+/*    if (document.getElementById('parseview')!=null){
 
         let div = document.getElementById('parseview');
         div.innerText = "";
-    }
-    let total = 0;
-    let total2 = 0;
+    }*/
+    let total = 0,total2 = 0,counter=0;
     let playerTargetByHealer="";
     mySet2.forEach(function(element) {
         let mySet3= mySet.filter(it => new RegExp(element).test(it.healed));
@@ -396,24 +434,65 @@ function addActivityItem(){
             total2+= mySet3[i].overheal;
         }
         playerTargetByHealer=element;
-        containerPlayer(targedhealer,playerTargetByHealer,total,total2)
+        counter++;
+        if(!RegExp("`s").test(element)){
+        containerPlayer(targedhealer,playerTargetByHealer,total,total2,counter)
+        }
+        total=total2=0;
     });
 }
-function containerPlayer(targedhealer,playerTargetByHealer,total,total2) {
+function containerPlayer(targedhealer,playerTargetByHealer,total,total2,counter) {
+            if (counter<18) {
+                let div = document.createElement('div');
+                let br = document.createElement('br');
+                div.innerText = playerTargetByHealer + " | " + " Heal : " + total + " |  HA : " + total2;
+                document.getElementById('container2').appendChild(div);
+                document.getElementById('container2').appendChild(br);
+            }
+            else if (counter>=18&&counter<39){
+                let div = document.createElement('div');
+                let br = document.createElement('br');
+                div.innerText = playerTargetByHealer + " | " + " Heal : " + total + " |  HA : " + total2;
+                document.getElementById('container3').appendChild(div);
+                document.getElementById('container3').appendChild(br);
+            }
+            else if (counter>=39&&counter<61){
+                let div = document.createElement('div');
+                let br = document.createElement('br');
+                div.innerText = playerTargetByHealer + " | " + " Heal : " + total + " |  HA : " + total2;
+                document.getElementById('container4').appendChild(div);
+                document.getElementById('container4').appendChild(br);
+            }
+            else if (counter>=61&&counter<81) {
+                let div = document.createElement('div');
+                let br = document.createElement('br');
+                div.innerText = playerTargetByHealer + " | " + " Heal : " + total + " |  HA : " + total2;
+                document.getElementById('container5').appendChild(div);
+                document.getElementById('container5').appendChild(br);
+            }
 
-        if (document.getElementById('parseview')==null){
-            let div = document.createElement('div');
-            div.name=targedhealer;
-            div.id="parseview";
-            div.innerText =playerTargetByHealer+" "+total+" "+total2+"\n";
-            document.body.appendChild(div);
-        }
-        else{
-            let div = document.getElementById('parseview');
-            div.innerText += playerTargetByHealer+" "+total+" "+total2 + "\n";
-        }
+}
+function openCity(evt, Name) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(Name).style.display = "block";
+    evt.currentTarget.className += " active";
 }
 /*
+
+ !!!!!!! Tabs,pills, dropdown !!!!!
+ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!https://www.w3schools.com/howto/howto_js_tabs.asp
+ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+
  !!!!!!! stream et map a voir !!!!!
  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -432,37 +511,24 @@ function containerPlayer(targedhealer,playerTargetByHealer,total,total2) {
 [Mon Jul 08 22:21:03 2019] Katercat healed Anlak for 48008 (63059) hit points by Spiritual Squall Rk. III. (Critical)
 [Mon Jul 08 22:21:03 2019] Venedar healed Folkken over time for 1128 hit points by Prophet's Gift of the Ruchu. (Lucky Critical)
 
-//https://developer.mozilla.org/fr/docs/Learn/JavaScript/Objects/JSON
-//https://openclassrooms.com/forum/sujet/lire-un-fichier-texte-en-javascript-33614
-//https://openclassrooms.com/fr/courses/1916641-dynamisez-vos-sites-web-avec-javascript/1922300-lapi-file
-//http://www.script-tutorials.com/html5-drag-and-drop-multiple-file-uploader/
+https://developer.mozilla.org/fr/docs/Learn/JavaScript/Objects/JSON
+https://openclassrooms.com/forum/sujet/lire-un-fichier-texte-en-javascript-33614
+https://openclassrooms.com/fr/courses/1916641-dynamisez-vos-sites-web-avec-javascript/1922300-lapi-file
+http://www.script-tutorials.com/html5-drag-and-drop-multiple-file-uploader/
 https://stackoverflow.com/questions/14446511/most-efficient-method-to-groupby-on-an-array-of-objects
-    https://stackoverflow.com/questions/40774697/how-to-group-an-array-of-objects-by-key/40774906
-        https://www.freecodecamp.org/news/15-useful-javascript-examples-of-map-reduce-and-filter-74cbbb5e0a1f/
-            https://codeburst.io/grouping-array-data-json-ef96b438b927
-                https://gist.github.com/JamieMason/0566f8412af9fe6a1d470aa1e089a752
-//http://www.maximechaillou.com/simple-upload-en-drag-and-drop-avec-html5-jquery-php/
-//https://openclassrooms.com/fr/courses/1916641-dynamisez-vos-sites-web-avec-javascript/1922300-lapi-file
+https://stackoverflow.com/questions/40774697/how-to-group-an-array-of-objects-by-key/40774906
+https://www.freecodecamp.org/news/15-useful-javascript-examples-of-map-reduce-and-filter-74cbbb5e0a1f/
+https://codeburst.io/grouping-array-data-json-ef96b438b927
+https://gist.github.com/JamieMason/0566f8412af9fe6a1d470aa1e089a752
+http://www.supportduweb.com/scripts_tutoriaux-code-source-48-systeme-d-039-onglets-en-javascript-x-html-et-css-dans-la-meme-page.html
+http://www.maximechaillou.com/simple-upload-en-drag-and-drop-avec-html5-jquery-php/
+ttps://openclassrooms.com/fr/courses/1916641-dynamisez-vos-sites-web-avec-javascript/1922300-lapi-file
 
-//  extraire les données et les placer dans un tableau ... nom (ou you) heal ... overheal ... nom player healer '(ou myself... himself...) etc....
+ extraire les données et les placer dans un tableau ... nom (ou you) heal ... overheal ... nom player healer '(ou myself... himself...) etc....
 
 https://stackoverflow.com/questions/11199653/javascript-sum-and-group-by-of-json-data
 http://learnjsdata.com/group_data.html
 
+https://stackoverflow.com/questions/5041270/what-is-the-best-way-to-use-context-param-in-javascript
+https://developer.mozilla.org/fr/docs/Web/JavaScript/Les_diff%C3%A9rents_tests_d_%C3%A9galit%C3%A9
 */
-// let logSubTime1=logTimerLastEntry.indexOf(' ')+1;
-// let logSubTime2=logTimerLastEntry.indexOf(' ',logSubTime1)+1;
-// let logSubTime3=logTimerLastEntry.indexOf(' ',logSubTime2)+1;
-// let subTimeStr = logTimerLastEntry.substring(logSubTime3,logSubTime3+2);
-// if (subTimeStr>0){
-//     logTimerLastEntry=logTimerLastEntry.replace(subTimeStr,subTimeStr-1)
-// }
-// else{
-//     logTimerLastEntry=logTimerLastEntry.replace(subTimeStr,checkitme-1)
-// }
-
-
-
-
-/*console.log(subTimeStr);
-console.log(logTimerLastEntry);*/
