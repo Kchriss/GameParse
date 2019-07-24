@@ -36,3 +36,10 @@ http://learnjsdata.com/group_data.html
 https://stackoverflow.com/questions/5041270/what-is-the-best-way-to-use-context-param-in-javascript
 https://developer.mozilla.org/fr/docs/Web/JavaScript/Les_diff%C3%A9rents_tests_d_%C3%A9galit%C3%A9
 
+   // https://codeburst.io/javascript-array-distinct-5edc93501dc4
+            //https://openclassrooms.com/forum/sujet/lecture-d-un-fichier-sequentiel-avec-filereader-64413 ..."java"
+            //>>>>>>>>>>>>>>>>>>>>>>>https://medium.com/@dalaidunc/fs-readfile-vs-streams-to-read-text-files-in-node-js-5dd0710c80ea<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ //https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Date/parse
+     //https://stackoverflow.com/questions/256754/how-to-pass-arguments-to-addeventlistener-listener-function
+ 
+ https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Instructions/async_function<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<

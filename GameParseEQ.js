@@ -36,10 +36,7 @@ dropper.addEventListener('drop', function (e) {
             // a etudier une tableau par type ??? ... mot cle : healed , slashes , pierces , begins,crushes,backstabs,frenzies,shoots,hits,taken//indexOf('Video' | 'Audio' )
             // piste a suivre.... cree un fonction du nommer du nom "trouver" pour la gestion du log ...
             // inserer une pause ?!!
-            // https://codeburst.io/javascript-array-distinct-5edc93501dc4
-            //https://openclassrooms.com/forum/sujet/lecture-d-un-fichier-sequentiel-avec-filereader-64413 ..."java"
-            //>>>>>>>>>>>>>>>>>>>>>>>https://medium.com/@dalaidunc/fs-readfile-vs-streams-to-read-text-files-in-node-js-5dd0710c80ea<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-            //>>>>>>>>>>>>>>>>>>>>>>>https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Instructions/async_function<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
         }
     };
     reader.readAsText(files);
@@ -319,8 +316,7 @@ let choice6 = document.getElementById('Choice6');
 choice6.addEventListener('click', updateBtn);
 
 function updateBtn() {
-    //https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Date/parse
-    //https://stackoverflow.com/questions/256754/how-to-pass-arguments-to-addeventlistener-listener-function
+
     //>>>>> reduction de la tailler du tableau en fonction d'un temp a choisir ... derniere heure.. derniere 6 heure... fichier "entier ... etc....
     ///// a mettre en place
     let timeToCheck=0;
