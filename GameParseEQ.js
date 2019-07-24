@@ -70,6 +70,7 @@ function readerdigest(tabFile, i) {
             case "healed":
 
                 let logHealed = new Healed(i, curser, tabFile);
+
                 logHeal[k]={"id":k,"healer":logHealed.PlayerHealer(),"healed":logHealed.TargedHealed()
                     ,"type":logHealed.TypeOfHeal(),"Heal":logHealed.HealAmount(),"overheal":logHealed.OverHeal()
                     ,'spell':logHealed.SpellsUsed(),"crit":logHealed.CriticalHitMessage(),"logDate":logHealed.Logtime()};
@@ -223,7 +224,8 @@ class Healed {
         this.playerHealed = this.tabFile[this.i].substr(this.curser_3, this.curser_4 - this.curser_3).trim();//extraction du nom du joueur
         if (this.playerHealed.trim() == "himself" || this.playerHealed.trim() == "itself" || this.playerHealed.trim() == "herself") {
             this.playerHealed = this.playerHealer;
-        } else if (this.playerHealed.trim().toLowerCase() == "you") {
+        }
+        else if (this.playerHealed.trim().toLowerCase() == "you") {
             this.playerHealed = CurrentPlayer;
         }
         return this.playerHealed;
@@ -369,7 +371,7 @@ function menudropplayers(players,playersList) {
     dropdown.addEventListener("change", addActivityItem, false)
     dropdown.selectedIndex = 0;
     for (let i = 0; i < playersList.length; i++) {
-        option = document.createElement('option');
+     let option = document.createElement('option');
         option.text = playersList[i];
         option.value = playersList[i];
         dropdown.add(option);
@@ -389,16 +391,18 @@ function addActivityItem(){
     let playerTargetByHealer="";
     mySet2.forEach(function(element) {
         let mySet3= mySet.filter(it => new RegExp(element).test(it.healed));
+
         for (let i = 0; i < mySet3.length; i++) {  //loop through the array
             total += mySet3[i].Heal;  //Do the math!
             total2+= mySet3[i].overheal;
         }
         playerTargetByHealer=element;
 
-        if(!RegExp("`s").test(element)){
-            counter++;
-            containerPlayer(targedhealer,playerTargetByHealer,total,total2,counter)
+        if(!RegExp("`s").test(element)) {
+                counter++;
+                containerPlayer(targedhealer, playerTargetByHealer, total, total2, counter)
         }
+
         total=total2=0;
     });
 }
@@ -490,12 +494,6 @@ function openCity(evt, Name) {
     e.currentTarget.className += " active";
 }
 tablinks.addEventListener('click',openCity(evt,Name));
-*/
-
-
-
-
-/*
 
 
  !!!!!!! Tabs,pills, dropdown !!!!!
