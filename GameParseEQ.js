@@ -322,7 +322,7 @@ function updateBtn() {
     let startCheck=0;
 
     let lastentry =logHeal.length-1;
-    let    logTimerLastEntry =logHeal[lastentry].logDate;
+    let logTimerLastEntry =logHeal[lastentry].logDate;
 
     if (this.value==="0"||this.value===0){
         timeToCheck= logHeal[0].logDate;
@@ -357,13 +357,13 @@ function updateBtn() {
 function menudropplayers(players,playersList) {
     let dropdown = document.getElementById(players + '-dropdown');
     dropdown.length = 0;
-    let defaultOption = document.createElement('option');
-    defaultOption.text = 'Players ' + players;
-    dropdown.add(defaultOption);
-    dropdown.style.visibility = "visible";
     dropdown.innerText="";
-    dropdown.addEventListener("change", addActivityItem, false);
+    let Option = document.createElement('option');
+    Option.text = 'Players ' + players;
+    dropdown.add(Option);
+    dropdown.style.visibility = "visible";
     dropdown.selectedIndex = 0;
+    dropdown.addEventListener("change", addActivityItem, false);
     for (let i = 0; i < playersList.length; i++) {
         let option = document.createElement('option');
         option.text = playersList[i];
@@ -401,37 +401,29 @@ function addActivityItem(){
     });
 }
 function containerPlayer(targedhealer,playerTargetByHealer,total,total2,counter) {
+    let div = document.createElement('div');
+    let br = document.createElement('br');
     if (counter<18) {
-        let div = document.createElement('div');
-        let br = document.createElement('br');
         div.innerText = playerTargetByHealer + " | " + " Heal : " + total + " |  HA : " + total2;
         document.getElementById('containertb2')
             .appendChild(div).appendChild(br);
     }
     else if (counter>=18&&counter<35){
-        let div = document.createElement('div');
-        let br = document.createElement('br');
         div.innerText = playerTargetByHealer + " | " + " Heal : " + total + " |  HA : " + total2;
         document.getElementById('containertb3')
             .appendChild(div).appendChild(br);
     }
     else if (counter>=35&&counter<52){
-        let div = document.createElement('div');
-        let br = document.createElement('br');
         div.innerText = playerTargetByHealer + " | " + " Heal : " + total + " |  HA : " + total2;
         document.getElementById('containertb4')
             .appendChild(div).appendChild(br);
     }
     else if (counter>=52&&counter<69) {
-        let div = document.createElement('div');
-        let br = document.createElement('br');
         div.innerText = playerTargetByHealer + " | " + " Heal : " + total + " |  HA : " + total2;
         document.getElementById('containertb5')
             .appendChild(div).appendChild(br);
     }
-    else if (counter>=81&&counter<101) {
-        let div = document.createElement('div');
-        let br = document.createElement('br');
+    else if (counter>=81&&counter<101) {       
         div.innerText = playerTargetByHealer + " | " + " Heal : " + total + " |  HA : " + total2;
         document.getElementById('containertb7')
             .appendChild(div).appendChild(br);
