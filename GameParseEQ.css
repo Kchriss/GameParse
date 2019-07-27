@@ -44,7 +44,19 @@ body{
 select{
     width: 10em;
 }
-#parseview,#container6{
+
+#container6{
+
+    position:absolute;
+    top:10%;
+    left: 30%;
+    width: 50%;
+    height:75%;
+
+
+}
+
+#parseview{
 
     position:absolute;
     top:10%;
@@ -110,7 +122,15 @@ h2{
 /* Style the tab content */
 .tabcontent {
     display: none;
-    padding: 6px 12px;
-    border: 1px solid #ccc;
+    /*padding: 6px 12px;
+    border: 1px solid #ccc;*/
     border-top: none;
+    size: auto;
+    background-color: aliceblue;
+    opacity: 0.8;
+    box-shadow: -1px 1px 2px 1px rgba(71, 66, 70, 0.59);
+
+}
+.tabcontent div{
+    height: 2.3em;
 }
