@@ -402,71 +402,24 @@ function addActivityItem(){
 }
 function containerPlayer(targedhealer,playerTargetByHealer,total,total2,counter) {
     let div0 = document.createElement('div');
-
     let div1 = document.createElement('div');
     let div2 = document.createElement('div');
     let div3 = document.createElement('div');
     let div4 = document.createElement('div');
     if (counter<18) {
-        div0.className='dropdown-btn';
-        div1.innerText = playerTargetByHealer;
-        div2.innerText = " Heal : " + total ;
-        div3.innerText = " Overheal : " + (parseInt(total2) - parseInt(total))
-        div4.innerText = " HA : " + total2;
-        document.getElementById('containertb2').appendChild(div0);
-        div0.appendChild(div1);
-        div0.appendChild(div2);
-        div0.appendChild(div3);
-        div0.appendChild(div4);
-
+        innerTab(div0,div1,div2,div3,div4,'tb2',playerTargetByHealer,total,total2 );
     }
     else if (counter>=18&&counter<35){
-        div0.className='dropdown-btn';
-        div1.innerText = playerTargetByHealer;
-        div2.innerText = " Heal : " + total ;
-        div3.innerText = " Overheal : " + (parseInt(total2) - parseInt(total))
-        div4.innerText = " HA : " + total2;
-        document.getElementById('containertb3').appendChild(div0);
-        div0.appendChild(div1);
-        div0.appendChild(div2);
-        div0.appendChild(div3);
-        div0.appendChild(div4);
+        innerTab(div0,div1,div2,div3,div4,'tb3',playerTargetByHealer,total,total2 )
     }
     else if (counter>=35&&counter<52){
-        div0.className='dropdown-btn';
-        div1.innerText = playerTargetByHealer;
-        div2.innerText = " Heal : " + total ;
-        div3.innerText = " Overheal : " + (parseInt(total2) - parseInt(total))
-        div4.innerText = " HA : " + total2;
-        document.getElementById('containertb4').appendChild(div0);
-        div0.appendChild(div1);
-        div0.appendChild(div2);
-        div0.appendChild(div3);
-        div0.appendChild(div4);
+        innerTab(div0,div1,div2,div3,div4,'tb4',playerTargetByHealer,total,total2 )
     }
     else if (counter>=52&&counter<69) {
-        div0.className='dropdown-btn';
-        div1.innerText = playerTargetByHealer;
-        div2.innerText = " Heal : " + total ;
-        div3.innerText = " Overheal : " + (parseInt(total2) - parseInt(total))
-        div4.innerText = " HA : " + total2;
-        document.getElementById('containertb5').appendChild(div0);
-        div0.appendChild(div1);
-        div0.appendChild(div2);
-        div0.appendChild(div3);
-        div0.appendChild(div4);
+        innerTab(div0,div1,div2,div3,div4,'tb5',playerTargetByHealer,total,total2 )
     }
     else if (counter>=81&&counter<101) {
-        div0.className='dropdown-btn';
-        div1.innerText = playerTargetByHealer;
-        div2.innerText = " Heal : " + total ;
-        div3.innerText = " Overheal : " + (parseInt(total2) - parseInt(total))
-        div4.innerText = " HA : " + total2;
-        document.getElementById('containertb7').appendChild(div0);
-        div0.appendChild(div1);
-        div0.appendChild(div2);
-        div0.appendChild(div3);
-        div0.appendChild(div4);
+        innerTab(div0,div1,div2,div3,div4,'tb7',playerTargetByHealer,total,total2 )
     }
 }
 document.getElementById('tb2')
@@ -508,7 +461,19 @@ for (i = 0; i < dropdown.length; i++) {
         }
     });
 }
+function innerTab(div0,div1,div2,div3,div4,tb,playerTargetByHealer,total,total2){
 
+    div0.className='dropdown-btn';
+    div1.innerText = playerTargetByHealer;
+    div2.innerText = " Heal : " + total ;
+    div3.innerText = " Overheal : " + (parseInt(total2) - parseInt(total))
+    div4.innerText = " HA : " + total2;
+    document.getElementById('container'+tb).appendChild(div0);
+    div0.appendChild(div1);
+    div0.appendChild(div2);
+    div0.appendChild(div3);
+    div0.appendChild(div4);
+}
 //drop zone for file event dragover and drop needed to get file data
 /*
 

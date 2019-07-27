@@ -48,10 +48,10 @@ select{
 #container6{
 
     position:absolute;
-    top:10%;
+    top:5%;
     left: 30%;
     width: 50%;
-    height:75%;
+    height: 90%;
 
 
 }
@@ -105,7 +105,7 @@ h2{
     padding: 14px 16px;
     transition: 0.3s;
     font-size: 17px;
-    width:6em;
+    width:20%;
 }
 
 /* Change background color of buttons on hover */
@@ -122,13 +122,16 @@ h2{
 .tabcontent {
     display: none;
     size: auto;
+    min-height: 0%;
+    height: 86%;
+    max-height:90%;
     background-color: aliceblue;
     opacity: 0.8;
     box-shadow: -1px 1px 2px 1px rgba(71, 66, 70, 0.59);
 }
 .tabcontent div{
     padding: 4px 6px 0 6px;
-    height: 2.3em;
+    /*height: 2em;*/
 }
 /* Fixed sidenav, full height */
 .sidenav {
@@ -151,6 +154,7 @@ h2{
 
      */
     background: none;
+    height: 5%;
     width: 100%;
     cursor: pointer;
     outline: none;
@@ -173,5 +177,8 @@ h2{
 }
 .dropdown-btn div {
     float: left;
-    width: 20%;
+    height:87.5%;
+    width: 22.5%;
+    box-shadow: -1px 1px 2px 1px rgba(71, 66, 70, 0.59);
+    margin: 0.35%;
 }
