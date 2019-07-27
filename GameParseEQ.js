@@ -381,47 +381,43 @@ function addActivityItem(){
     document.getElementById('containertb4').innerText = "";
     document.getElementById('containertb5').innerText = "";
     document.getElementById('containertb7').innerText = "";
-    let total = 0,total2 = 0,counter=0,total3=0,total4=0,counterSpell=0;
+    let total = 0,total2 = 0,counter=0,total3=0,total4=0,counterSpell=0,counterspelltotal=0;
     let playerTargetByHealer="";
     let spellUsed="";
     mySet2.forEach(function(element) {//par joueur
         let mySet3= mySet.filter(it => new RegExp(element).test(it.healed));
         let mySet4 = [...new Set(mySet3.map(x => x.spell))].sort();
-
         mySet4.forEach(function(elmnt) {//par spell
            let mySet5= mySet3.filter(it => new RegExp(elmnt).test(it.spell));
-
             for (let i = 0; i < mySet5.length; i++) {
                 console.log(mySet5[i].Heal)//loop through the array
                 total += mySet5[i].Heal;  //Do the math!
                 total2 += mySet5[i].overheal;
+                counterspelltotal++;
+                counterSpell++;
             }
             spellUsed=elmnt;
             playerTargetByHealer=element;
             if(!RegExp("`s").test(element)) {
-                counterSpell++;
-                containerPlayer(spellUsed, "", total, total2, counter,counterSpell)
+                containerPlayer(spellUsed, "", total, total2, counter,counterSpell, counterspelltotal)
                 total3+=total;
                 total4+=total2;
-
             }
-
+            counterSpell=0;
             total=0;
             total2=0;
         });
-        counterSpell=0;
         playerTargetByHealer=element;
-
         if(!RegExp("`s").test(element)) {
             counter++;
-            containerPlayer("", playerTargetByHealer, total3, total4, counter,0)
+            containerPlayer("", playerTargetByHealer, total3, total4, counter,0, counterspelltotal)
         }
-
         total3=0;
         total4=0;
+        counterspelltotal=0;
     });
 }
-function containerPlayer(spellUsed,playerTargetByHealer,total,total2,counter,counterSpell) {
+function containerPlayer(spellUsed,playerTargetByHealer,total,total2,counter,counterSpell, counterspelltotal) {
     let div0 = document.createElement('div');
     let div1 = document.createElement('div');
     let div2 = document.createElement('div');
@@ -429,37 +425,37 @@ function containerPlayer(spellUsed,playerTargetByHealer,total,total2,counter,cou
     let div4 = document.createElement('div');
     if (counter<18) {
         if(playerTargetByHealer!=="")
-        innerTab(div0,div1,div2,div3,div4,'tb2',playerTargetByHealer,total,total2,counterSpell );
+        innerTab(div0,div1,div2,div3,div4,'tb2',playerTargetByHealer,total,total2,counter,counterSpell, counterspelltotal );
         else{
-            innerTab(div0,div1,div2,div3,div4,'tb2',spellUsed,total,total2,counterSpell );
+            innerTab(div0,div1,div2,div3,div4,'tb2',spellUsed,total,total2,counter,counterSpell, counterspelltotal );
         }
     }
     else if (counter>=18&&counter<35){
         if(playerTargetByHealer!=="")
-            innerTab(div0,div1,div2,div3,div4,'tb3',playerTargetByHealer,total,total2,counterSpell );
+            innerTab(div0,div1,div2,div3,div4,'tb3',playerTargetByHealer,total,total2,counter,counterSpell, counterspelltotal );
         else{
-            innerTab(div0,div1,div2,div3,div4,'tb3',spellUsed,total,total2,counterSpell );
+            innerTab(div0,div1,div2,div3,div4,'tb3',spellUsed,total,total2,counter,counterSpell, counterspelltotal );
         }
     }
     else if (counter>=35&&counter<52){
         if(playerTargetByHealer!=="")
-            innerTab(div0,div1,div2,div3,div4,'tb4',playerTargetByHealer,total,total2,counterSpell );
+            innerTab(div0,div1,div2,div3,div4,'tb4',playerTargetByHealer,total,total2,counter,counterSpell, counterspelltotal );
         else{
-            innerTab(div0,div1,div2,div3,div4,'tb4',spellUsed,total,total2,counterSpell );
+            innerTab(div0,div1,div2,div3,div4,'tb4',spellUsed,total,total2,counter,counterSpell, counterspelltotal );
         }
     }
     else if (counter>=52&&counter<69) {
         if(playerTargetByHealer!=="")
-            innerTab(div0,div1,div2,div3,div4,'tb5',playerTargetByHealer,total,total2,counterSpell );
+            innerTab(div0,div1,div2,div3,div4,'tb5',playerTargetByHealer,total,total2,counter,counterSpell, counterspelltotal );
         else{
-            innerTab(div0,div1,div2,div3,div4,'tb5',spellUsed,total,total2,counterSpell );
+            innerTab(div0,div1,div2,div3,div4,'tb5',spellUsed,total,total2,counter,counterSpell, counterspelltotal );
         }
     }
     else if (counter>=81&&counter<101) {
         if(playerTargetByHealer!=="")
-            innerTab(div0,div1,div2,div3,div4,'tb7',playerTargetByHealer,total,total2,counterSpell );
+            innerTab(div0,div1,div2,div3,div4,'tb7',playerTargetByHealer,total,total2,counter,counterSpell, counterspelltotal);
         else{
-            innerTab(div0,div1,div2,div3,div4,'tb7',spellUsed,total,total2,counterSpell );
+            innerTab(div0,div1,div2,div3,div4,'tb7',spellUsed,total,total2,counter,counterSpel, counterspelltotal );
         }
     }
 }
@@ -500,28 +496,41 @@ for (let i = 0; i < dropdown.length; i++) {
         } else {
             dropdownContent.style.display = "block";
         }
+        https://www.grafikart.fr/tutoriels/slide-javascript-1016
     });
 }*/
-function innerTab(div0,div1,div2,div3,div4,tb,playerTargetByHealer,total,total2,counterSpell){
+function innerTab(div0,div1,div2,div3,div4,tb,playerTargetByHealer,total,total2,counter,counterSpell, counterspelltotal){
 
     div0.className='dropdown-btn';
     if(counterSpell!==0){
         div1.innerText = playerTargetByHealer+" "+ counterSpell;
+        div2.innerText = " Heal : " + total ;
+        div3.innerText = " Overheal : " + (parseInt(total2) - parseInt(total));
+        div4.innerText = " HA : " + total2;
+        document.getElementById('container'+tb).appendChild(div0);
+        div0.appendChild(div1);
+        div0.appendChild(div2);
+        div0.appendChild(div3);
+        div0.appendChild(div4);
+
+
+
     }
     else{
-        div1.innerText = playerTargetByHealer
+        div1.innerText = playerTargetByHealer+" "+ counterspelltotal;
+        div2.innerText = " Heal : " + total ;
+        div3.innerText = " Overheal : " + (parseInt(total2) - parseInt(total));
+        div4.innerText = " HA : " + total2;
+        document.getElementById('container'+tb).appendChild(div0);
+        div0.appendChild(div1);
+        div0.appendChild(div2);
+        div0.appendChild(div3);
+        div0.appendChild(div4);
     }
 
-
-    div2.innerText = " Heal : " + total ;
-    div3.innerText = " Overheal : " + (parseInt(total2) - parseInt(total));
-    div4.innerText = " HA : " + total2;
-    document.getElementById('container'+tb).appendChild(div0);
-    div0.appendChild(div1);
-    div0.appendChild(div2);
-    div0.appendChild(div3);
-    div0.appendChild(div4);
 }
+
+
 //drop zone for file event dragover and drop needed to get file data
 /*
 
@@ -552,4 +561,91 @@ function innerTab(div0,div1,div2,div3,div4,tb,playerTargetByHealer,total,total2,
 [Mon Jul 08 22:21:03 2019] Katercat healed Anlak for 48008 (63059) hit points by Spiritual Squall Rk. III. (Critical)
 [Mon Jul 08 22:21:03 2019] Venedar healed Folkken over time for 1128 hit points by Prophet's Gift of the Ruchu. (Lucky Critical)
 
-*/
+
+document.querySelector('.dropdown-btn').addEventlistener('click', function(){
+    DOMAnimations.slideToggle(document.querySelector('#tabcontent'))
+});
+class DOMAnimations {
+    /**
+     * Masque un élément avec un effet de repli
+     * @param {HTMLElement} element
+     * @param {Number} duration
+     * @returns {Promise<boolean>}
+     *//*
+    static slideUp (element, duration = 500) {
+        return new Promise(function (resolve, reject) {
+            element.style.height = element.offsetHeight + 'px';
+            element.style.transitionProperty = `height, margin, padding`;
+            element.style.transitionDuration = duration + 'ms';
+            element.offsetHeight ;// eslint-disable-line no-unused-expressions
+            element.style.overflow = 'hidden';
+            element.style.height = 0;
+            element.style.paddingTop = 0;
+            element.style.paddingBottom = 0;
+            element.style.marginTop = 0;
+            element.style.marginBottom = 0;
+            window.setTimeout(function () {
+                element.style.display = 'none';
+                element.style.removeProperty('height');
+                element.style.removeProperty('padding-top');
+                element.style.removeProperty('padding-bottom');
+                element.style.removeProperty('margin-top');
+                element.style.removeProperty('margin-bottom');
+                element.style.removeProperty('overflow');
+                element.style.removeProperty('transition-duration');
+                element.style.removeProperty('transition-property');
+                resolve(false)
+            }, duration)
+        })
+    }*/
+
+    /*
+     * Affiche un élément avec un effet de dépliement
+     * @param {HTMLElement} element
+     * @param {Number} duration
+     * @returns {Promise<boolean>}
+     *//*
+    static slideDown (element, duration = 500) {
+        return new Promise(function (resolve, reject) {
+            element.style.removeProperty('display');
+            let display = window.getComputedStyle(element).display;
+            if (display === 'none') display = 'block';
+            element.style.display = display;
+            let height = element.offsetHeight;
+            element.style.overflow = 'hidden';
+            element.style.height = 0;
+            element.style.paddingTop = 0;
+            element.style.paddingBottom = 0;
+            element.style.marginTop = 0;
+            element.style.marginBottom = 0;
+            element.offsetHeight ;// eslint-disable-line no-unused-expressions
+            element.style.transitionProperty = `height, margin, padding`;
+            element.style.transitionDuration = duration + 'ms';
+            element.style.height = height + 'px';
+            element.style.removeProperty('padding-top');
+            element.style.removeProperty('padding-bottom');
+            element.style.removeProperty('margin-top');
+            element.style.removeProperty('margin-bottom');
+            window.setTimeout(function () {
+                element.style.removeProperty('height');
+                element.style.removeProperty('overflow');
+                element.style.removeProperty('transition-duration');
+                element.style.removeProperty('transition-property');
+            }, duration)
+        })
+    }*/
+
+    /*
+     * Affiche ou Masque un élément avec un effet de repli
+     * @param {HTMLElement} element
+     * @param {Number} duration
+     * @returns {Promise<boolean>}
+     */
+ /*   static slideToggle (element, duration = 500) {
+        if (window.getComputedStyle(element).display === 'none') {
+            return this.slideDown(element, duration)
+        } else {
+            return this.slideUp(element, duration)
+        }
+    }
+}*/
