@@ -8,7 +8,8 @@
     transition: all 200ms linear;
     text-align: center;
     padding-top: 2em;
-
+    color:white;
+    font-size: 22px;
 }
 
 .drop_hover {
