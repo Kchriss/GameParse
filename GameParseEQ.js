@@ -401,32 +401,72 @@ function addActivityItem(){
     });
 }
 function containerPlayer(targedhealer,playerTargetByHealer,total,total2,counter) {
-    let div = document.createElement('div');
-    let br = document.createElement('br');
+    let div0 = document.createElement('div');
+
+    let div1 = document.createElement('div');
+    let div2 = document.createElement('div');
+    let div3 = document.createElement('div');
+    let div4 = document.createElement('div');
     if (counter<18) {
-        div.innerText = playerTargetByHealer + " | " + " Heal : " + total + " |  HA : " + total2;
-        document.getElementById('containertb2')
-            .appendChild(div).appendChild(br);
+        div0.className='dropdown-btn';
+        div1.innerText = playerTargetByHealer;
+        div2.innerText = " Heal : " + total ;
+        div3.innerText = " Overheal : " + (parseInt(total2) - parseInt(total))
+        div4.innerText = " HA : " + total2;
+        document.getElementById('containertb2').appendChild(div0);
+        div0.appendChild(div1);
+        div0.appendChild(div2);
+        div0.appendChild(div3);
+        div0.appendChild(div4);
+
     }
     else if (counter>=18&&counter<35){
-        div.innerText = playerTargetByHealer + " | " + " Heal : " + total + " |  HA : " + total2;
-        document.getElementById('containertb3')
-            .appendChild(div).appendChild(br);
+        div0.className='dropdown-btn';
+        div1.innerText = playerTargetByHealer;
+        div2.innerText = " Heal : " + total ;
+        div3.innerText = " Overheal : " + (parseInt(total2) - parseInt(total))
+        div4.innerText = " HA : " + total2;
+        document.getElementById('containertb3').appendChild(div0);
+        div0.appendChild(div1);
+        div0.appendChild(div2);
+        div0.appendChild(div3);
+        div0.appendChild(div4);
     }
     else if (counter>=35&&counter<52){
-        div.innerText = playerTargetByHealer + " | " + " Heal : " + total + " |  HA : " + total2;
-        document.getElementById('containertb4')
-            .appendChild(div).appendChild(br);
+        div0.className='dropdown-btn';
+        div1.innerText = playerTargetByHealer;
+        div2.innerText = " Heal : " + total ;
+        div3.innerText = " Overheal : " + (parseInt(total2) - parseInt(total))
+        div4.innerText = " HA : " + total2;
+        document.getElementById('containertb4').appendChild(div0);
+        div0.appendChild(div1);
+        div0.appendChild(div2);
+        div0.appendChild(div3);
+        div0.appendChild(div4);
     }
     else if (counter>=52&&counter<69) {
-        div.innerText = playerTargetByHealer + " | " + " Heal : " + total + " |  HA : " + total2;
-        document.getElementById('containertb5')
-            .appendChild(div).appendChild(br);
+        div0.className='dropdown-btn';
+        div1.innerText = playerTargetByHealer;
+        div2.innerText = " Heal : " + total ;
+        div3.innerText = " Overheal : " + (parseInt(total2) - parseInt(total))
+        div4.innerText = " HA : " + total2;
+        document.getElementById('containertb5').appendChild(div0);
+        div0.appendChild(div1);
+        div0.appendChild(div2);
+        div0.appendChild(div3);
+        div0.appendChild(div4);
     }
-    else if (counter>=81&&counter<101) {       
-        div.innerText = playerTargetByHealer + " | " + " Heal : " + total + " |  HA : " + total2;
-        document.getElementById('containertb7')
-            .appendChild(div).appendChild(br);
+    else if (counter>=81&&counter<101) {
+        div0.className='dropdown-btn';
+        div1.innerText = playerTargetByHealer;
+        div2.innerText = " Heal : " + total ;
+        div3.innerText = " Overheal : " + (parseInt(total2) - parseInt(total))
+        div4.innerText = " HA : " + total2;
+        document.getElementById('containertb7').appendChild(div0);
+        div0.appendChild(div1);
+        div0.appendChild(div2);
+        div0.appendChild(div3);
+        div0.appendChild(div4);
     }
 }
 document.getElementById('tb2')
@@ -453,6 +493,21 @@ function openCity(e, Name) {
     e.currentTarget.className += " active";
 }
 
+/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+    dropdown[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var dropdownContent = this.nextElementSibling;
+        if (dropdownContent.style.display === "block") {
+            dropdownContent.style.display = "none";
+        } else {
+            dropdownContent.style.display = "block";
+        }
+    });
+}
 
 //drop zone for file event dragover and drop needed to get file data
 /*
