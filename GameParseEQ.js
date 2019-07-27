@@ -381,7 +381,7 @@ function addActivityItem(){
     document.getElementById('containertb4').innerText = "";
     document.getElementById('containertb5').innerText = "";
     document.getElementById('containertb7').innerText = "";
-    let total = 0,total2 = 0,counter=0,total3=0,total4=0;
+    let total = 0,total2 = 0,counter=0,total3=0,total4=0,counterSpell=0;
     let playerTargetByHealer="";
     let spellUsed="";
     mySet2.forEach(function(element) {//par joueur
@@ -399,27 +399,29 @@ function addActivityItem(){
             spellUsed=elmnt;
             playerTargetByHealer=element;
             if(!RegExp("`s").test(element)) {
-                counter++;
-                containerPlayer(spellUsed, "", total, total2, counter)
+                counterSpell++;
+                containerPlayer(spellUsed, "", total, total2, counter,counterSpell)
                 total3+=total;
                 total4+=total2;
+
             }
+
             total=0;
             total2=0;
         });
-
+        counterSpell=0;
         playerTargetByHealer=element;
 
         if(!RegExp("`s").test(element)) {
             counter++;
-            containerPlayer("", playerTargetByHealer, total3, total4, counter)
+            containerPlayer("", playerTargetByHealer, total3, total4, counter,0)
         }
 
         total3=0;
         total4=0;
     });
 }
-function containerPlayer(spellUsed,playerTargetByHealer,total,total2,counter) {
+function containerPlayer(spellUsed,playerTargetByHealer,total,total2,counter,counterSpell) {
     let div0 = document.createElement('div');
     let div1 = document.createElement('div');
     let div2 = document.createElement('div');
@@ -427,22 +429,38 @@ function containerPlayer(spellUsed,playerTargetByHealer,total,total2,counter) {
     let div4 = document.createElement('div');
     if (counter<18) {
         if(playerTargetByHealer!=="")
-        innerTab(div0,div1,div2,div3,div4,'tb2',playerTargetByHealer,total,total2 );
+        innerTab(div0,div1,div2,div3,div4,'tb2',playerTargetByHealer,total,total2,counterSpell );
         else{
-            innerTab(div0,div1,div2,div3,div4,'tb2',spellUsed,total,total2 );
+            innerTab(div0,div1,div2,div3,div4,'tb2',spellUsed,total,total2,counterSpell );
         }
     }
     else if (counter>=18&&counter<35){
-        innerTab(div0,div1,div2,div3,div4,'tb3',playerTargetByHealer,total,total2 )
+        if(playerTargetByHealer!=="")
+            innerTab(div0,div1,div2,div3,div4,'tb3',playerTargetByHealer,total,total2,counterSpell );
+        else{
+            innerTab(div0,div1,div2,div3,div4,'tb3',spellUsed,total,total2,counterSpell );
+        }
     }
     else if (counter>=35&&counter<52){
-        innerTab(div0,div1,div2,div3,div4,'tb4',playerTargetByHealer,total,total2 )
+        if(playerTargetByHealer!=="")
+            innerTab(div0,div1,div2,div3,div4,'tb4',playerTargetByHealer,total,total2,counterSpell );
+        else{
+            innerTab(div0,div1,div2,div3,div4,'tb4',spellUsed,total,total2,counterSpell );
+        }
     }
     else if (counter>=52&&counter<69) {
-        innerTab(div0,div1,div2,div3,div4,'tb5',playerTargetByHealer,total,total2 )
+        if(playerTargetByHealer!=="")
+            innerTab(div0,div1,div2,div3,div4,'tb5',playerTargetByHealer,total,total2,counterSpell );
+        else{
+            innerTab(div0,div1,div2,div3,div4,'tb5',spellUsed,total,total2,counterSpell );
+        }
     }
     else if (counter>=81&&counter<101) {
-        innerTab(div0,div1,div2,div3,div4,'tb7',playerTargetByHealer,total,total2 )
+        if(playerTargetByHealer!=="")
+            innerTab(div0,div1,div2,div3,div4,'tb7',playerTargetByHealer,total,total2,counterSpell );
+        else{
+            innerTab(div0,div1,div2,div3,div4,'tb7',spellUsed,total,total2,counterSpell );
+        }
     }
 }
 document.getElementById('tb2')
@@ -484,10 +502,17 @@ for (let i = 0; i < dropdown.length; i++) {
         }
     });
 }*/
-function innerTab(div0,div1,div2,div3,div4,tb,playerTargetByHealer,total,total2){
+function innerTab(div0,div1,div2,div3,div4,tb,playerTargetByHealer,total,total2,counterSpell){
 
     div0.className='dropdown-btn';
-    div1.innerText = playerTargetByHealer;
+    if(counterSpell!==0){
+        div1.innerText = playerTargetByHealer+" "+ counterSpell;
+    }
+    else{
+        div1.innerText = playerTargetByHealer
+    }
+
+
     div2.innerText = " Heal : " + total ;
     div3.innerText = " Overheal : " + (parseInt(total2) - parseInt(total));
     div4.innerText = " HA : " + total2;
