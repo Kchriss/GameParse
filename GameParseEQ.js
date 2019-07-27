@@ -381,33 +381,56 @@ function addActivityItem(){
     document.getElementById('containertb4').innerText = "";
     document.getElementById('containertb5').innerText = "";
     document.getElementById('containertb7').innerText = "";
-    let total = 0,total2 = 0,counter=0;
+    let total = 0,total2 = 0,counter=0,total3=0,total4=0;
     let playerTargetByHealer="";
-    mySet2.forEach(function(element) {
+    let spellUsed="";
+    mySet2.forEach(function(element) {//par joueur
         let mySet3= mySet.filter(it => new RegExp(element).test(it.healed));
+        let mySet4 = [...new Set(mySet3.map(x => x.spell))].sort();
 
-        for (let i = 0; i < mySet3.length; i++) {  //loop through the array
-            total += mySet3[i].Heal;  //Do the math!
-            total2+= mySet3[i].overheal;
-        }
+        mySet4.forEach(function(elmnt) {//par spell
+           let mySet5= mySet3.filter(it => new RegExp(elmnt).test(it.spell));
+
+            for (let i = 0; i < mySet5.length; i++) {
+                console.log(mySet5[i].Heal)//loop through the array
+                total += mySet5[i].Heal;  //Do the math!
+                total2 += mySet5[i].overheal;
+            }
+            spellUsed=elmnt;
+            playerTargetByHealer=element;
+            if(!RegExp("`s").test(element)) {
+                counter++;
+                containerPlayer(spellUsed, "", total, total2, counter)
+                total3+=total;
+                total4+=total2;
+            }
+            total=0;
+            total2=0;
+        });
+
         playerTargetByHealer=element;
 
         if(!RegExp("`s").test(element)) {
             counter++;
-            containerPlayer(targedhealer, playerTargetByHealer, total, total2, counter)
+            containerPlayer("", playerTargetByHealer, total3, total4, counter)
         }
 
-        total=total2=0;
+        total3=0;
+        total4=0;
     });
 }
-function containerPlayer(targedhealer,playerTargetByHealer,total,total2,counter) {
+function containerPlayer(spellUsed,playerTargetByHealer,total,total2,counter) {
     let div0 = document.createElement('div');
     let div1 = document.createElement('div');
     let div2 = document.createElement('div');
     let div3 = document.createElement('div');
     let div4 = document.createElement('div');
     if (counter<18) {
+        if(playerTargetByHealer!=="")
         innerTab(div0,div1,div2,div3,div4,'tb2',playerTargetByHealer,total,total2 );
+        else{
+            innerTab(div0,div1,div2,div3,div4,'tb2',spellUsed,total,total2 );
+        }
     }
     else if (counter>=18&&counter<35){
         innerTab(div0,div1,div2,div3,div4,'tb3',playerTargetByHealer,total,total2 )
@@ -447,10 +470,10 @@ function openCity(e, Name) {
 }
 
 /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
-var dropdown = document.getElementsByClassName("dropdown-btn");
-var i;
+/*let dropdown = document.getElementsByClassName("dropdown-btn");
 
-for (i = 0; i < dropdown.length; i++) {
+
+for (let i = 0; i < dropdown.length; i++) {
     dropdown[i].addEventListener("click", function() {
         this.classList.toggle("active");
         var dropdownContent = this.nextElementSibling;
@@ -460,13 +483,13 @@ for (i = 0; i < dropdown.length; i++) {
             dropdownContent.style.display = "block";
         }
     });
-}
+}*/
 function innerTab(div0,div1,div2,div3,div4,tb,playerTargetByHealer,total,total2){
 
     div0.className='dropdown-btn';
     div1.innerText = playerTargetByHealer;
     div2.innerText = " Heal : " + total ;
-    div3.innerText = " Overheal : " + (parseInt(total2) - parseInt(total))
+    div3.innerText = " Overheal : " + (parseInt(total2) - parseInt(total));
     div4.innerText = " HA : " + total2;
     document.getElementById('container'+tb).appendChild(div0);
     div0.appendChild(div1);
