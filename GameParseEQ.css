@@ -100,7 +100,6 @@ h2{
 .tab button {
     background-color: inherit;
     float: left;
-    border: none;
     outline: none;
     cursor: pointer;
     padding: 14px 16px;
@@ -128,6 +127,51 @@ h2{
     box-shadow: -1px 1px 2px 1px rgba(71, 66, 70, 0.59);
 }
 .tabcontent div{
-    padding: 4px 6px 0px 6px;
+    padding: 4px 6px 0 6px;
     height: 2.3em;
+}
+/* Fixed sidenav, full height */
+.sidenav {
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    z-index: 1;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+/* Style the sidenav links and the dropdown button */
+.sidenav a, .dropdown-btn {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    /* font-size: 20px;
+     color: #818181;
+    display: block;
+     text-align: left;
+
+     */
+    background: none;
+    width: 100%;
+    cursor: pointer;
+    outline: none;
+}
+
+
+
+/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+.dropdown-container {
+    display: none;
+    padding-left: 8px;
+}
+
+/* Optional: Style the caret down icon */
+
+/* Some media queries for responsiveness */
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+.dropdown-btn div {
+    float: left;
+    width: 20%;
 }
