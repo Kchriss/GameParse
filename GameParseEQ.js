@@ -300,20 +300,19 @@ class Healed {
     }
 }
 
-let input =document.getElementById('radioInputChoice');
-input.step=0.1;
-let choice1 = document.getElementById('Choice1');
-choice1.addEventListener('click', updateBtn);
-let choice2 = document.getElementById('Choice2');
-choice2.addEventListener('click', updateBtn);
-let choice3 = document.getElementById('Choice3');
-choice3.addEventListener('click', updateBtn);
-let choice4 = document.getElementById('Choice4');
-choice4.addEventListener('click', updateBtn);
-let choice5 = document.getElementById('Choice5');
-choice5.addEventListener('click', updateBtn);
-let choice6 = document.getElementById('Choice6');
-choice6.addEventListener('click', updateBtn);
+document.getElementById('radioInputChoice').step=0.1;
+document.getElementById('Choice1')
+    .addEventListener('click', updateBtn);
+document.getElementById('Choice2')
+    .addEventListener('click', updateBtn);
+document.getElementById('Choice3')
+    .addEventListener('click', updateBtn);
+document.getElementById('Choice4')
+    .addEventListener('click', updateBtn);
+document.getElementById('Choice5')
+    .addEventListener('click', updateBtn);
+document.getElementById('Choice6')
+    .addEventListener('click', updateBtn);
 
 function updateBtn() {
 
@@ -366,7 +365,7 @@ function menudropplayers(players,playersList) {
     dropdown.addEventListener("change", addActivityItem, false);
     dropdown.selectedIndex = 0;
     for (let i = 0; i < playersList.length; i++) {
-     let option = document.createElement('option');
+        let option = document.createElement('option');
         option.text = playersList[i];
         option.value = playersList[i];
         dropdown.add(option);
@@ -394,8 +393,8 @@ function addActivityItem(){
         playerTargetByHealer=element;
 
         if(!RegExp("`s").test(element)) {
-                counter++;
-                containerPlayer(targedhealer, playerTargetByHealer, total, total2, counter)
+            counter++;
+            containerPlayer(targedhealer, playerTargetByHealer, total, total2, counter)
         }
 
         total=total2=0;
@@ -406,39 +405,49 @@ function containerPlayer(targedhealer,playerTargetByHealer,total,total2,counter)
         let div = document.createElement('div');
         let br = document.createElement('br');
         div.innerText = playerTargetByHealer + " | " + " Heal : " + total + " |  HA : " + total2;
-        document.getElementById('containertb2').appendChild(div);
-        document.getElementById('containertb2').appendChild(br);
+        document.getElementById('containertb2')
+            .appendChild(div).appendChild(br);
     }
     else if (counter>=18&&counter<35){
         let div = document.createElement('div');
         let br = document.createElement('br');
         div.innerText = playerTargetByHealer + " | " + " Heal : " + total + " |  HA : " + total2;
-        document.getElementById('containertb3').appendChild(div);
-        document.getElementById('containertb3').appendChild(br);
+        document.getElementById('containertb3')
+            .appendChild(div).appendChild(br);
     }
     else if (counter>=35&&counter<52){
         let div = document.createElement('div');
         let br = document.createElement('br');
         div.innerText = playerTargetByHealer + " | " + " Heal : " + total + " |  HA : " + total2;
-        document.getElementById('containertb4').appendChild(div);
-        document.getElementById('containertb4').appendChild(br);
+        document.getElementById('containertb4')
+            .appendChild(div).appendChild(br);
     }
     else if (counter>=52&&counter<69) {
         let div = document.createElement('div');
         let br = document.createElement('br');
         div.innerText = playerTargetByHealer + " | " + " Heal : " + total + " |  HA : " + total2;
-        document.getElementById('containertb5').appendChild(div);
-        document.getElementById('containertb5').appendChild(br);
+        document.getElementById('containertb5')
+            .appendChild(div).appendChild(br);
     }
     else if (counter>=81&&counter<101) {
         let div = document.createElement('div');
         let br = document.createElement('br');
         div.innerText = playerTargetByHealer + " | " + " Heal : " + total + " |  HA : " + total2;
-        document.getElementById('containertb5').appendChild(div);
-        document.getElementById('containertb5').appendChild(br);
+        document.getElementById('containertb7')
+            .appendChild(div).appendChild(br);
     }
 }
-function openCity(evt, Name) {
+document.getElementById('tb2')
+    .addEventListener('click',function(e){openCity(e,'containertb2')});
+document.getElementById('tb3')
+    .addEventListener('click',function(e){openCity(e,'containertb3')});
+document.getElementById('tb4')
+    .addEventListener('click',function(e){openCity(e,'containertb4')});
+document.getElementById('tb5')
+    .addEventListener('click',function(e){openCity(e,'containertb5')});
+document.getElementById('tb7')
+    .addEventListener('click',function(e){openCity(e,'containertb7')});
+function openCity(e, Name) {
     let i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontent");
     for (i = 0; i < tabcontent.length; i++) {
@@ -449,7 +458,7 @@ function openCity(evt, Name) {
         tablinks[i].className = tablinks[i].className.replace(" active", "");
     }
     document.getElementById(Name).style.display = "block";
-    evt.currentTarget.className += " active";
+    e.currentTarget.className += " active";
 }
 
 
@@ -459,7 +468,7 @@ function openCity(evt, Name) {
 
 
 
- !!!!!!! Tabs,pills, dropdown !!!!!
+ !!!!!!! Tabs,pills, dropdown ... asynchrone utiliser des cookies pour eviter d additioner 2 fois le meme fichier... !!!!!
  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!https://www.w3schools.com/howto/howto_js_tabs.asp
  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
