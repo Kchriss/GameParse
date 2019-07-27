@@ -10,7 +10,7 @@ le principe de fonctionnement de l apllication ?
 des explications sur le doc?
 une aider a l utilisateur ??
 un café et l addition ?
-
+>>>>>>> xhr.onreadystatechange piste a suivre ....
 
 
 source
