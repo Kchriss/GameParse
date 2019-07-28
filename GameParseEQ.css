@@ -11,11 +11,9 @@
     color:white;
     font-size: 22px;
 }
-
 .drop_hover {
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.8) inset;
 }
-
 .draggable {
     display: inline-block;
     margin: 20px 10px 10px 20px;
@@ -35,7 +33,6 @@ header{
     background-color: burlywood;
 }
 body{
-
     background-image: url("https://assets-cdn.daybreakgames.com/uploads/dcsclient/000/000/165/301.gif?v=1.0");
     background-repeat: no-repeat ;
     background-position: center;
@@ -44,18 +41,14 @@ body{
 select{
     width: 10em;
 }
-
 #container6{
-
     position:absolute;
     top:5%;
     left: 30%;
     width: 50%;
     height: 90%;
-
-
+    max-height: 100%;
 }
-
 #container1 {
     background-color: aliceblue;
     opacity: 0.8;
@@ -64,9 +57,8 @@ select{
     width: 25%;
     padding: 5px;
     vertical-align: center;
-
 }
-#btn,#healer-dropdown,#healed-dropdown/*,#choiceContainer*/{
+#btn,#healer-dropdown,#healed-dropdown{
     visibility: hidden;
 }
 #radioInputChoice{
@@ -76,16 +68,11 @@ select{
 h2{
     color:white;
 }
-
-
-/* Style the tab */
 .tab {
     overflow: hidden;
     border: 1px solid #ccc;
     background-color: #f1f1f1;
 }
-
-/* Style the buttons inside the tab */
 .tab button {
     background-color: inherit;
     float: left;
@@ -96,33 +83,23 @@ h2{
     font-size: 17px;
     width:20%;
 }
-
-/* Change background color of buttons on hover */
 .tab button:hover {
     background-color: #ddd;
 }
-
-/* Create an active/current tablink class */
 .tab button.active {
     background-color: #ccc;
 }
-
-    /* Style the tab content */
 .tabcontent {
     display: none;
-    size: auto;
     min-height: 0;
-    height: 87%;
-    max-height:90%;
+    height: 95%;
     background-color: aliceblue;
     opacity: 0.8;
     box-shadow: -1px 1px 2px 1px rgba(71, 66, 70, 0.59);
 }
 .tabcontent div{
     padding: 3px 6px 0 6px;
-    /*height: 2em;*/
 }
-/* Fixed sidenav, full height */
 .sidenav {
     height: 100%;
     width: 200px;
@@ -131,32 +108,15 @@ h2{
     overflow-x: hidden;
     padding-top: 20px;
 }
-
-/* Style the sidenav links and the dropdown button */
-.sidenav a/*, .dropdown-btn */{
+.sidenav a{
     padding: 6px 8px 6px 16px;
     text-decoration: none;
-    /* font-size: 20px;
-     color: #818181;
-    display: block;
-     text-align: left;
-
-     */
     background: none;
     height: 5%;
     width: 100%;
     cursor: pointer;
     outline: none;
 }
-
-
-
-/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
-
-
-/* Optional: Style the caret down icon */
-
-/* Some media queries for responsiveness */
 @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
@@ -165,7 +125,7 @@ h2{
     float: left;
     width: 98.5%;
     margin: 0;
- }
+}
 .dropdown-btn {
     height: 2em !important;
     margin: 0;
@@ -177,7 +137,3 @@ h2{
     margin: 0.15%;
     height: 2em !important;
 }
-/*.dropdown-container {
-     display: none;
-     padding-left: 8px;
- }*/
