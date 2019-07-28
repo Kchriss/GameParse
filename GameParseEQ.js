@@ -526,6 +526,13 @@ function tagTb(tb,playerTargetByHealer){
         div10.id=playerTargetByHealer;
         div10.className='dropdown-btn';
         document.getElementById('container'+tb).appendChild(div10);
+        div10.addEventListener('click',function(e){e.preventDefault();  for(let i=0;i<this.children.length;i++){DOMAnimations.slideToggle(this.children[i]);} });
+
+
+
+
+
+
     }
     return div10;
 }
@@ -557,17 +564,15 @@ function tagTb(tb,playerTargetByHealer){
 [Mon Jul 08 22:21:03 2019] Katercat healed Anlak for 48008 (63059) hit points by Spiritual Squall Rk. III. (Critical)
 [Mon Jul 08 22:21:03 2019] Venedar healed Folkken over time for 1128 hit points by Prophet's Gift of the Ruchu. (Lucky Critical)
 
+*/
 
-document.querySelector('.dropdown-btn').addEventlistener('click', function(){
-    DOMAnimations.slideToggle(document.querySelector('#tabcontent'))
-});
 class DOMAnimations {
     /**
      * Masque un élément avec un effet de repli
      * @param {HTMLElement} element
      * @param {Number} duration
      * @returns {Promise<boolean>}
-     *//*
+     **/
     static slideUp (element, duration = 500) {
         return new Promise(function (resolve, reject) {
             element.style.height = element.offsetHeight + 'px';
@@ -593,14 +598,14 @@ class DOMAnimations {
                 resolve(false)
             }, duration)
         })
-    }*/
+    }
 
-    /*
+    /**
      * Affiche un élément avec un effet de dépliement
      * @param {HTMLElement} element
      * @param {Number} duration
      * @returns {Promise<boolean>}
-     *//*
+     **/
     static slideDown (element, duration = 500) {
         return new Promise(function (resolve, reject) {
             element.style.removeProperty('display');
@@ -629,19 +634,19 @@ class DOMAnimations {
                 element.style.removeProperty('transition-property');
             }, duration)
         })
-    }*/
+    }
 
-    /*
+    /**
      * Affiche ou Masque un élément avec un effet de repli
      * @param {HTMLElement} element
      * @param {Number} duration
      * @returns {Promise<boolean>}
-     */
- /*   static slideToggle (element, duration = 500) {
+     **/
+    static slideToggle (element, duration = 500) {
         if (window.getComputedStyle(element).display === 'none') {
             return this.slideDown(element, duration)
         } else {
             return this.slideUp(element, duration)
         }
     }
-}*/
+}
