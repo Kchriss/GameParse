@@ -316,8 +316,8 @@ document.getElementById('Choice6')
 
 function updateBtn() {
 
-    //>>>>> reduction de la tailler du tableau en fonction d'un temp a choisir ... derniere heure.. derniere 6 heure... fichier "entier ... etc....
-    ///// a mettre en place
+    //>>>>> reduction de la taille du tableau en fonction d'un temp a choisir ... derniere heure.. derniere 6 heure... fichier "entier ... etc....
+
     let timeToCheck=0;
     let startCheck=0;
 
@@ -399,7 +399,7 @@ function addActivityItem(){
             spellUsed=elmnt;
             playerTargetByHealer=element;
             if(!RegExp("`s").test(element)) {
-                containerPlayer(spellUsed, "", total, total2, counter,counterSpell, counterspelltotal)
+                containerPlayer(spellUsed, playerTargetByHealer, total, total2, counter,counterSpell,"");
                 total3+=total;
                 total4+=total2;
             }
@@ -410,52 +410,66 @@ function addActivityItem(){
         playerTargetByHealer=element;
         if(!RegExp("`s").test(element)) {
             counter++;
-            containerPlayer("", playerTargetByHealer, total3, total4, counter,0, counterspelltotal)
+            containerPlayer("", playerTargetByHealer, total3, total4, counter,"",counterspelltotal)
         }
         total3=0;
         total4=0;
         counterspelltotal=0;
     });
 }
-function containerPlayer(spellUsed,playerTargetByHealer,total,total2,counter,counterSpell, counterspelltotal) {
+function containerPlayer(spellUsed,playerTargetByHealer,total,total2,counter,counterSpell,counterspelltotal) {
+
+    /*if (document.getElementById(playerTargetByHealer) == null) {
+        var div10 = document.createElement('div');
+        div10.id=playerTargetByHealer;
+        div10.className='dropdown-btn';
+        document.getElementById('containertb2').appendChild(div10);
+    }*/
+
     let div0 = document.createElement('div');
     let div1 = document.createElement('div');
     let div2 = document.createElement('div');
     let div3 = document.createElement('div');
     let div4 = document.createElement('div');
     if (counter<18) {
-        if(playerTargetByHealer!=="")
-        innerTab(div0,div1,div2,div3,div4,'tb2',playerTargetByHealer,total,total2,counter,counterSpell, counterspelltotal );
+        let div10=tagTb('tb2',playerTargetByHealer);
+
+        if(spellUsed!=="")
+            innerTab(div0,div10,div1,div2,div3,div4,'tb2',playerTargetByHealer,spellUsed,total,total2,counter,counterSpell,"" );
         else{
-            innerTab(div0,div1,div2,div3,div4,'tb2',spellUsed,total,total2,counter,counterSpell, counterspelltotal );
+            innerTab(div0,div10,div1,div2,div3,div4,'tb2',playerTargetByHealer,"",total,total2,counter,"",counterspelltotal );
         }
     }
     else if (counter>=18&&counter<35){
-        if(playerTargetByHealer!=="")
-            innerTab(div0,div1,div2,div3,div4,'tb3',playerTargetByHealer,total,total2,counter,counterSpell, counterspelltotal );
+        let div10=tagTb('tb3',playerTargetByHealer);
+        if(spellUsed!=="")
+            innerTab(div0,div10,div1,div2,div3,div4,'tb3',playerTargetByHealer,spellUsed,total,total2,counter,counterSpell,"" );
         else{
-            innerTab(div0,div1,div2,div3,div4,'tb3',spellUsed,total,total2,counter,counterSpell, counterspelltotal );
+            innerTab(div0,div10,div1,div2,div3,div4,'tb3',playerTargetByHealer,"",total,total2,counter,"",counterspelltotal );
         }
     }
     else if (counter>=35&&counter<52){
-        if(playerTargetByHealer!=="")
-            innerTab(div0,div1,div2,div3,div4,'tb4',playerTargetByHealer,total,total2,counter,counterSpell, counterspelltotal );
+        let div10=tagTb('tb4',playerTargetByHealer);
+        if(spellUsed!=="")
+            innerTab(div0,div10,div1,div2,div3,div4,'tb4',playerTargetByHealer,spellUsed,total,total2,counter,counterSpell,"" );
         else{
-            innerTab(div0,div1,div2,div3,div4,'tb4',spellUsed,total,total2,counter,counterSpell, counterspelltotal );
+            innerTab(div0,div10,div1,div2,div3,div4,'tb4',playerTargetByHealer,"",total,total2,counter,"",counterspelltotal );
         }
     }
     else if (counter>=52&&counter<69) {
-        if(playerTargetByHealer!=="")
-            innerTab(div0,div1,div2,div3,div4,'tb5',playerTargetByHealer,total,total2,counter,counterSpell, counterspelltotal );
+        let div10=tagTb('tb5',playerTargetByHealer);
+        if(spellUsed!=="")
+            innerTab(div0,div10,div1,div2,div3,div4,'tb5',playerTargetByHealer,spellUsed,total,total2,counter,counterSpell,"" );
         else{
-            innerTab(div0,div1,div2,div3,div4,'tb5',spellUsed,total,total2,counter,counterSpell, counterspelltotal );
+            innerTab(div0,div10,div1,div2,div3,div4,'tb5',playerTargetByHealer,"",total,total2,counter,"",counterspelltotal );
         }
     }
     else if (counter>=81&&counter<101) {
-        if(playerTargetByHealer!=="")
-            innerTab(div0,div1,div2,div3,div4,'tb7',playerTargetByHealer,total,total2,counter,counterSpell, counterspelltotal);
+        let div10=tagTb('tb7',playerTargetByHealer);
+        if(spellUsed!=="")
+            innerTab(div0,div10,div1,div2,div3,div4,'tb7',playerTargetByHealer,spellUsed,total,total2,counter,counterSpell,"" );
         else{
-            innerTab(div0,div1,div2,div3,div4,'tb7',spellUsed,total,total2,counter,counterSpel, counterspelltotal );
+            innerTab(div0,div10,div1,div2,div3,div4,'tb7',playerTargetByHealer,"",total,total2,counter,"",counterspelltotal );
         }
     }
 }
@@ -499,29 +513,25 @@ for (let i = 0; i < dropdown.length; i++) {
         https://www.grafikart.fr/tutoriels/slide-javascript-1016
     });
 }*/
-function innerTab(div0,div1,div2,div3,div4,tb,playerTargetByHealer,total,total2,counter,counterSpell, counterspelltotal){
+function innerTab(div0,div10,div1,div2,div3,div4,tb,playerTargetByHealer,spellUsed,total,total2,counter,counterSpell, counterspelltotal){
 
-    div0.className='dropdown-btn';
-    if(counterSpell!==0){
-        div1.innerText = playerTargetByHealer+" "+ counterSpell;
+        //div0.className='dropdown-btn';
+    if(counterSpell!==""){
+        div1.innerText = spellUsed+" "+ counterSpell;
         div2.innerText = " Heal : " + total ;
         div3.innerText = " Overheal : " + (parseInt(total2) - parseInt(total));
         div4.innerText = " HA : " + total2;
-        document.getElementById('container'+tb).appendChild(div0);
+        document.getElementById(playerTargetByHealer).appendChild(div0);
         div0.appendChild(div1);
         div0.appendChild(div2);
         div0.appendChild(div3);
-        div0.appendChild(div4);
-
-
-
-    }
+        div0.appendChild(div4);}
     else{
         div1.innerText = playerTargetByHealer+" "+ counterspelltotal;
         div2.innerText = " Heal : " + total ;
         div3.innerText = " Overheal : " + (parseInt(total2) - parseInt(total));
         div4.innerText = " HA : " + total2;
-        document.getElementById('container'+tb).appendChild(div0);
+        document.getElementById(playerTargetByHealer).appendChild(div0);
         div0.appendChild(div1);
         div0.appendChild(div2);
         div0.appendChild(div3);
@@ -530,11 +540,19 @@ function innerTab(div0,div1,div2,div3,div4,tb,playerTargetByHealer,total,total2,
 
 }
 
+function tagTb(tb,playerTargetByHealer){
+   let div10;
+    if (document.getElementById(playerTargetByHealer) == null) {
+        div10 = document.createElement('div');
+        div10.id=playerTargetByHealer;
+        div10.className='dropdown-btn';
+        document.getElementById('container'+tb).appendChild(div10);
 
+    }
+    return div10;
+}
 //drop zone for file event dragover and drop needed to get file data
 /*
-
-
 
 
  !!!!!!! Tabs,pills, dropdown ... asynchrone utiliser des cookies pour eviter d additioner 2 fois le meme fichier... !!!!!

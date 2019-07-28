@@ -56,26 +56,15 @@ select{
 
 }
 
-#parseview{
-
-    position:absolute;
-    top:10%;
-    left: 30%;
-    width: 50%;
-    height:75%;
-    background-color: aliceblue;
-    opacity: 0.8;
-    box-shadow: -1px 1px 2px 1px rgba(71, 66, 70, 0.59);
-
-}
 #container1 {
     background-color: aliceblue;
     opacity: 0.8;
     box-shadow: -1px 1px 2px 1px rgba(71, 66, 70, 0.59);
     left: 30%;
-    width: 26%;
+    width: 25%;
     padding: 5px;
     vertical-align: center;
+
 }
 #btn,#healer-dropdown,#healed-dropdown/*,#choiceContainer*/{
     visibility: hidden;
@@ -144,7 +133,7 @@ h2{
 }
 
 /* Style the sidenav links and the dropdown button */
-.sidenav a, .dropdown-btn {
+.sidenav a/*, .dropdown-btn */{
     padding: 6px 8px 6px 16px;
     text-decoration: none;
     /* font-size: 20px;
@@ -163,10 +152,7 @@ h2{
 
 
 /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
-.dropdown-container {
-    display: none;
-    padding-left: 8px;
-}
+
 
 /* Optional: Style the caret down icon */
 
@@ -175,10 +161,23 @@ h2{
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
 }
-.dropdown-btn div {
+.dropdown-btn>div {
     float: left;
-    height:87.5%;
-    width: 22.5%;
     box-shadow: -1px 1px 2px 1px rgba(71, 66, 70, 0.59);
     margin: 0.35%;
+    width: 97.5%;
+ }
+.dropdown-btn {
+    height: 3em !important;
 }
+.dropdown-btn>div>div{
+    float: left;
+    width: 23%;
+    box-shadow: -1px 1px 2px 1px rgba(71, 66, 70, 0.59);
+    margin: 0.25%;
+    height: 2.3em !important;
+}
+/*.dropdown-container {
+     display: none;
+     padding-left: 8px;
+ }*/
