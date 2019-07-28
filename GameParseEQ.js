@@ -331,7 +331,6 @@ function updateBtn() {
     {
         let onChoice = parseFloat(document.getElementById('radioInputChoice').value);
         timeToCheck = logTimerLastEntry-(3600000*onChoice);
-        console.log(onChoice)
     }
     else
     {
@@ -423,16 +422,15 @@ function containerPlayer(spellUsed,playerTargetByHealer,total,total2,counter,cou
     let div2 = document.createElement('div');
     let div3 = document.createElement('div');
     let div4 = document.createElement('div');
-    if (counter<18) {
+    if (counter<17) {
         let div10=tagTb('tb2',playerTargetByHealer);
-
         if(spellUsed!=="")
             innerTab(div0,div10,div1,div2,div3,div4,'tb2',playerTargetByHealer,spellUsed,total,total2,counter,counterSpell,"" );
         else{
             innerTab(div0,div10,div1,div2,div3,div4,'tb2',playerTargetByHealer,"",total,total2,counter,"",counterspelltotal );
         }
     }
-    else if (counter>=18&&counter<35){
+    else if (counter>=17&&counter<35){
         let div10=tagTb('tb3',playerTargetByHealer);
         if(spellUsed!=="")
             innerTab(div0,div10,div1,div2,div3,div4,'tb3',playerTargetByHealer,spellUsed,total,total2,counter,counterSpell,"" );
@@ -440,7 +438,7 @@ function containerPlayer(spellUsed,playerTargetByHealer,total,total2,counter,cou
             innerTab(div0,div10,div1,div2,div3,div4,'tb3',playerTargetByHealer,"",total,total2,counter,"",counterspelltotal );
         }
     }
-    else if (counter>=35&&counter<52){
+    else if (counter>=35&&counter<53){
         let div10=tagTb('tb4',playerTargetByHealer);
         if(spellUsed!=="")
             innerTab(div0,div10,div1,div2,div3,div4,'tb4',playerTargetByHealer,spellUsed,total,total2,counter,counterSpell,"" );
@@ -448,7 +446,7 @@ function containerPlayer(spellUsed,playerTargetByHealer,total,total2,counter,cou
             innerTab(div0,div10,div1,div2,div3,div4,'tb4',playerTargetByHealer,"",total,total2,counter,"",counterspelltotal );
         }
     }
-    else if (counter>=52&&counter<69) {
+    else if (counter>=53&&counter<71) {
         let div10=tagTb('tb5',playerTargetByHealer);
         if(spellUsed!=="")
             innerTab(div0,div10,div1,div2,div3,div4,'tb5',playerTargetByHealer,spellUsed,total,total2,counter,counterSpell,"" );
@@ -456,7 +454,7 @@ function containerPlayer(spellUsed,playerTargetByHealer,total,total2,counter,cou
             innerTab(div0,div10,div1,div2,div3,div4,'tb5',playerTargetByHealer,"",total,total2,counter,"",counterspelltotal );
         }
     }
-    else if (counter>=81&&counter<101) {
+    else if (counter>=71&&counter<89) {
         let div10=tagTb('tb7',playerTargetByHealer);
         if(spellUsed!=="")
             innerTab(div0,div10,div1,div2,div3,div4,'tb7',playerTargetByHealer,spellUsed,total,total2,counter,counterSpell,"" );
@@ -490,21 +488,8 @@ function openCity(e, Name) {
 }
 
 /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
-/*let dropdown = document.getElementsByClassName("dropdown-btn");
 
 
-for (let i = 0; i < dropdown.length; i++) {
-    dropdown[i].addEventListener("click", function() {
-        this.classList.toggle("active");
-        var dropdownContent = this.nextElementSibling;
-        if (dropdownContent.style.display === "block") {
-            dropdownContent.style.display = "none";
-        } else {
-            dropdownContent.style.display = "block";
-        }
-
-    });
-}*/
 //https://www.grafikart.fr/tutoriels/slide-javascript-1016
 function innerTab(div0,div10,div1,div2,div3,div4,tb,playerTargetByHealer,spellUsed,total,total2,counter,counterSpell, counterspelltotal){
 
@@ -518,9 +503,11 @@ function innerTab(div0,div10,div1,div2,div3,div4,tb,playerTargetByHealer,spellUs
         div0.appendChild(div1);
         div0.appendChild(div2);
         div0.appendChild(div3);
-        div0.appendChild(div4);}
+        div0.appendChild(div4);
+        div0.style.display="none"
+    }
     else{
-        div1.innerText = playerTargetByHealer+" "+ counterspelltotal;
+        div1.innerText = playerTargetByHealer+" | heal received : "+ counterspelltotal;
         div2.innerText = " Heal : " + total ;
         div3.innerText = " Overheal : " + (parseInt(total2) - parseInt(total));
         div4.innerText = " HA : " + total2;

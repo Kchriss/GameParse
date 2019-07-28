@@ -112,14 +112,14 @@ h2{
     display: none;
     size: auto;
     min-height: 0;
-    height: 86%;
+    height: 87%;
     max-height:90%;
     background-color: aliceblue;
     opacity: 0.8;
     box-shadow: -1px 1px 2px 1px rgba(71, 66, 70, 0.59);
 }
 .tabcontent div{
-    padding: 4px 6px 0 6px;
+    padding: 3px 6px 0 6px;
     /*height: 2em;*/
 }
 /* Fixed sidenav, full height */
@@ -163,19 +163,19 @@ h2{
 }
 .dropdown-btn>div {
     float: left;
-    /*box-shadow: -1px 1px 2px 1px rgba(71, 66, 70, 0.59);
-    margin: 0.35%;*/
     width: 98.5%;
+    margin: 0;
  }
 .dropdown-btn {
-    height: 3em !important;
+    height: 2em !important;
+    margin: 0;
 }
 .dropdown-btn>div>div{
     float: left;
     width: 23.1%;
     box-shadow: -1px 1px 2px 1px rgba(71, 66, 70, 0.59);
-    margin: 0.25%;
-    height: 2.3em !important;
+    margin: 0.15%;
+    height: 2em !important;
 }
 /*.dropdown-container {
      display: none;
