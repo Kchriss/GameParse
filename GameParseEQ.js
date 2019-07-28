@@ -390,7 +390,6 @@ function addActivityItem(){
         mySet4.forEach(function(elmnt) {//par spell
            let mySet5= mySet3.filter(it => new RegExp(elmnt).test(it.spell));
             for (let i = 0; i < mySet5.length; i++) {
-                console.log(mySet5[i].Heal)//loop through the array
                 total += mySet5[i].Heal;  //Do the math!
                 total2 += mySet5[i].overheal;
                 counterspelltotal++;
@@ -418,13 +417,6 @@ function addActivityItem(){
     });
 }
 function containerPlayer(spellUsed,playerTargetByHealer,total,total2,counter,counterSpell,counterspelltotal) {
-
-    /*if (document.getElementById(playerTargetByHealer) == null) {
-        var div10 = document.createElement('div');
-        div10.id=playerTargetByHealer;
-        div10.className='dropdown-btn';
-        document.getElementById('containertb2').appendChild(div10);
-    }*/
 
     let div0 = document.createElement('div');
     let div1 = document.createElement('div');
@@ -510,9 +502,10 @@ for (let i = 0; i < dropdown.length; i++) {
         } else {
             dropdownContent.style.display = "block";
         }
-        https://www.grafikart.fr/tutoriels/slide-javascript-1016
+
     });
 }*/
+//https://www.grafikart.fr/tutoriels/slide-javascript-1016
 function innerTab(div0,div10,div1,div2,div3,div4,tb,playerTargetByHealer,spellUsed,total,total2,counter,counterSpell, counterspelltotal){
 
         //div0.className='dropdown-btn';
@@ -531,14 +524,13 @@ function innerTab(div0,div10,div1,div2,div3,div4,tb,playerTargetByHealer,spellUs
         div2.innerText = " Heal : " + total ;
         div3.innerText = " Overheal : " + (parseInt(total2) - parseInt(total));
         div4.innerText = " HA : " + total2;
-        document.getElementById(playerTargetByHealer).appendChild(div0);
+        document.getElementById(playerTargetByHealer).insertAdjacentElement("afterbegin", div0);
         div0.appendChild(div1);
         div0.appendChild(div2);
         div0.appendChild(div3);
         div0.appendChild(div4);
-    }
 
-}
+}}
 
 function tagTb(tb,playerTargetByHealer){
    let div10;
@@ -547,6 +539,8 @@ function tagTb(tb,playerTargetByHealer){
         div10.id=playerTargetByHealer;
         div10.className='dropdown-btn';
         document.getElementById('container'+tb).appendChild(div10);
+
+
 
     }
     return div10;
