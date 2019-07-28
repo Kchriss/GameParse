@@ -539,9 +539,6 @@ function tagTb(tb,playerTargetByHealer){
         div10.id=playerTargetByHealer;
         div10.className='dropdown-btn';
         document.getElementById('container'+tb).appendChild(div10);
-
-
-
     }
     return div10;
 }
