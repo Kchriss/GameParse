@@ -527,12 +527,6 @@ function tagTb(tb,playerTargetByHealer){
         div10.className='dropdown-btn';
         document.getElementById('container'+tb).appendChild(div10);
         div10.addEventListener('click',function(e){e.preventDefault();  for(let i=0;i<this.children.length;i++){DOMAnimations.slideToggle(this.children[i]);} });
-
-
-
-
-
-
     }
     return div10;
 }
