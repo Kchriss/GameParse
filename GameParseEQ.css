@@ -93,9 +93,9 @@ h2{
     display: none;
     min-height: 0;
     height: 95%;
-    background-color: aliceblue;
+   /* background-color: aliceblue;
     opacity: 0.8;
-    box-shadow: -1px 1px 2px 1px rgba(71, 66, 70, 0.59);
+    box-shadow: -1px 1px 2px 1px rgba(71, 66, 70, 0.59);*/
 }
 .tabcontent div{
     padding: 3px 6px 0 6px;
@@ -127,13 +127,13 @@ h2{
     margin: 0;
 }
 .dropdown-btn {
-    height: 2em !important;
+    height: 2.1em !important;
     margin: 0;
 }
 .dropdown-btn>div>div{
     float: left;
     width: 23.1%;
-    box-shadow: -1px 1px 2px 1px rgba(71, 66, 70, 0.59);
+    box-shadow: -1.5px 2px 2px 1px rgba(71, 66, 70, 0.59);
     margin: 0.15%;
-    height: 2em !important;
+    height: 2.1em !important;
 }
