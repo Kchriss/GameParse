@@ -544,10 +544,13 @@ function innerTab(div0,div10,div1,div2,div3,div4,tb,playerTargetByHealer,spellUs
     //div0.className='dropdown-btn';
     if(counterSpell!==""){
         div1.innerText = spellUsed+" "+ counterSpell;
-        div1.style.backgroundColor= "#ffdfff";
+        div1.style.backgroundColor= "#ffc8c8";
         div2.innerText = " Heal : " + total ;
+        div2.style.backgroundColor= "#ffbebe";
         div3.innerText = " Overheal : " + (parseInt(total2) - parseInt(total));
+        div3.style.backgroundColor= "#ffb4b4";
         div4.innerText = " HA : " + total2;
+        div4.style.backgroundColor= "#ffaaaa";
         document.getElementById(playerTargetByHealer).appendChild(div0);
         div0.appendChild(div1);
         div0.appendChild(div2);
@@ -557,9 +560,13 @@ function innerTab(div0,div10,div1,div2,div3,div4,tb,playerTargetByHealer,spellUs
     }
     else{
         div1.innerText = playerTargetByHealer+" | heal received : "+ counterspelltotal;
+        div1.style.backgroundColor= "#b4b4ff";
         div2.innerText = " Heal : " + total ;
+        div2.style.backgroundColor= "#bebeff";
         div3.innerText = " Overheal : " + (parseInt(total2) - parseInt(total));
+        div3.style.backgroundColor= "#c8c8ff";
         div4.innerText = " HA : " + total2;
+        div4.style.backgroundColor= "#d2d2ff";
         document.getElementById(playerTargetByHealer).insertAdjacentElement("afterbegin", div0);
         div0.appendChild(div1);
         div0.appendChild(div2);
