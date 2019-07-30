@@ -4,6 +4,7 @@ let files;
 let tabFile;
 let logHeal=[];
 let timeFilter=[];
+let text1,text2,text3=0;
 let dropper = document.querySelector('#dropper');
 
 //drop zone for file event dragover and drop needed to get file data
@@ -239,7 +240,8 @@ class Healed {
         }
         return this.playerHealed;
     }
-
+   // [Mon Jul 29 18:50:09 2019] Makma healed Schalimar over time for 0 (25000) hit points by Celestial Regeneration XXXIII. (Critical)
+   // [Mon Jul 29 18:50:09 2019] Koldanar is praised. Koldanar healed himself for 0 (62112) hit points by Censure Heal III. (Critical)
     TypeOfHeal() {
         this.curser_5 = this.tabFile[this.i]
             .indexOf('for', this.curser_4 + 1);
@@ -284,7 +286,7 @@ class Healed {
     }
 
     SpellsUsed() {
-        let SpellsCasted = "";
+        let SpellsCasted ="";
         this.curser_9 = this.tabFile[this.i]
             .indexOf('by', this.curser_8);
 
@@ -293,23 +295,22 @@ class Healed {
                 .indexOf(' ', this.curser_9);
             this.curser_11 = this.tabFile[this.i]
                 .indexOf('.', this.curser_10);
-            let spellRkChecking = this.tabFile[this.i]
-                .substr(this.curser_10, this.curser_11 - this.curser_10)
-                .match(/rk/gi);
-            if (spellRkChecking !== null && spellRkChecking == "Rk") {
-                this.curser_12 = this.tabFile[this.i]
-                    .indexOf('.', this.curser_11 + 1);
+            this.curser_12 = this.tabFile[this.i]
+                .indexOf('.', this.curser_11 + 1);
+            if (this.curser_12 !== -1 ) {
+
                 SpellsCasted = this.tabFile[this.i]
                     .substr(this.curser_10, this.curser_12 - this.curser_10)
                     .trim();
-            } else {
+            }
+            else {
                 SpellsCasted = this.tabFile[this.i]
                     .substr(this.curser_10, this.curser_11 - this.curser_10)
                     .trim();
-            }
+          }
 
         } else {
-            SpellsCasted = ""
+            SpellsCasted = "NaS";
         }
         return SpellsCasted;
     }
@@ -385,7 +386,7 @@ function updateBtn() {
         timeToCheck = logTimerLastEntry-(3600000*this.value);
     }
 
-    for (let j = 1; j < lastentry; j++)
+    for (let j = 0; j < lastentry; j++)
     {  //loop through the array
 
         if(logHeal[j].logDate>=timeToCheck)
@@ -394,7 +395,7 @@ function updateBtn() {
             break;
         }
     }
-    timeFilter = logHeal.slice(startCheck,lastentry);
+    timeFilter = logHeal.slice(startCheck,lastentry+1);
     let listOfPlayerhealed = [...new Set(timeFilter.map(x => x.healed))].sort();
     let listOfPlayershealer = [...new Set(timeFilter.map(y => y.healer))].sort();
     menudropplayers('healed',listOfPlayerhealed);
@@ -409,6 +410,7 @@ function menudropplayers(players,playersList) {
     dropdown.add(Option);
     dropdown.style.visibility = "visible";
     dropdown.selectedIndex = 0;
+
     dropdown.addEventListener("change", addActivityItem, false);
     for (let i = 0; i < playersList.length; i++) {
         let option = document.createElement('option');
@@ -418,15 +420,22 @@ function menudropplayers(players,playersList) {
     }
 }
 function addActivityItem(){
+    text3=0;
     let e = document.getElementById('healer-dropdown');
     let targedhealer = e.options[e.selectedIndex].value;
     let mySet= timeFilter.filter(it => new RegExp(targedhealer).test(it.healer));
     let mySet2= [...new Set(mySet.map(x => x.healed))].sort();
+    text1 = mySet2.length;
+    text2 = targedhealer;
+
     document.getElementById('containertb2').innerText = "";
     document.getElementById('containertb3').innerText = "";
     document.getElementById('containertb4').innerText = "";
     document.getElementById('containertb5').innerText = "";
     document.getElementById('containertb7').innerText = "";
+    document.getElementById('Tpl').innerText = "";
+
+
     let total = 0,total2 = 0,counter=0,total3=0,total4=0,counterSpell=0,counterspelltotal=0;
     let playerTargetByHealer="";
     let spellUsed="";
@@ -437,30 +446,37 @@ function addActivityItem(){
             let mySet5= mySet3.filter(it => new RegExp(elmnt).test(it.spell));
             for (let i = 0; i < mySet5.length; i++) {
                 total += mySet5[i].Heal;  //Do the math!
+                text3 += mySet5[i].Heal;
                 total2 += mySet5[i].overheal;
                 counterspelltotal++;
                 counterSpell++;
+                spellUsed=elmnt;
             }
-            spellUsed=elmnt;
+
             playerTargetByHealer=element;
             if(!RegExp("`s").test(element)) {
                 containerPlayer(spellUsed, playerTargetByHealer, total, total2, counter,counterSpell,"");
                 total3+=total;
                 total4+=total2;
+
             }
+
             counterSpell=0;
             total=0;
             total2=0;
         });
+
         playerTargetByHealer=element;
         if(!RegExp("`s").test(element)) {
             counter++;
             containerPlayer("", playerTargetByHealer, total3, total4, counter,"",counterspelltotal)
         }
+
         total3=0;
         total4=0;
         counterspelltotal=0;
     });
+
 }
 function containerPlayer(spellUsed,playerTargetByHealer,total,total2,counter,counterSpell,counterspelltotal) {
 
@@ -480,9 +496,9 @@ function containerPlayer(spellUsed,playerTargetByHealer,total,total2,counter,cou
     else if (counter>=17&&counter<35){
         let div10=tagTb('tb3',playerTargetByHealer);
         if(spellUsed!=="")
-            innerTab(div0,div10,div1,div2,div3,div4,'tb3',playerTargetByHealer,spellUsed,total,total2,counter,counterSpell,"" );
+            innerTab(div0,div10,div1,div2,div3,div4,'tb3',playerTargetByHealer,spellUsed,total,total2,counter,counterSpell,"");
         else{
-            innerTab(div0,div10,div1,div2,div3,div4,'tb3',playerTargetByHealer,"",total,total2,counter,"",counterspelltotal );
+            innerTab(div0,div10,div1,div2,div3,div4,'tb3',playerTargetByHealer,"",total,total2,counter,"",counterspelltotal);
         }
     }
     else if (counter>=35&&counter<53){
@@ -490,7 +506,7 @@ function containerPlayer(spellUsed,playerTargetByHealer,total,total2,counter,cou
         if(spellUsed!=="")
             innerTab(div0,div10,div1,div2,div3,div4,'tb4',playerTargetByHealer,spellUsed,total,total2,counter,counterSpell,"" );
         else{
-            innerTab(div0,div10,div1,div2,div3,div4,'tb4',playerTargetByHealer,"",total,total2,counter,"",counterspelltotal );
+            innerTab(div0,div10,div1,div2,div3,div4,'tb4',playerTargetByHealer,"",total,total2,counter,"",counterspelltotal);
         }
     }
     else if (counter>=53&&counter<71) {
@@ -498,7 +514,7 @@ function containerPlayer(spellUsed,playerTargetByHealer,total,total2,counter,cou
         if(spellUsed!=="")
             innerTab(div0,div10,div1,div2,div3,div4,'tb5',playerTargetByHealer,spellUsed,total,total2,counter,counterSpell,"" );
         else{
-            innerTab(div0,div10,div1,div2,div3,div4,'tb5',playerTargetByHealer,"",total,total2,counter,"",counterspelltotal );
+            innerTab(div0,div10,div1,div2,div3,div4,'tb5',playerTargetByHealer,"",total,total2,counter,"",counterspelltotalt );
         }
     }
     else if (counter>=71&&counter<89) {
@@ -541,13 +557,13 @@ function openCity(e, Name) {
 
 function innerTab(div0,div10,div1,div2,div3,div4,tb,playerTargetByHealer,spellUsed,total,total2,counter,counterSpell, counterspelltotal){
 
-    //div0.className='dropdown-btn';
+
     if(counterSpell!==""){
         div1.innerText = spellUsed+" "+ counterSpell;
         div1.style.backgroundColor= "#ffc8c8";
         div2.innerText = " Heal : " + total ;
         div2.style.backgroundColor= "#ffbebe";
-        div3.innerText = " Overheal : " + (parseInt(total2) - parseInt(total));
+        if((parseInt(total2))>(parseInt(total))){div3.innerText = " Overheal : " + (parseInt(total2) - parseInt(total));}
         div3.style.backgroundColor= "#ffb4b4";
         div4.innerText = " HA : " + total2;
         div4.style.backgroundColor= "#ffaaaa";
@@ -557,13 +573,13 @@ function innerTab(div0,div10,div1,div2,div3,div4,tb,playerTargetByHealer,spellUs
         div0.appendChild(div3);
         div0.appendChild(div4);
         div0.style.display="none"
-    }
-    else{
+        }
+    else {//if(test!==1)
         div1.innerText = playerTargetByHealer+" | heal received : "+ counterspelltotal;
         div1.style.backgroundColor= "#b4b4ff";
         div2.innerText = " Heal : " + total ;
         div2.style.backgroundColor= "#bebeff";
-        div3.innerText = " Overheal : " + (parseInt(total2) - parseInt(total));
+        if((parseInt(total2))>(parseInt(total))){div3.innerText = " Overheal : " + (parseInt(total2) - parseInt(total));}
         div3.style.backgroundColor= "#c8c8ff";
         div4.innerText = " HA : " + total2;
         div4.style.backgroundColor= "#d2d2ff";
@@ -572,10 +588,27 @@ function innerTab(div0,div10,div1,div2,div3,div4,tb,playerTargetByHealer,spellUs
         div0.appendChild(div2);
         div0.appendChild(div3);
         div0.appendChild(div4);
-
-    }}
+    }
+    /*else{
+        div1.innerText = playerTargetByHealer+" | heal received : "+ counterspelltotal;
+        div1.style.backgroundColor= "#b4b4ff";
+        div2.innerText = " Heal : " + total ;
+        div2.style.backgroundColor= "#bebeff";
+        div3.innerText = " Overheal : " + (parseInt(total2) - parseInt(total));
+        div3.style.backgroundColor= "#c8c8ff";
+        div4.innerText = " HA : " + total2;
+        div4.style.backgroundColor= "#d2d2ff";
+        document.getElementById(playerTargetByHealer).appendChild(div0);
+        div0.appendChild(div1);
+        div0.appendChild(div2);
+        div0.appendChild(div3);
+        div0.appendChild(div4);
+        div0.style.display="none"
+    }*/
+    document.getElementById('Tpl').innerText = "THE PLAYER "+ text2.toUpperCase() + " HEALED " +text1+" PLAYERS FOR "+ text3;
+}
 function tagTb(tb,playerTargetByHealer){
-    let div10;
+
     if (document.getElementById(playerTargetByHealer) == null) {
         div10 = document.createElement('div');
         div10.id=playerTargetByHealer;
@@ -589,7 +622,7 @@ function tagTb(tb,playerTargetByHealer){
             }
         });
     }
-    return div10;
+
 }
 
 class DOMAnimations {
@@ -703,5 +736,36 @@ class DOMAnimations {
 [Sun Jun 30 16:17:09 2019] Balthus healed Uaru for 0 (14323) hit points by Divine Rain III.
 [Mon Jul 08 22:21:03 2019] Katercat healed Anlak for 48008 (63059) hit points by Spiritual Squall Rk. III. (Critical)
 [Mon Jul 08 22:21:03 2019] Venedar healed Folkken over time for 1128 hit points by Prophet's Gift of the Ruchu. (Lucky Critical)
+ SpellsUsed() {
+        let SpellsCasted ="";
+        this.curser_9 = this.tabFile[this.i]
+            .indexOf('by', this.curser_8);
 
+        if (this.curser_9 > 0 && this.curser_9 !== null) {
+            this.curser_10 = this.tabFile[this.i]
+                .indexOf(' ', this.curser_9);
+            this.curser_11 = this.tabFile[this.i]
+                .indexOf('.', this.curser_10);
+            let spellRkChecking = this.tabFile[this.i]
+                .substr(this.curser_10, this.curser_11 - this.curser_10)
+                .match(/rk/gi);
+    ;
+            if (spellRkChecking !== null || spellRkChecking === "Rk") {
+                this.curser_12 = this.tabFile[this.i]
+                    .indexOf('.', this.curser_11 + 1);
+                SpellsCasted = this.tabFile[this.i]
+                    .substr(this.curser_10, this.curser_12 - this.curser_10)
+                    .trim();
+            }
+            else {
+                SpellsCasted = this.tabFile[this.i]
+                    .substr(this.curser_10, this.curser_11 - this.curser_10)
+                    .trim();
+            }
+
+        } else {
+            SpellsCasted = "NaS";
+        }
+        return SpellsCasted;
+    }
 */
