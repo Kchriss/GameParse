@@ -425,7 +425,7 @@ function addActivityItem(){
     let targedhealer = e.options[e.selectedIndex].value;
     let mySet= timeFilter.filter(it => new RegExp(targedhealer).test(it.healer));
     let mySet2= [...new Set(mySet.map(x => x.healed))].sort();
-    text1 = mySet2.length;
+
     text2 = targedhealer;
 
     document.getElementById('containertb2').innerText = "";
@@ -469,6 +469,7 @@ function addActivityItem(){
         playerTargetByHealer=element;
         if(!RegExp("`s").test(element)) {
             counter++;
+            text1 = counter;
             containerPlayer("", playerTargetByHealer, total3, total4, counter,"",counterspelltotal)
         }
 
@@ -605,7 +606,8 @@ function innerTab(div0,div10,div1,div2,div3,div4,tb,playerTargetByHealer,spellUs
         div0.appendChild(div4);
         div0.style.display="none"
     }*/
-    document.getElementById('Tpl').innerText = "THE PLAYER "+ text2.toUpperCase() + " HEALED " +text1+" PLAYERS FOR "+ text3;
+    let text4= new Intl.NumberFormat().format(text3)
+    document.getElementById('Tpl').innerText = "THE PLAYER "+ text2.toUpperCase() + " HEALED " +text1+" PLAYERS FOR "+ text4;
 }
 function tagTb(tb,playerTargetByHealer){
 
