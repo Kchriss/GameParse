@@ -363,7 +363,6 @@ document.getElementById('Choice6')
     .addEventListener('click', updateBtn);
 
 function updateBtn() {
-
     //>>>>> reduction de la taille du tableau en fonction d'un temp a choisir ... derniere heure.. derniere 6 heure... fichier "entier ... etc....
 
     let timeToCheck=0;
@@ -452,7 +451,6 @@ function addActivityItem(){
                 counterSpell++;
                 spellUsed=elmnt;
             }
-
             playerTargetByHealer=element;
             if(!RegExp("`s").test(element)) {
                 containerPlayer(spellUsed, playerTargetByHealer, total, total2, counter,counterSpell,"");
@@ -480,7 +478,6 @@ function addActivityItem(){
 
 }
 function containerPlayer(spellUsed,playerTargetByHealer,total,total2,counter,counterSpell,counterspelltotal) {
-
     let div0 = document.createElement('div');
     let div1 = document.createElement('div');
     let div2 = document.createElement('div');
@@ -590,22 +587,7 @@ function innerTab(div0,div10,div1,div2,div3,div4,tb,playerTargetByHealer,spellUs
         div0.appendChild(div3);
         div0.appendChild(div4);
     }
-    /*else{
-        div1.innerText = playerTargetByHealer+" | heal received : "+ counterspelltotal;
-        div1.style.backgroundColor= "#b4b4ff";
-        div2.innerText = " Heal : " + total ;
-        div2.style.backgroundColor= "#bebeff";
-        div3.innerText = " Overheal : " + (parseInt(total2) - parseInt(total));
-        div3.style.backgroundColor= "#c8c8ff";
-        div4.innerText = " HA : " + total2;
-        div4.style.backgroundColor= "#d2d2ff";
-        document.getElementById(playerTargetByHealer).appendChild(div0);
-        div0.appendChild(div1);
-        div0.appendChild(div2);
-        div0.appendChild(div3);
-        div0.appendChild(div4);
-        div0.style.display="none"
-    }*/
+
     let text4= new Intl.NumberFormat().format(text3)
     document.getElementById('Tpl').innerText = "THE PLAYER "+ text2.toUpperCase() + " HEALED " +text1+" PLAYERS FOR "+ text4;
 }
@@ -738,36 +720,5 @@ class DOMAnimations {
 [Sun Jun 30 16:17:09 2019] Balthus healed Uaru for 0 (14323) hit points by Divine Rain III.
 [Mon Jul 08 22:21:03 2019] Katercat healed Anlak for 48008 (63059) hit points by Spiritual Squall Rk. III. (Critical)
 [Mon Jul 08 22:21:03 2019] Venedar healed Folkken over time for 1128 hit points by Prophet's Gift of the Ruchu. (Lucky Critical)
- SpellsUsed() {
-        let SpellsCasted ="";
-        this.curser_9 = this.tabFile[this.i]
-            .indexOf('by', this.curser_8);
 
-        if (this.curser_9 > 0 && this.curser_9 !== null) {
-            this.curser_10 = this.tabFile[this.i]
-                .indexOf(' ', this.curser_9);
-            this.curser_11 = this.tabFile[this.i]
-                .indexOf('.', this.curser_10);
-            let spellRkChecking = this.tabFile[this.i]
-                .substr(this.curser_10, this.curser_11 - this.curser_10)
-                .match(/rk/gi);
-    ;
-            if (spellRkChecking !== null || spellRkChecking === "Rk") {
-                this.curser_12 = this.tabFile[this.i]
-                    .indexOf('.', this.curser_11 + 1);
-                SpellsCasted = this.tabFile[this.i]
-                    .substr(this.curser_10, this.curser_12 - this.curser_10)
-                    .trim();
-            }
-            else {
-                SpellsCasted = this.tabFile[this.i]
-                    .substr(this.curser_10, this.curser_11 - this.curser_10)
-                    .trim();
-            }
-
-        } else {
-            SpellsCasted = "NaS";
-        }
-        return SpellsCasted;
-    }
 */
