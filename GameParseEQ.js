@@ -416,19 +416,16 @@ function menudropplayers(players,playersList) {
     dropdown.selectedIndex = 0;
     dropdown.addEventListener("change", function(){addActivityItem(dropdown)}, false);
     for (let i = 0; i < playersList.length; i++) {
-        let option = document.createElement('option');
-        option.text = playersList[i];
-        option.value = playersList[i];
-        dropdown.add(option);
+
+        if(!RegExp("`s").test(playersList[i])){
+            let option = document.createElement('option');
+            option.text = playersList[i];
+            option.value = playersList[i];
+            dropdown.add(option);
+        }
+
     }
 }
-
-
-
-
-
-
-
 
 function addActivityItem(element){
     text3=0;
@@ -459,22 +456,16 @@ function addActivityItem(element){
     let total = 0,total2 = 0,counter=0,total3=0,total4=0,counterSpell=0,counterspelltotal=0;
     let playerTargetByHealer="";
     let spellUsed="";
-    mySet2.forEach(function(element) {//par joueur
+    mySet2.forEach(function(el) {//par joueur
         let mySet3;
 
 
         if(e.id==='healer-dropdown'){
-             mySet3= mySet.filter(it => new RegExp(element).test(it.healed));
+             mySet3= mySet.filter(it => new RegExp(el).test(it.healed));
         }
         else if(e.id==='healed-dropdown'){
-            mySet3= mySet.filter(it => new RegExp(element).test(it.healer));
+            mySet3= mySet.filter(it => new RegExp(el).test(it.healer));
         }
-
-
-
-
-
-
 
         let mySet4 = [...new Set(mySet3.map(x => x.spell))].sort();
         mySet4.forEach(function(elmnt) {//par spell
@@ -487,8 +478,8 @@ function addActivityItem(element){
                 counterSpell++;
                 spellUsed=elmnt;
             }
-            playerTargetByHealer=element;
-            if(!RegExp("`s").test(element)) {
+            playerTargetByHealer=el;
+            if(!RegExp("`s").test(el)) {
                 containerPlayer(spellUsed, playerTargetByHealer, total, total2, counter,counterSpell,"",e);
                 total3+=total;
                 total4+=total2;
@@ -500,8 +491,8 @@ function addActivityItem(element){
             total2=0;
         });
 
-        playerTargetByHealer=element;
-        if(!RegExp("`s").test(element)) {
+        playerTargetByHealer=el;
+        if(!RegExp("`s").test(el)) {
             counter++;
             text1 = counter;
             containerPlayer("", playerTargetByHealer, total3, total4, counter,"",counterspelltotal,e)
