@@ -32,12 +32,6 @@ dropper.addEventListener('drop', function (e) {
         // "show must go on " a to do .... split data form each line .... get name player list( check for another way) //  postion after date log
         for (let i = 0; i < tabFile.length; i++) {
             readerdigest(tabFile, i);
-            // note faire une recherche sur healed => pour determiner sa presence et ca position ...
-            // pour faire les substring et le check de la ligne renvoie des donnees extraite dans le tableau
-            // a etudier une tableau par type ??? ... mot cle : healed , slashes , pierces , begins,crushes,backstabs,frenzies,shoots,hits,taken//indexOf('Video' | 'Audio' )
-            // piste a suivre.... cree un fonction du nommer du nom "trouver" pour la gestion du log ...
-            // inserer une pause ?!!
-
         }
     };
     reader.readAsText(files);
@@ -633,7 +627,7 @@ function innerTab(div0, div10, div1, div2, div3, div4, tb, playerTargetByHealer,
 function tagTb(tb, playerTargetByHealer) {
 
     if (document.getElementById(playerTargetByHealer) == null) {
-        div10 = document.createElement('div');
+        let div10 = document.createElement('div');
         div10.id = playerTargetByHealer;
         div10.className = 'dropdown-btn';
         document.getElementById('container' + tb).appendChild(div10);
@@ -732,32 +726,15 @@ class DOMAnimations {
     }
 }
 
-//drop zone for file event dragover and drop needed to get file data
-/*
 
+/*
 
  !!!!!!! Tabs,pills, dropdown ... asynchrone utiliser des cookies pour eviter d additioner 2 fois le meme fichier... !!!!!
  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!https://www.w3schools.com/howto/howto_js_tabs.asp
  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-
-
  !!!!!!! stream et map a voir !!!!!
  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
- logHeal[i]={"id":i,"healer":logHealed.PlayerHealer(),"healed":logHealed.TargedHealed()
-                                    ,"type":logHealed.TypeOfHeal(),"Heal":logHealed.HealAmount(),"overheal":logHealed.OverHeal()
-                                    ,'spell':logHealed.SpellsUsed(),"crit":logHealed.CriticalHitMessage(),"logDate":logHealed.Logtime()};
-
-[Mon Jul 08 22:20:43 2019] Ginormus healed Yashoor`s warder for 0 (69543) hit points by Spiritual Squall Rk. III. (Critical)
-[Mon Jul 08 22:20:43 2019] Bellower healed itself for 0 (76) hit points.
-[Mon Jul 08 22:21:03 2019] Katercat healed Douxreve for 0 (5) hit points by Spiritual Squall Rk. III.
-[Mon Jul 08 22:21:03 2019] Xabober is surrounded by a holy light. Elocin healed Xabober for 1200 (24048) hit points by Hand of Holy Wrath VI Recourse. (Critical)
-[Mon Jul 08 22:21:03 2019] Venedar healed Folkken over time for 1128 hit points by Prophet's Gift of the Ruchu. (Lucky Critical)
-[Mon Jul 08 22:21:03 2019] Djess healed Wulerdar over time for 15758 (22116) hit points by Abundant Healing XLIX. (Lucky Critical)
-[Sun Jun 30 16:17:09 2019] Balthus healed Uaru for 0 (14323) hit points by Divine Rain III.
-[Mon Jul 08 22:21:03 2019] Katercat healed Anlak for 48008 (63059) hit points by Spiritual Squall Rk. III. (Critical)
-[Mon Jul 08 22:21:03 2019] Venedar healed Folkken over time for 1128 hit points by Prophet's Gift of the Ruchu. (Lucky Critical)
 
 */
