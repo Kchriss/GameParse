@@ -400,6 +400,11 @@ function updateBtn() {
     menudropplayers('healed',listOfPlayerhealed);
     menudropplayers('healer',listOfPlayershealer);
 }
+
+
+
+
+
 function menudropplayers(players,playersList) {
     let dropdown = document.getElementById(players + '-dropdown');
     dropdown.length = 0;
@@ -409,8 +414,7 @@ function menudropplayers(players,playersList) {
     dropdown.add(Option);
     dropdown.style.visibility = "visible";
     dropdown.selectedIndex = 0;
-
-    dropdown.addEventListener("change", addActivityItem, false);
+    dropdown.addEventListener("change", function(){addActivityItem(dropdown)}, false);
     for (let i = 0; i < playersList.length; i++) {
         let option = document.createElement('option');
         option.text = playersList[i];
@@ -418,14 +422,31 @@ function menudropplayers(players,playersList) {
         dropdown.add(option);
     }
 }
-function addActivityItem(){
-    text3=0;
-    let e = document.getElementById('healer-dropdown');
-    let targedhealer = e.options[e.selectedIndex].value;
-    let mySet= timeFilter.filter(it => new RegExp(targedhealer).test(it.healer));
-    let mySet2= [...new Set(mySet.map(x => x.healed))].sort();
 
-    text2 = targedhealer;
+
+
+
+
+
+
+
+function addActivityItem(element){
+    text3=0;
+    let e = element;
+    let mySet;
+    let mySet2;
+    let targed = e.options[e.selectedIndex].value;
+    if(e.id==='healer-dropdown'){
+     mySet= timeFilter.filter(it => new RegExp(targed).test(it.healer));
+     mySet2= [...new Set(mySet.map(x => x.healed))].sort();
+    }
+    else if(e.id==='healed-dropdown'){
+         mySet= timeFilter.filter(it => new RegExp(targed).test(it.healed));
+         mySet2= [...new Set(mySet.map(x => x.healer))].sort();
+    }
+
+
+    text2 = targed;
 
     document.getElementById('containertb2').innerText = "";
     document.getElementById('containertb3').innerText = "";
@@ -439,7 +460,22 @@ function addActivityItem(){
     let playerTargetByHealer="";
     let spellUsed="";
     mySet2.forEach(function(element) {//par joueur
-        let mySet3= mySet.filter(it => new RegExp(element).test(it.healed));
+        let mySet3;
+
+
+        if(e.id==='healer-dropdown'){
+             mySet3= mySet.filter(it => new RegExp(element).test(it.healed));
+        }
+        else if(e.id==='healed-dropdown'){
+            mySet3= mySet.filter(it => new RegExp(element).test(it.healer));
+        }
+
+
+
+
+
+
+
         let mySet4 = [...new Set(mySet3.map(x => x.spell))].sort();
         mySet4.forEach(function(elmnt) {//par spell
             let mySet5= mySet3.filter(it => new RegExp(elmnt).test(it.spell));
@@ -453,7 +489,7 @@ function addActivityItem(){
             }
             playerTargetByHealer=element;
             if(!RegExp("`s").test(element)) {
-                containerPlayer(spellUsed, playerTargetByHealer, total, total2, counter,counterSpell,"");
+                containerPlayer(spellUsed, playerTargetByHealer, total, total2, counter,counterSpell,"",e);
                 total3+=total;
                 total4+=total2;
 
@@ -468,7 +504,7 @@ function addActivityItem(){
         if(!RegExp("`s").test(element)) {
             counter++;
             text1 = counter;
-            containerPlayer("", playerTargetByHealer, total3, total4, counter,"",counterspelltotal)
+            containerPlayer("", playerTargetByHealer, total3, total4, counter,"",counterspelltotal,e)
         }
 
         total3=0;
@@ -476,8 +512,11 @@ function addActivityItem(){
         counterspelltotal=0;
     });
 
+
+
+
 }
-function containerPlayer(spellUsed,playerTargetByHealer,total,total2,counter,counterSpell,counterspelltotal) {
+function containerPlayer(spellUsed,playerTargetByHealer,total,total2,counter,counterSpell,counterspelltotal,e) {
     let div0 = document.createElement('div');
     let div1 = document.createElement('div');
     let div2 = document.createElement('div');
@@ -486,41 +525,41 @@ function containerPlayer(spellUsed,playerTargetByHealer,total,total2,counter,cou
     if (counter<17) {
         let div10=tagTb('tb2',playerTargetByHealer);
         if(spellUsed!=="")
-            innerTab(div0,div10,div1,div2,div3,div4,'tb2',playerTargetByHealer,spellUsed,total,total2,counter,counterSpell,"" );
+            innerTab(div0,div10,div1,div2,div3,div4,'tb2',playerTargetByHealer,spellUsed,total,total2,counter,counterSpell,"" ,e);
         else{
-            innerTab(div0,div10,div1,div2,div3,div4,'tb2',playerTargetByHealer,"",total,total2,counter,"",counterspelltotal );
+            innerTab(div0,div10,div1,div2,div3,div4,'tb2',playerTargetByHealer,"",total,total2,counter,"",counterspelltotal,e );
         }
     }
     else if (counter>=17&&counter<35){
         let div10=tagTb('tb3',playerTargetByHealer);
         if(spellUsed!=="")
-            innerTab(div0,div10,div1,div2,div3,div4,'tb3',playerTargetByHealer,spellUsed,total,total2,counter,counterSpell,"");
+            innerTab(div0,div10,div1,div2,div3,div4,'tb3',playerTargetByHealer,spellUsed,total,total2,counter,counterSpell,"",e);
         else{
-            innerTab(div0,div10,div1,div2,div3,div4,'tb3',playerTargetByHealer,"",total,total2,counter,"",counterspelltotal);
+            innerTab(div0,div10,div1,div2,div3,div4,'tb3',playerTargetByHealer,"",total,total2,counter,"",counterspelltotal,e);
         }
     }
     else if (counter>=35&&counter<53){
         let div10=tagTb('tb4',playerTargetByHealer);
         if(spellUsed!=="")
-            innerTab(div0,div10,div1,div2,div3,div4,'tb4',playerTargetByHealer,spellUsed,total,total2,counter,counterSpell,"" );
+            innerTab(div0,div10,div1,div2,div3,div4,'tb4',playerTargetByHealer,spellUsed,total,total2,counter,counterSpell,"",e );
         else{
-            innerTab(div0,div10,div1,div2,div3,div4,'tb4',playerTargetByHealer,"",total,total2,counter,"",counterspelltotal);
+            innerTab(div0,div10,div1,div2,div3,div4,'tb4',playerTargetByHealer,"",total,total2,counter,"",counterspelltotal,e);
         }
     }
     else if (counter>=53&&counter<71) {
         let div10=tagTb('tb5',playerTargetByHealer);
         if(spellUsed!=="")
-            innerTab(div0,div10,div1,div2,div3,div4,'tb5',playerTargetByHealer,spellUsed,total,total2,counter,counterSpell,"" );
+            innerTab(div0,div10,div1,div2,div3,div4,'tb5',playerTargetByHealer,spellUsed,total,total2,counter,counterSpell,"",e );
         else{
-            innerTab(div0,div10,div1,div2,div3,div4,'tb5',playerTargetByHealer,"",total,total2,counter,"",counterspelltotalt );
+            innerTab(div0,div10,div1,div2,div3,div4,'tb5',playerTargetByHealer,"",total,total2,counter,"",counterspelltotalt,e );
         }
     }
     else if (counter>=71&&counter<89) {
         let div10=tagTb('tb7',playerTargetByHealer);
         if(spellUsed!=="")
-            innerTab(div0,div10,div1,div2,div3,div4,'tb7',playerTargetByHealer,spellUsed,total,total2,counter,counterSpell,"" );
+            innerTab(div0,div10,div1,div2,div3,div4,'tb7',playerTargetByHealer,spellUsed,total,total2,counter,counterSpell,"",e );
         else{
-            innerTab(div0,div10,div1,div2,div3,div4,'tb7',playerTargetByHealer,"",total,total2,counter,"",counterspelltotal );
+            innerTab(div0,div10,div1,div2,div3,div4,'tb7',playerTargetByHealer,"",total,total2,counter,"",counterspelltotal,e );
         }
     }
 }
@@ -553,7 +592,7 @@ function openCity(e, Name) {
 
 
 
-function innerTab(div0,div10,div1,div2,div3,div4,tb,playerTargetByHealer,spellUsed,total,total2,counter,counterSpell, counterspelltotal){
+function innerTab(div0,div10,div1,div2,div3,div4,tb,playerTargetByHealer,spellUsed,total,total2,counter,counterSpell, counterspelltotal,e){
 
 
     if(counterSpell!==""){
@@ -588,8 +627,19 @@ function innerTab(div0,div10,div1,div2,div3,div4,tb,playerTargetByHealer,spellUs
         div0.appendChild(div4);
     }
 
-    let text4= new Intl.NumberFormat().format(text3)
+    let text4= new Intl.NumberFormat().format(text3);
+
+    //document.getElementById('Tpl').innerText = "THE PLAYER "+ text2.toUpperCase() + " HEALED " +text1+" PLAYERS FOR "+ text4;
+
+    if(e.id==='healer-dropdown'){
     document.getElementById('Tpl').innerText = "THE PLAYER "+ text2.toUpperCase() + " HEALED " +text1+" PLAYERS FOR "+ text4;
+    }
+    else if(e.id==='healed-dropdown'){
+    document.getElementById('Tpl').innerText = "THE PLAYER "+ text2.toUpperCase() + " HAS BEEN HEALED BY " +text1+" PLAYERS FOR "+ text4;
+    }
+
+
+
 }
 function tagTb(tb,playerTargetByHealer){
 
