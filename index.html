@@ -4,53 +4,43 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="GameParseEQ.css">
-
 </head>
 <body>
-
 <div class="dropper" id="dropper" draggable="true">
     <h2> Drag and drop your Log File Here </h2>
-    <h2> 200Mb max  </h2>
+    <h2> 200Mb max </h2>
 </div>
 <div id="container1">
-
-    <select id="healer-dropdown" name="healer"  >
+    <select id="healer-dropdown" name="healer">
     </select>
-    <select id="healed-dropdown" name="healed"  >
+    <select id="healed-dropdown" name="healed">
     </select>
     <form name="radiofrom">
         <div id="choiceContainer">
             <label for="Choice1">Last Hour</label>
             <input type="radio" id="Choice1"
                    name="Choice" value="1">
-
             <label for="Choice2">Last 6 hours</label>
             <input type="radio" id="Choice2"
                    name="Choice" value="6">
-
             <label for="Choice3">Last day</label>
             <input type="radio" id="Choice3"
                    name="Choice" value="24">
-
             <label for="Choice4">Last 7 days</label>
             <input type="radio" id="Choice4"
                    name="Choice" value="168"><br>
-
             <label for="radioInputChoice">(1 = 1 hour, 0.1 = 6 mins)</label>
-            <input type="number" id="radioInputChoice" min="0.1" >
+            <input type="number" id="radioInputChoice" min="0.1">
             <label for="Choice5">Choice yourself</label>
             <input type="radio" id="Choice5" name="Choice"><br>
-
             <label for="Choice6">The whole file (200Mb max)</label>
-            <input type="radio" id="Choice6" name="Choice" value="0" >
-
+            <input type="radio" id="Choice6" name="Choice" value="0">
         </div>
     </form>
-
-</div >
+</div>
 <br>
 <label for="txtAra">For Info</label>
-<textarea  id="txtAra" cols="68" rows="10">
+<textarea id="txtAra" cols="68" rows="10">
     here a Game parse in Dev...
     still have a lot to do and some bug to fix
     easy to use ... drag and drop your file in upper "window"
@@ -78,22 +68,8 @@
     <div id="containertb5" class="tabcontent"></div>
     <div id="containertb7" class="tabcontent"></div>
 </div>
-
-
-<!--<div class="sidenav">
-    <button class="dropdown-btn">Dropdown</button>
-    <div class="dropdown-container">
-        <a href="#">Link 1</a>
-        <a href="#">Link 2</a>
-        <a href="#">Link 3</a>
-    </div>
-</div>-->
-
-
 </body>
-
 <script src="GameParseEQ.js"></script>
-
 </html>
 
 
