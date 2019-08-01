@@ -441,25 +441,18 @@ function addActivityItem(element){
          mySet= timeFilter.filter(it => new RegExp(targed).test(it.healed));
          mySet2= [...new Set(mySet.map(x => x.healer))].sort();
     }
-
-
     text2 = targed;
-
     document.getElementById('containertb2').innerText = "";
     document.getElementById('containertb3').innerText = "";
     document.getElementById('containertb4').innerText = "";
     document.getElementById('containertb5').innerText = "";
     document.getElementById('containertb7').innerText = "";
     document.getElementById('Tpl').innerText = "";
-
-
     let total = 0,total2 = 0,counter=0,total3=0,total4=0,counterSpell=0,counterspelltotal=0;
     let playerTargetByHealer="";
     let spellUsed="";
     mySet2.forEach(function(el) {//par joueur
         let mySet3;
-
-
         if(e.id==='healer-dropdown'){
              mySet3= mySet.filter(it => new RegExp(el).test(it.healed));
         }
@@ -485,7 +478,6 @@ function addActivityItem(element){
                 total4+=total2;
 
             }
-
             counterSpell=0;
             total=0;
             total2=0;
@@ -497,14 +489,10 @@ function addActivityItem(element){
             text1 = counter;
             containerPlayer("", playerTargetByHealer, total3, total4, counter,"",counterspelltotal,e)
         }
-
         total3=0;
         total4=0;
         counterspelltotal=0;
     });
-
-
-
 
 }
 function containerPlayer(spellUsed,playerTargetByHealer,total,total2,counter,counterSpell,counterspelltotal,e) {
