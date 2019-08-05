@@ -4,7 +4,7 @@ let files;
 let tabFile;
 let logHeal = [];
 let timeFilter = [];
-let text1, text2, text3 = 0;
+let text1, text2, text3, text4 = 0;
 let dropper = document.querySelector('#dropper');
 
 //drop zone for file event dragover and drop needed to get file data
@@ -425,6 +425,7 @@ function menudropplayers(players, playersList) {
 
 function addActivityItem(element) {
     text3 = 0;
+    text4 = 0 ;
     let e = element;
     let mySet;
     let mySet2;
@@ -460,6 +461,7 @@ function addActivityItem(element) {
             for (let i = 0; i < mySet5.length; i++) {
                 total += mySet5[i].Heal;  //Do the math!
                 text3 += mySet5[i].Heal;
+                text4 += (mySet5[i].overheal- mySet5[i].Heal);
                 total2 += mySet5[i].overheal;
                 counterspelltotal++;
                 counterSpell++;
@@ -611,14 +613,14 @@ function innerTab(div0, div10, div1, div2, div3, div4, tb, playerTargetByHealer,
         div0.appendChild(div4);
     }
 
-    let text4 = new Intl.NumberFormat().format(text3);
-
+    let text5 = new Intl.NumberFormat().format(text3);
+    let text6 = new Intl.NumberFormat().format(text4);
     //document.getElementById('Tpl').innerText = "THE PLAYER "+ text2.toUpperCase() + " HEALED " +text1+" PLAYERS FOR "+ text4;
 
     if (e.id === 'healer-dropdown') {
-        document.getElementById('Tpl').innerText = "THE PLAYER " + text2.toUpperCase() + " HEALED " + text1 + " PLAYERS FOR " + text4;
+        document.getElementById('Tpl').innerText = "THE PLAYER " + text2.toUpperCase() + " HEALED " + text1 + " PLAYERS FOR " + text5 +" OVERHEAL FOR "+text6;
     } else if (e.id === 'healed-dropdown') {
-        document.getElementById('Tpl').innerText = "THE PLAYER " + text2.toUpperCase() + " HAS BEEN HEALED BY " + text1 + " PLAYERS FOR " + text4;
+        document.getElementById('Tpl').innerText = "THE PLAYER " + text2.toUpperCase() + " HAS BEEN HEALED BY " + text1 + " PLAYERS FOR " + text5+" OVERHEAL FOR "+text6;
     }
 
 
@@ -732,6 +734,7 @@ class DOMAnimations {
  * to do compilation mob for timer select
  * to do asynchrone fonction
  * to do mass player upload
+ * add loading file option
  */
 
 /*
