@@ -47,16 +47,16 @@ function readerdigest(tabFile, i) {
     if (curserTag !== null) {// sorting by key word with indexof ....
         switch (curserTag.toString().trim()) {
             case "backstabs":
-                let LogBackstabs = new Backstabs(i, curser, tabFile);
+                let logBackstabs = new Backstabs(i, curser, tabFile);
                 break;
             case "begins":
-                let LogBegins = new Begins(i, curser, tabFile);
+                let logBegins = new Begins(i, curser, tabFile);
                 break;
             case "crushes":
-                let LogCrushes = new Crushes(i, curser, tabFile);
+                let logCrushes = new Crushes(i, curser, tabFile);
                 break;
             case "frenzies":
-                let LogFrenzies = new Frenzies(i, curser, tabFile);
+                let logFrenzies = new Frenzies(i, curser, tabFile);
                 break;
             case "healed":
 
@@ -78,19 +78,19 @@ function readerdigest(tabFile, i) {
                 k++;
                 break;
             case "hits":
-                let LogHits = new Hits(i, curser, tabFile);
+                let logHits = new Hits(i, curser, tabFile);
                 break;
             case "pierces":
-                let LogPierces = new Pierces(i, curser, tabFile);
+                let logPierces = new Pierces(i, curser, tabFile);
                 break;
             case "shoots":
-                let LogShoots = new Shoots(i, curser, tabFile);
+                let logShoots = new Shoots(i, curser, tabFile);
                 break;
             case "slashes":
-                let LogSlashes = new Slashes(i, curser, tabFile);
+                let logSlashes = new Slashes(i, curser, tabFile);
                 break;
             case "taken" :
-                let LogTaken = new Taken(i, curser, tabFile);
+                let logTaken = new Taken(i, curser, tabFile);
                 break;
 
 
@@ -522,7 +522,7 @@ function containerPlayer(spellUsed, playerTargetByHealer, total, total2, counter
         if (spellUsed !== "")
             innerTab(div0, div10, div1, div2, div3, div4, 'tb5', playerTargetByHealer, spellUsed, total, total2, counter, counterSpell, "", e);
         else {
-            innerTab(div0, div10, div1, div2, div3, div4, 'tb5', playerTargetByHealer, "", total, total2, counter, "", counterspelltotalt, e);
+            innerTab(div0, div10, div1, div2, div3, div4, 'tb5', playerTargetByHealer, "", total, total2, counter, "", counterspelltotal, e);
         }
     } else if (counter >= 71 && counter < 89) {
         let div10 = tagTb('tb7', playerTargetByHealer);
@@ -726,6 +726,13 @@ class DOMAnimations {
     }
 }
 
+/*to do clear memory ... on load another file .. or adding it...
+ * to do copy to clip board
+ * to do list of mob for timer select
+ * to do compilation mob for timer select
+ * to do asynchrone fonction
+ * to do mass player upload
+ */
 
 /*
 
