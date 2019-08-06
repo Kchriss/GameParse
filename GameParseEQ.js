@@ -6,15 +6,12 @@ let logHeal = [];
 let timeFilter = [];
 let text1, text2, text3 = 0, text6 = 0;
 let dropper = document.querySelector('#dropper');
-
 //drop zone for file event dragover and drop needed to get file data
 dropper.addEventListener('dragover', function (e) {
     e.preventDefault(); // allow  "drop"  fonction
 }, false);
-
 dropper.addEventListener('drop', function (e) {
     e.preventDefault(); // allow  "drop"  fonction
-
     // data file
     files = e.dataTransfer.files[0];
     //get player name through file name
@@ -23,7 +20,7 @@ dropper.addEventListener('drop', function (e) {
     // "show must go on " user name in drop aera
     document.getElementById('dropper').innerText = PlayerFileName[1];
     // file reading and loading
-     //TODO: check name file to avoid putting it twice time...
+    //TODO: check name file to avoid putting it twice time...
     let reader = new FileReader();
     reader.onload = function (e) {
         // split by line in tab
@@ -43,7 +40,6 @@ function readerdigest(tabFile, i) {
     // key word for function
     let curserTag = tabFile[i].match(/backstabs|begins|crushes|frenzies|healed|hits|pierces|shoots|slashes|taken/gi); //check for key word and catch it..
     let curser = tabFile[i].indexOf(curserTag, 0); // key word index
-
     if (curserTag !== null) {// sorting by key word with indexof ....
         //switch case on key word.... them fonction treatment
         switch (curserTag.toString().trim()) {
@@ -64,9 +60,7 @@ function readerdigest(tabFile, i) {
                 //TODO: to dev
                 break;
             case "healed":
-
                 let logHealed = new Healed(i, curser, tabFile);
-
                 logHeal[k] = {// return fonction treatment to logHeal table ... with new index line k
                     "id": k,
                     "healer": logHealed.PlayerHealer(),
@@ -102,8 +96,6 @@ function readerdigest(tabFile, i) {
                 let logTaken = new Taken(i, curser, tabFile);
                 //TODO: to dev
                 break;
-
-
         }
     }
 }
@@ -130,7 +122,6 @@ class Taken {
         }
         return this.playerDmged;
     }
-
 }
 
 class Backstabs {
@@ -263,6 +254,7 @@ class Healed {
         }
         return this.playerHealed;
     }
+
     TypeOfHeal() {
         this.curser_5 = this.tabFile[this.i]
             .indexOf('for', this.curser_4 + 1);
@@ -328,7 +320,6 @@ class Healed {
                     .substr(this.curser_10, this.curser_11 - this.curser_10)
                     .trim();
             }
-
         } else {
             SpellsCasted = "NaS";
         }
@@ -355,7 +346,6 @@ class Healed {
     }
 
     Logtime() {
-
         let logtimer = this.tabFile[this.i]
             .substr(this.tabFile[this.i]
                 .indexOf('[') + 1
@@ -384,13 +374,10 @@ document.getElementById('Choice6')
 
 function updateBtn() {
     //>>>>> reduction de la taille du tableau en fonction d'un temp a choisir ... derniere heure.. derniere 6 heure... fichier "entier ... etc....
-
     let timeToCheck = 0;
     let startCheck = 0;
-
     let lastentry = logHeal.length - 1;
     let logTimerLastEntry = logHeal[lastentry].logDate;
-
     if (this.value === "0" || this.value === 0) {
         timeToCheck = logHeal[0].logDate;
     } else if (this.id === 'Choice5') {
@@ -414,7 +401,6 @@ function updateBtn() {
     menudropplayers('healed', listOfPlayerhealed);
     menudropplayers('healer', listOfPlayershealer);
 }
-
 
 function menudropplayers(players, playersList) {
     let dropdown = document.getElementById(players + '-dropdown');
@@ -454,31 +440,23 @@ function addActivityItem(element) {
         mySet = timeFilter.filter(it => new RegExp(targed).test(it.healed));
         mySet2 = [...new Set(mySet.map(x => x.healer))].sort();
     }
-
-
     text2 = targed;
-
     document.getElementById('containertb2').innerText = "";
     document.getElementById('containertb3').innerText = "";
     document.getElementById('containertb4').innerText = "";
     document.getElementById('containertb5').innerText = "";
     document.getElementById('containertb7').innerText = "";
     document.getElementById('Tpl').innerText = "";
-
-
     let total = 0, total2 = 0, counter = 0, total3 = 0, total4 = 0, counterSpell = 0, counterspelltotal = 0;
     let playerTargetByHealer = "";
     let spellUsed = "";
     mySet2.forEach(function (el) {//par joueur
         let mySet3;
-
-
         if (e.id === 'healer-dropdown') {
             mySet3 = mySet.filter(it => new RegExp(el).test(it.healed));
         } else if (e.id === 'healed-dropdown') {
             mySet3 = mySet.filter(it => new RegExp(el).test(it.healer));
         }
-
         let mySet4 = [...new Set(mySet3.map(x => x.spell))].sort();
         mySet4.forEach(function (elmnt) {//par spell
             let mySet5 = mySet3.filter(it => new RegExp(elmnt).test(it.spell));
@@ -496,27 +474,21 @@ function addActivityItem(element) {
                 containerPlayer(spellUsed, playerTargetByHealer, total, total2, counter, counterSpell, "", e);
                 total3 += total;
                 total4 += total2;
-
             }
-
             counterSpell = 0;
             total = 0;
             total2 = 0;
         });
-
         playerTargetByHealer = el;
         if (!RegExp("`s").test(el)) {
             counter++;
             text1 = counter;
             containerPlayer("", playerTargetByHealer, total3, total4, counter, "", counterspelltotal, e)
         }
-
         total3 = 0;
         total4 = 0;
         counterspelltotal = 0;
     });
-
-
 }
 
 function containerPlayer(spellUsed, playerTargetByHealer, total, total2, counter, counterSpell, counterspelltotal, e) {
@@ -600,11 +572,7 @@ function openCity(e, Name) {
 
 /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content
 - This allows the user to have multiple dropdowns without any conflict */
-
-
 function innerTab(div0, div10, div1, div2, div3, div4, tb, playerTargetByHealer, spellUsed, total, total2, counter, counterSpell, counterspelltotal, e) {
-
-
     if (counterSpell !== "") {
         div1.innerText = spellUsed + " " + counterSpell;
         div1.style.backgroundColor = "#ffc8c8";
@@ -639,11 +607,8 @@ function innerTab(div0, div10, div1, div2, div3, div4, tb, playerTargetByHealer,
         div0.appendChild(div3);
         div0.appendChild(div4);
     }
-
     let text4 = new Intl.NumberFormat().format(text3);
     let text7 = new Intl.NumberFormat().format(text6);
-
-
     document.getElementById('Tpl').innerText = "THE PLAYER " + text2.toUpperCase() + " HEALED " + text1 + " PLAYERS FOR " + text4;
 
     if (e.id === 'healer-dropdown') {
@@ -651,8 +616,6 @@ function innerTab(div0, div10, div1, div2, div3, div4, tb, playerTargetByHealer,
     } else if (e.id === 'healed-dropdown') {
         document.getElementById('Tpl').innerText = "THE PLAYER " + text2.toUpperCase() + " HAS BEEN HEALED BY " + text1 + " PLAYERS FOR " + text4 + " OVERHEAL " + text7;
     }
-
-
 }
 
 function tagTb(tb, playerTargetByHealer) {
