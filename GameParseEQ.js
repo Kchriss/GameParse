@@ -14,61 +14,60 @@ dropper.addEventListener('dragover', function (e) {
 
 dropper.addEventListener('drop', function (e) {
     e.preventDefault(); // allow  "drop"  fonction
+
     // data file
     files = e.dataTransfer.files[0];
     //get player name through file name
     let PlayerFileName = (files.name).split('_');
     CurrentPlayer = PlayerFileName[1];
-    // "show must go on "
-    document.getElementById('dropper').innerText = PlayerFileName[1];// +" file vs item " + text[1];
-
+    // "show must go on " user name in drop aera
+    document.getElementById('dropper').innerText = PlayerFileName[1];
     // file reading and loading
+     //TODO: check name file to avoid putting it twice time...
     let reader = new FileReader();
     reader.onload = function (e) {
         // split by line in tab
         tabFile = e.target.result.toString().split(/\r\n|\r|\n/);
-
-
-        // "show must go on " a to do .... split data form each line .... get name player list( check for another way) //  postion after date log
+        // "show must go on "
         for (let i = 0; i < tabFile.length; i++) {
+            // read result .. catch key word ... and split it to apply right treatment function
             readerdigest(tabFile, i);
-            // note faire une recherche sur healed => pour determiner sa presence et ca position ...
-            // pour faire les substring et le check de la ligne renvoie des donnees extraite dans le tableau
-            // a etudier une tableau par type ??? ... mot cle : healed , slashes , pierces , begins,crushes,backstabs,frenzies,shoots,hits,taken//indexOf('Video' | 'Audio' )
-            // piste a suivre.... cree un fonction du nommer du nom "trouver" pour la gestion du log ...
-            // inserer une pause ?!!
-
         }
     };
     reader.readAsText(files);
-    // "show must go on "
-
-
 }, false);
+// variable index in readerdigest
 let k = 0;
 
 function readerdigest(tabFile, i) {
-    let curserTag = tabFile[i].match(/backstabs|begins|crushes|frenzies|healed|hits|pierces|shoots|slashes|taken/gi); //test le mot cle et recupere sa valeur ! :p
-    let curser = tabFile[i].indexOf(curserTag, 0);
+    // key word for function
+    let curserTag = tabFile[i].match(/backstabs|begins|crushes|frenzies|healed|hits|pierces|shoots|slashes|taken/gi); //check for key word and catch it..
+    let curser = tabFile[i].indexOf(curserTag, 0); // key word index
+
     if (curserTag !== null) {// sorting by key word with indexof ....
+        //switch case on key word.... them fonction treatment
         switch (curserTag.toString().trim()) {
             case "backstabs":
                 let logBackstabs = new Backstabs(i, curser, tabFile);
+                //TODO: to dev
                 break;
             case "begins":
                 let logBegins = new Begins(i, curser, tabFile);
+                //TODO: to dev
                 break;
             case "crushes":
                 let logCrushes = new Crushes(i, curser, tabFile);
+                //TODO: to dev
                 break;
             case "frenzies":
                 let logFrenzies = new Frenzies(i, curser, tabFile);
+                //TODO: to dev
                 break;
             case "healed":
 
                 let logHealed = new Healed(i, curser, tabFile);
 
-                logHeal[k] = {
+                logHeal[k] = {// return fonction treatment to logHeal table ... with new index line k
                     "id": k,
                     "healer": logHealed.PlayerHealer(),
                     "healed": logHealed.TargedHealed()
@@ -85,18 +84,23 @@ function readerdigest(tabFile, i) {
                 break;
             case "hits":
                 let logHits = new Hits(i, curser, tabFile);
+                //TODO: to dev
                 break;
             case "pierces":
                 let logPierces = new Pierces(i, curser, tabFile);
+                //TODO: to dev
                 break;
             case "shoots":
                 let logShoots = new Shoots(i, curser, tabFile);
+                //TODO: to dev
                 break;
             case "slashes":
                 let logSlashes = new Slashes(i, curser, tabFile);
+                //TODO: to dev
                 break;
             case "taken" :
                 let logTaken = new Taken(i, curser, tabFile);
+                //TODO: to dev
                 break;
 
 
@@ -105,6 +109,7 @@ function readerdigest(tabFile, i) {
 }
 
 class Taken {
+    //TODO: to dev
     constructor(i, curser, tabFile) {
         this.i = i;
         this.curser = curser;
@@ -129,6 +134,7 @@ class Taken {
 }
 
 class Backstabs {
+    //TODO: to dev
     constructor(i, curser, tabFile) {
         this.i = i;
         this.curser = curser;
@@ -137,6 +143,7 @@ class Backstabs {
 }
 
 class Begins {
+    //TODO: to dev
     constructor(i, curser, tabFile) {
         this.i = i;
         this.curser = curser;
@@ -145,6 +152,7 @@ class Begins {
 }
 
 class Crushes {
+    //TODO: to dev
     constructor(i, curser, tabFile) {
         this.i = i;
         this.curser = curser;
@@ -153,6 +161,7 @@ class Crushes {
 }
 
 class Frenzies {
+    //TODO: to dev
     constructor(i, curser, tabFile) {
         this.i = i;
         this.curser = curser;
@@ -161,6 +170,7 @@ class Frenzies {
 }
 
 class Hits {
+    //TODO: to dev
     constructor(i, curser, tabFile) {
         this.i = i;
         this.curser = curser;
@@ -169,6 +179,7 @@ class Hits {
 }
 
 class Pierces {
+    //TODO: to dev
     constructor(i, curser, tabFile) {
         this.i = i;
         this.curser = curser;
@@ -177,6 +188,7 @@ class Pierces {
 }
 
 class Shoots {
+    //TODO: to dev
     constructor(i, curser, tabFile) {
         this.i = i;
         this.curser = curser;
@@ -185,6 +197,7 @@ class Shoots {
 }
 
 class Slashes {
+    //TODO: to dev
     constructor(i, curser, tabFile) {
         this.i = i;
         this.curser = curser;
@@ -193,7 +206,8 @@ class Slashes {
 }
 
 class Healed {
-    constructor(i, curser, tabFile) {
+    //fonction to treat healing case key word "healed"
+    constructor(i, curser, tabFile) { // i = line index, curser = indew of key word and tabFile as table ...
         this.i = i;
         this.curser = curser;
         this.tabFile = tabFile;
@@ -249,9 +263,6 @@ class Healed {
         }
         return this.playerHealed;
     }
-
-    // [Mon Jul 29 18:50:09 2019] Makma healed Schalimar over time for 0 (25000) hit points by Celestial Regeneration XXXIII. (Critical)
-    // [Mon Jul 29 18:50:09 2019] Koldanar is praised. Koldanar healed himself for 0 (62112) hit points by Censure Heal III. (Critical)
     TypeOfHeal() {
         this.curser_5 = this.tabFile[this.i]
             .indexOf('for', this.curser_4 + 1);
@@ -747,12 +758,12 @@ class DOMAnimations {
 }
 
 /*to do clear memory ... on load another file .. or adding it...
- * to do copy to clip board
- * to do list of mob for timer select
- * to do compilation mob for timer select
- * to do asynchrone fonction
- * to do mass player upload
- * add loading file option
+ *TODO: copy to clip board
+ *TODO:  list of mob for timer select
+ *TODO:  compilation mob for timer select
+ *TODO:  "asynchrone fonction" reading new log entries...
+ *TODO:  mass player upload
+ *TODO:  add loading file option
  */
 
 /*
