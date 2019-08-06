@@ -396,13 +396,13 @@ function updateBtn() {
         }
     }
     timeFilter = logHeal.slice(startCheck, lastentry + 1);
-    let listOfPlayerhealed = [...new Set(timeFilter.map(x => x.healed))].sort();
-    let listOfPlayershealer = [...new Set(timeFilter.map(y => y.healer))].sort();
-    menudropplayers('healed', listOfPlayerhealed);
-    menudropplayers('healer', listOfPlayershealer);
+    let listOfPlayerHealed = [...new Set(timeFilter.map(x => x.healed))].sort();
+    let listOfPlayersHealer = [...new Set(timeFilter.map(y => y.healer))].sort();
+    menuDropPlayers('healed', listOfPlayerHealed);
+    menuDropPlayers('healer', listOfPlayersHealer);
 }
 
-function menudropplayers(players, playersList) {
+function menuDropPlayers(players, playersList) {
     let dropdown = document.getElementById(players + '-dropdown');
     dropdown.length = 0;
     dropdown.innerText = "";
@@ -458,16 +458,17 @@ function addActivityItem(element) {
             mySet3 = mySet.filter(it => new RegExp(el).test(it.healer));
         }
         let mySet4 = [...new Set(mySet3.map(x => x.spell))].sort();
-        mySet4.forEach(function (elmnt) {//par spell
-            let mySet5 = mySet3.filter(it => new RegExp(elmnt).test(it.spell));
+        mySet4.forEach(function (elMnt) {//par spell
+            let mySet5 = mySet3.filter(it => new RegExp(elMnt).test(it.spell));
             for (let i = 0; i < mySet5.length; i++) {
                 total += mySet5[i].Heal;  //Do the math!
                 text3 += mySet5[i].Heal;
                 text6 += (mySet5[i].overheal - mySet5[i].Heal);
+
                 total2 += mySet5[i].overheal;
                 counterspelltotal++;
                 counterSpell++;
-                spellUsed = elmnt;
+                spellUsed = elMnt;
             }
             playerTargetByHealer = el;
             if (!RegExp("`s").test(el)) {
@@ -557,14 +558,14 @@ document.getElementById('tb7')
     });
 
 function openCity(e, Name) {
-    let i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
+    let i, tabContent, tabLinks;
+    tabContent = document.getElementsByClassName("tabContent");
+    for (i = 0; i < tabContent.length; i++) {
+        tabContent[i].style.display = "none";
     }
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    tabLinks = document.getElementsByClassName("tabLinks");
+    for (i = 0; i < tabLinks.length; i++) {
+        tabLinks[i].className = tabLinks[i].className.replace(" active", "");
     }
     document.getElementById(Name).style.display = "block";
     e.currentTarget.className += " active";
@@ -579,7 +580,7 @@ function innerTab(div0, div10, div1, div2, div3, div4, tb, playerTargetByHealer,
         div2.innerText = " Heal : " + total;
         div2.style.backgroundColor = "#ffbebe";
         if ((parseInt(total2)) > (parseInt(total))) {
-            div3.innerText = " Overheal : " + (parseInt(total2) - parseInt(total));
+            div3.innerText = " OverHeal : " + (parseInt(total2) - parseInt(total));
         }
         div3.style.backgroundColor = "#ffb4b4";
         div4.innerText = " HA : " + total2;
@@ -596,7 +597,7 @@ function innerTab(div0, div10, div1, div2, div3, div4, tb, playerTargetByHealer,
         div2.innerText = " Heal : " + total;
         div2.style.backgroundColor = "#bebeff";
         if ((parseInt(total2)) > (parseInt(total))) {
-            div3.innerText = " Overheal : " + (parseInt(total2) - parseInt(total));
+            div3.innerText = " OverHeal : " + (parseInt(total2) - parseInt(total));
         }
         div3.style.backgroundColor = "#c8c8ff";
         div4.innerText = " HA : " + total2;
@@ -621,7 +622,7 @@ function innerTab(div0, div10, div1, div2, div3, div4, tb, playerTargetByHealer,
 function tagTb(tb, playerTargetByHealer) {
 
     if (document.getElementById(playerTargetByHealer) == null) {
-        div10 = document.createElement('div');
+        let div10 = document.createElement('div');
         div10.id = playerTargetByHealer;
         div10.className = 'dropdown-btn';
         document.getElementById('container' + tb).appendChild(div10);
