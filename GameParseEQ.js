@@ -293,8 +293,8 @@ class Healed {
             .trim() === "herself") {
             this.playerHealed = this.playerHealer;
         } else if (this.playerHealed
-            .trim()
-            .toLowerCase() === "you") {
+            .toLowerCase()
+            .trim() === "you") {
             this.playerHealed = CurrentPlayer;
         }
         return this.playerHealed;
@@ -545,10 +545,10 @@ function addActivityItem(element) {
     //check player selected from list used
     if (e.id === "healer-dropdown") {
         mySet = timeFilter.filter(it => new RegExp(targed).test(it.healer));
-        mySet2 = [...new Set(mySet.map(x => x.healed))];
+        mySet2 = [...new Set(mySet.map(x => x.healed))].sort();
     } else if (e.id === "healed-dropdown") {
         mySet = timeFilter.filter(it => new RegExp(targed).test(it.healed));
-        mySet2 = [...new Set(mySet.map(x => x.healer))];
+        mySet2 = [...new Set(mySet.map(x => x.healer))].sort();
     }
     text2 = targed;
     // cleat tab element on page
