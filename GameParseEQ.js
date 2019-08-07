@@ -6,10 +6,10 @@ let logHeal = [];
 let timeFilter = [];
 let text1, text2, text3 = 0, text6 = 0;
 
-let dropper = document.querySelector('#dropper');
+let dropper = document.querySelector("#dropper");
 
 //drop zone for file event dragover and drop needed to get file data
-dropper.addEventListener('dragover', function (e) {
+dropper.addEventListener("dragover", function (e) {
     e.preventDefault(); // allow  "drop"  fonction
     /**
      * needed for drag and drop
@@ -17,8 +17,9 @@ dropper.addEventListener('dragover', function (e) {
      * @returns {boolean}
      **/
 }, false);
-dropper.addEventListener('drop', function (e) {
+dropper.addEventListener("drop", function (e) {
     e.preventDefault(); // allow  "drop"  fonction
+
     /**
      * needed for drag and drop
      * read file from drag and drop and put it in a table split on end sentence of each log
@@ -28,10 +29,10 @@ dropper.addEventListener('drop', function (e) {
     // data file
     files = e.dataTransfer.files[0];
     //get player name through file name
-    let PlayerFileName = (files.name).split('_');
+    let PlayerFileName = (files.name).split("_");
     CurrentPlayer = PlayerFileName[1];
     // "show must go on " user name in drop aera
-    document.getElementById('dropper').innerText = PlayerFileName[1];
+    document.getElementById("dropper").innerText = PlayerFileName[1];
     // file reading and loading
     //TODO: check name file to avoid putting it twice time...
     let reader = new FileReader();
@@ -89,7 +90,7 @@ function readerdigest(tabFile, i) {
                     "Heal": logHealed.getHealAmount(),
                     "overheal": logHealed.getSpellHealAmount()
                     ,
-                    'spell': logHealed.getSpellsUsed(),
+                    "spell": logHealed.getSpellsUsed(),
                     "crit": logHealed.getCriticalHitMessage(),
                     "logDate": logHealed.getLogTime()
                 };
@@ -331,7 +332,7 @@ class Healed {
          * @returns  {amountOfHeal}
          **/
         this.curser_7 = this.tabFile[this.i]
-            .indexOf(' ', this.curser_6 + 1);
+            .indexOf(" ", this.curser_6 + 1);
         let amountOfHeal = this.tabFile[this.i]
             .substr(this.curser_6, this.curser_7 - this.curser_6)
             .trim();//extraction du nom du joueur
@@ -346,7 +347,7 @@ class Healed {
          * @returns  {spellHealAmount}
          **/
         this.curser_8 = this.tabFile[this.i]
-            .indexOf(' ', this.curser_7 + 1);
+            .indexOf(" ", this.curser_7 + 1);
         let spellHealAmount = this.tabFile[this.i]
             .substr(this.curser_7, 2)
             .trim();//extraction du nom du joueur
@@ -369,15 +370,15 @@ class Healed {
          **/
         let SpellsCasted = "";
         this.curser_9 = this.tabFile[this.i]
-            .indexOf('by', this.curser_8);
+            .indexOf("by", this.curser_8);
 
         if (this.curser_9 > 0 && this.curser_9 !== null) {
             this.curser_10 = this.tabFile[this.i]
-                .indexOf(' ', this.curser_9);
+                .indexOf(" ", this.curser_9);
             this.curser_11 = this.tabFile[this.i]
-                .indexOf('.', this.curser_10);
+                .indexOf(".", this.curser_10);
             this.curser_12 = this.tabFile[this.i]
-                .indexOf('.', this.curser_11 + 1);
+                .indexOf(".", this.curser_11 + 1);
             if (this.curser_12 !== -1) {
 
                 SpellsCasted = this.tabFile[this.i]
@@ -405,11 +406,11 @@ class Healed {
         let messCrtHeal = "";
         if (this.curser_10 !== null) {
             this.curser_13 = this.tabFile[this.i]
-                .indexOf('(', this.curser_10);
+                .indexOf("(", this.curser_10);
 
             if (this.curser_13 !== null && this.curser_13 > 0) {
                 this.curser_14 = this.tabFile[this.i]
-                    .indexOf(')', this.curser_13);
+                    .indexOf(")", this.curser_13);
                 messCrtHeal = this.tabFile[this.i]
                     .substr(this.curser_13, this.curser_14 + 1 - this.curser_13)
                     .trim();
@@ -429,10 +430,10 @@ class Healed {
          **/
         let logTimer = this.tabFile[this.i]
             .substr(this.tabFile[this.i]
-                .indexOf('[') + 1
+                .indexOf("[") + 1
                 , this.tabFile[this.i]
-                .indexOf(']') - this.tabFile[this.i]
-                .indexOf('[') - 1)
+                .indexOf("]") - this.tabFile[this.i]
+                .indexOf("[") - 1)
             .trim();
         return new Date(logTimer)
             .getTime();
@@ -442,19 +443,19 @@ class Healed {
  * catch et add listener to some html element here listener is a time selecter
  * @param {HTMLElement}
  **/
-document.getElementById('radioInputChoice').step = 0.1;
-document.getElementById('Choice1')
-    .addEventListener('click', updateBtn);
-document.getElementById('Choice2')
-    .addEventListener('click', updateBtn);
-document.getElementById('Choice3')
-    .addEventListener('click', updateBtn);
-document.getElementById('Choice4')
-    .addEventListener('click', updateBtn);
-document.getElementById('Choice5')
-    .addEventListener('click', updateBtn);
-document.getElementById('Choice6')
-    .addEventListener('click', updateBtn);
+document.getElementById("radioInputChoice").step = 0.1;
+document.getElementById("Choice1")
+    .addEventListener("click", updateBtn);
+document.getElementById("Choice2")
+    .addEventListener("click", updateBtn);
+document.getElementById("Choice3")
+    .addEventListener("click", updateBtn);
+document.getElementById("Choice4")
+    .addEventListener("click", updateBtn);
+document.getElementById("Choice5")
+    .addEventListener("click", updateBtn);
+document.getElementById("Choice6")
+    .addEventListener("click", updateBtn);
 
 function updateBtn() {
     /**
@@ -470,8 +471,8 @@ function updateBtn() {
     // free setting check and other based on check button value
     if (this.value === "0" || this.value === 0) {
         timeToCheck = logHeal[0].logDate;
-    } else if (this.id === 'Choice5') {
-        let onChoice = parseFloat(document.getElementById('radioInputChoice').value);
+    } else if (this.id === "Choice5") {
+        let onChoice = parseFloat(document.getElementById("radioInputChoice").value);
         timeToCheck = logTimerLastEntry - (3600000 * onChoice);
     } else {
         timeToCheck = logTimerLastEntry - (3600000 * this.value);
@@ -489,8 +490,8 @@ function updateBtn() {
     let listOfPlayerHealed = [...new Set(timeFilter.map(x => x.healed))].sort();
     let listOfPlayersHealer = [...new Set(timeFilter.map(y => y.healer))].sort();
     //treatment call and both player list
-    menuDropPlayers('healed', listOfPlayerHealed);
-    menuDropPlayers('healer', listOfPlayersHealer);
+    menuDropPlayers("healed", listOfPlayerHealed);
+    menuDropPlayers("healer", listOfPlayersHealer);
 }
 
 function menuDropPlayers(players, playersList) {
@@ -500,11 +501,11 @@ function menuDropPlayers(players, playersList) {
      * @param {listOfPlayersHealer}
      * @returns  {HTMLElement} with listener addActivityItem() on change
      **/
-    let dropdown = document.getElementById(players + '-dropdown');
+    let dropdown = document.getElementById(players + "-dropdown");
     dropdown.length = 0;
     dropdown.innerText = "";
-    let Option = document.createElement('option');
-    Option.text = 'Players ' + players;
+    let Option = document.createElement("option");
+    Option.text = "Players " + players;
     dropdown.add(Option);
     dropdown.style.visibility = "visible";
     dropdown.selectedIndex = 0;
@@ -514,7 +515,7 @@ function menuDropPlayers(players, playersList) {
     // list of player
     for (let i = 0; i < playersList.length; i++) {
         if (!RegExp("`s").test(playersList[i])) {
-            let option = document.createElement('option');
+            let option = document.createElement("option");
             option.text = playersList[i];
             option.value = playersList[i];
             dropdown.add(option);
@@ -531,7 +532,7 @@ function addActivityItem(element) {
      * calculate healing for each player as healer and as healed also on the whole raid.. or from all healer...
      * split also those calcul in spell used
      * count log of heal receive .. doing it also by spell used
-     * filter player's pet
+     * filter player`s pet
      * @param {element}
      * @returns  {containerPlayer(spellUsed, playerTargetByHealer, total, total2, counter, counterSpell, counterSpellTotal, e)}
      **/
@@ -542,30 +543,30 @@ function addActivityItem(element) {
     let mySet2;
     let targed = e.options[e.selectedIndex].value;
     //check player selected from list used
-    if (e.id === 'healer-dropdown') {
+    if (e.id === "healer-dropdown") {
         mySet = timeFilter.filter(it => new RegExp(targed).test(it.healer));
         mySet2 = [...new Set(mySet.map(x => x.healed))];
-    } else if (e.id === 'healed-dropdown') {
+    } else if (e.id === "healed-dropdown") {
         mySet = timeFilter.filter(it => new RegExp(targed).test(it.healed));
         mySet2 = [...new Set(mySet.map(x => x.healer))];
     }
     text2 = targed;
     // cleat tab element on page
-    document.getElementById('containertb2').innerText = "";
-    document.getElementById('containertb3').innerText = "";
-    document.getElementById('containertb4').innerText = "";
-    document.getElementById('containertb5').innerText = "";
-    document.getElementById('containertb7').innerText = "";
-    document.getElementById('Tpl').innerText = "";
+    document.getElementById("containertb2").innerText = "";
+    document.getElementById("containertb3").innerText = "";
+    document.getElementById("containertb4").innerText = "";
+    document.getElementById("containertb5").innerText = "";
+    document.getElementById("containertb7").innerText = "";
+    document.getElementById("Tpl").innerText = "";
     let total = 0, total2 = 0, counter = 0, total3 = 0, total4 = 0, counterSpell = 0, counterSpellTotal = 0;
     let playerTargetByHealer = "";
     let spellUsed = "";
 
     mySet2.forEach(function (el) {//by player
         let mySet3;
-        if (e.id === 'healer-dropdown') {
+        if (e.id === "healer-dropdown") {
             mySet3 = mySet.filter(it => new RegExp(el).test(it.healed));
-        } else if (e.id === 'healed-dropdown') {
+        } else if (e.id === "healed-dropdown") {
             mySet3 = mySet.filter(it => new RegExp(el).test(it.healer));
         }
         let mySet4 = [...new Set(mySet3.map(x => x.spell))].sort();
@@ -603,68 +604,68 @@ function addActivityItem(element) {
 }
 
 function containerPlayer(spellUsed, playerTargetByHealer, total, total2, counter, counterSpell, counterSpellTotal, e) {
-    let div0 = document.createElement('div');
-    let div1 = document.createElement('div');
-    let div2 = document.createElement('div');
-    let div3 = document.createElement('div');
-    let div4 = document.createElement('div');
+    let div0 = document.createElement("div");
+    let div1 = document.createElement("div");
+    let div2 = document.createElement("div");
+    let div3 = document.createElement("div");
+    let div4 = document.createElement("div");
     if (counter < 17) {
-        let div10 = tagTb('tb2', playerTargetByHealer);
+        let div10 = tagTb("tb2", playerTargetByHealer);
         if (spellUsed !== "")
-            innerTab(div0, div10, div1, div2, div3, div4, 'tb2', playerTargetByHealer, spellUsed, total, total2, counter, counterSpell, "", e);
+            innerTab(div0, div10, div1, div2, div3, div4, "tb2", playerTargetByHealer, spellUsed, total, total2, counter, counterSpell, "", e);
         else {
-            innerTab(div0, div10, div1, div2, div3, div4, 'tb2', playerTargetByHealer, "", total, total2, counter, "", counterSpellTotal, e);
+            innerTab(div0, div10, div1, div2, div3, div4, "tb2", playerTargetByHealer, "", total, total2, counter, "", counterSpellTotal, e);
         }
     } else if (counter >= 17 && counter < 35) {
-        let div10 = tagTb('tb3', playerTargetByHealer);
+        let div10 = tagTb("tb3", playerTargetByHealer);
         if (spellUsed !== "")
-            innerTab(div0, div10, div1, div2, div3, div4, 'tb3', playerTargetByHealer, spellUsed, total, total2, counter, counterSpell, "", e);
+            innerTab(div0, div10, div1, div2, div3, div4, "tb3", playerTargetByHealer, spellUsed, total, total2, counter, counterSpell, "", e);
         else {
-            innerTab(div0, div10, div1, div2, div3, div4, 'tb3', playerTargetByHealer, "", total, total2, counter, "", counterSpellTotal, e);
+            innerTab(div0, div10, div1, div2, div3, div4, "tb3", playerTargetByHealer, "", total, total2, counter, "", counterSpellTotal, e);
         }
     } else if (counter >= 35 && counter < 53) {
-        let div10 = tagTb('tb4', playerTargetByHealer);
+        let div10 = tagTb("tb4", playerTargetByHealer);
         if (spellUsed !== "")
-            innerTab(div0, div10, div1, div2, div3, div4, 'tb4', playerTargetByHealer, spellUsed, total, total2, counter, counterSpell, "", e);
+            innerTab(div0, div10, div1, div2, div3, div4, "tb4", playerTargetByHealer, spellUsed, total, total2, counter, counterSpell, "", e);
         else {
-            innerTab(div0, div10, div1, div2, div3, div4, 'tb4', playerTargetByHealer, "", total, total2, counter, "", counterSpellTotal, e);
+            innerTab(div0, div10, div1, div2, div3, div4, "tb4", playerTargetByHealer, "", total, total2, counter, "", counterSpellTotal, e);
         }
     } else if (counter >= 53 && counter < 71) {
-        let div10 = tagTb('tb5', playerTargetByHealer);
+        let div10 = tagTb("tb5", playerTargetByHealer);
         if (spellUsed !== "")
-            innerTab(div0, div10, div1, div2, div3, div4, 'tb5', playerTargetByHealer, spellUsed, total, total2, counter, counterSpell, "", e);
+            innerTab(div0, div10, div1, div2, div3, div4, "tb5", playerTargetByHealer, spellUsed, total, total2, counter, counterSpell, "", e);
         else {
-            innerTab(div0, div10, div1, div2, div3, div4, 'tb5', playerTargetByHealer, "", total, total2, counter, "", counterSpellTotal, e);
+            innerTab(div0, div10, div1, div2, div3, div4, "tb5", playerTargetByHealer, "", total, total2, counter, "", counterSpellTotal, e);
         }
     } else if (counter >= 71 && counter < 89) {
-        let div10 = tagTb('tb7', playerTargetByHealer);
+        let div10 = tagTb("tb7", playerTargetByHealer);
         if (spellUsed !== "")
-            innerTab(div0, div10, div1, div2, div3, div4, 'tb7', playerTargetByHealer, spellUsed, total, total2, counter, counterSpell, "", e);
+            innerTab(div0, div10, div1, div2, div3, div4, "tb7", playerTargetByHealer, spellUsed, total, total2, counter, counterSpell, "", e);
         else {
-            innerTab(div0, div10, div1, div2, div3, div4, 'tb7', playerTargetByHealer, "", total, total2, counter, "", counterSpellTotal, e);
+            innerTab(div0, div10, div1, div2, div3, div4, "tb7", playerTargetByHealer, "", total, total2, counter, "", counterSpellTotal, e);
         }
     }
 }
 
-document.getElementById('tb2')
-    .addEventListener('click', function (e) {
-        openCity(e, 'containertb2')
+document.getElementById("tb2")
+    .addEventListener("click", function (e) {
+        openCity(e, "containertb2")
     });
-document.getElementById('tb3')
-    .addEventListener('click', function (e) {
-        openCity(e, 'containertb3')
+document.getElementById("tb3")
+    .addEventListener("click", function (e) {
+        openCity(e, "containertb3")
     });
-document.getElementById('tb4')
-    .addEventListener('click', function (e) {
-        openCity(e, 'containertb4')
+document.getElementById("tb4")
+    .addEventListener("click", function (e) {
+        openCity(e, "containertb4")
     });
-document.getElementById('tb5')
-    .addEventListener('click', function (e) {
-        openCity(e, 'containertb5')
+document.getElementById("tb5")
+    .addEventListener("click", function (e) {
+        openCity(e, "containertb5")
     });
-document.getElementById('tb7')
-    .addEventListener('click', function (e) {
-        openCity(e, 'containertb7')
+document.getElementById("tb7")
+    .addEventListener("click", function (e) {
+        openCity(e, "containertb7")
     });
 
 function openCity(e, Name) {
@@ -720,23 +721,23 @@ function innerTab(div0, div10, div1, div2, div3, div4, tb, playerTargetByHealer,
     }
     let text4 = new Intl.NumberFormat().format(text3);
     let text7 = new Intl.NumberFormat().format(text6);
-    document.getElementById('Tpl').innerText = "THE PLAYER " + text2.toUpperCase() + " HEALED " + text1 + " PLAYERS FOR " + text4;
+    document.getElementById("Tpl").innerText = "THE PLAYER " + text2.toUpperCase() + " HEALED " + text1 + " PLAYERS FOR " + text4;
 
     if (e.id === 'healer-dropdown') {
-        document.getElementById('Tpl').innerText = "THE PLAYER " + text2.toUpperCase() + " HEALED " + text1 + " PLAYERS FOR " + text4 + " OVERHEAL " + text7;
-    } else if (e.id === 'healed-dropdown') {
-        document.getElementById('Tpl').innerText = "THE PLAYER " + text2.toUpperCase() + " HAS BEEN HEALED BY " + text1 + " PLAYERS FOR " + text4 + " OVERHEAL " + text7;
+        document.getElementById("Tpl").innerText = "THE PLAYER " + text2.toUpperCase() + " HEALED " + text1 + " PLAYERS FOR " + text4 + " OVERHEAL " + text7;
+    } else if (e.id === "healed-dropdown") {
+        document.getElementById("Tpl").innerText = "THE PLAYER " + text2.toUpperCase() + " HAS BEEN HEALED BY " + text1 + " PLAYERS FOR " + text4 + " OVERHEAL " + text7;
     }
 }
 
 function tagTb(tb, playerTargetByHealer) {
 
     if (document.getElementById(playerTargetByHealer) == null) {
-        let div10 = document.createElement('div');
+        let div10 = document.createElement("div");
         div10.id = playerTargetByHealer;
-        div10.className = 'dropdown-btn';
-        document.getElementById('container' + tb).appendChild(div10);
-        div10.addEventListener('click', function (e) {
+        div10.className = "dropdown-btn";
+        document.getElementById("container" + tb).appendChild(div10);
+        div10.addEventListener("click", function (e) {
             e.preventDefault();
             for (let i = 0; i < this.children.length; i++) {
                 DOMAnimations.slideToggle(this.children[i]);
