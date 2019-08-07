@@ -1,17 +1,30 @@
 let CurrentPlayer;
-let HealType = "";
+let healType = "";
 let files;
 let tabFile;
 let logHeal = [];
 let timeFilter = [];
 let text1, text2, text3 = 0, text6 = 0;
+
 let dropper = document.querySelector('#dropper');
+
 //drop zone for file event dragover and drop needed to get file data
 dropper.addEventListener('dragover', function (e) {
     e.preventDefault(); // allow  "drop"  fonction
+    /**
+     * needed for drag and drop
+     * @param {HTMLElement} e
+     * @returns {boolean}
+     **/
 }, false);
 dropper.addEventListener('drop', function (e) {
     e.preventDefault(); // allow  "drop"  fonction
+    /**
+     * needed for drag and drop
+     * read file from drag and drop and put it in a table split on end sentence of each log
+     * @param {HTMLElement} e
+     * @returns {boolean}
+     **/
     // data file
     files = e.dataTransfer.files[0];
     //get player name through file name
@@ -37,6 +50,12 @@ dropper.addEventListener('drop', function (e) {
 let k = 0;
 
 function readerdigest(tabFile, i) {
+    /**
+     * here is 1st step of log treatment split log with key word to right Class ... for next treatment
+     * @param {tabFileabFile}
+     * @param {i} index of line log
+     * @returns {curser,i,tabFile}
+     **/
     // key word for function
     let curserTag = tabFile[i].match(/backstabs|begins|crushes|frenzies|healed|hits|pierces|shoots|slashes|taken/gi); //check for key word and catch it..
     let curser = tabFile[i].indexOf(curserTag, 0); // key word index
@@ -63,16 +82,16 @@ function readerdigest(tabFile, i) {
                 let logHealed = new Healed(i, curser, tabFile);
                 logHeal[k] = {// return fonction treatment to logHeal table ... with new index line k
                     "id": k,
-                    "healer": logHealed.PlayerHealer(),
-                    "healed": logHealed.TargedHealed()
+                    "healer": logHealed.getPlayerHealer(),
+                    "healed": logHealed.getTargedHealed()
                     ,
-                    "type": logHealed.TypeOfHeal(),
-                    "Heal": logHealed.HealAmount(),
-                    "overheal": logHealed.OverHeal()
+                    "type": logHealed.getTypeOfHeal(),
+                    "Heal": logHealed.getHealAmount(),
+                    "overheal": logHealed.getSpellHealAmount()
                     ,
-                    'spell': logHealed.SpellsUsed(),
-                    "crit": logHealed.CriticalHitMessage(),
-                    "logDate": logHealed.Logtime()
+                    'spell': logHealed.getSpellsUsed(),
+                    "crit": logHealed.getCriticalHitMessage(),
+                    "logDate": logHealed.getLogTime()
                 };
                 k++;
                 break;
@@ -99,7 +118,13 @@ function readerdigest(tabFile, i) {
         }
     }
 }
-
+/**
+ * here is 2nd step of log treatment log splited from previous function into each Class ... for next treatment
+ * @param {curser} and more..
+ * @param {i} index of line log
+ * @param {tabFile} and more..
+ * @returns  @returns get method
+ **/
 class Taken {
     //TODO: to dev
     constructor(i, curser, tabFile) {
@@ -197,6 +222,13 @@ class Slashes {
 }
 
 class Healed {
+    /**
+     * here is 2nd step of log treatment on "healed" key word
+     * @param {curser}
+     * @param {i} index of line log
+     * @param {tabFile} and more..
+     * @returns  @returns param through get method
+     **/
     //fonction to treat healing case key word "healed"
     constructor(i, curser, tabFile) { // i = line index, curser = indew of key word and tabFile as table ...
         this.i = i;
@@ -220,7 +252,13 @@ class Healed {
         this.curser_14 = null;
     };
 
-    PlayerHealer() {
+    getPlayerHealer() {
+        /**
+         * here is 2nd step treatment return healer player name
+         * @param {i} index of line log
+         * @param {tabFile}
+         * @returns  {playerHealer}
+         **/
         this.curser_1 = this.tabFile[this.i]
             .lastIndexOf(' ', this.curser);
         this.curser_2 = this.tabFile[this.i]
@@ -235,7 +273,13 @@ class Healed {
         return this.playerHealer;
     }
 
-    TargedHealed() {
+    getTargedHealed() {
+        /**
+         * here is 2nd step treatment return healed player name "player receiving heal"
+         * @param {i} index of line log
+         * @param {tabFile}
+         * @returns  {playerHealed}
+         **/
         this.curser_3 = this.tabFile[this.i]
             .indexOf(' ', this.curser + 1);
         this.curser_4 = this.tabFile[this.i]
@@ -255,50 +299,74 @@ class Healed {
         return this.playerHealed;
     }
 
-    TypeOfHeal() {
+    getTypeOfHeal() {
+        /**
+         * here is 2nd step treatment return type of heal ... direct heal or heal over time
+         * @param {i} index of line log
+         * @param {tabFile}
+         * @returns  {healType}
+         **/
         this.curser_5 = this.tabFile[this.i]
             .indexOf('for', this.curser_4 + 1);
         this.curser_6 = this.tabFile[this.i]
             .indexOf(' ', this.curser_5 + 1);
         if (this.curser_5 > 60) { // trouver une meilleur "solution
-            HealType = this.tabFile[this.i]
+            healType = this.tabFile[this.i]
                 .substr(this.curser_4, this.curser_6 - this.curser_4)
                 .trim();
         }//extraction du nom du joueur
         else {
-            HealType = this.tabFile[this.i]
+            healType = this.tabFile[this.i]
                 .substr(this.curser_5, this.curser_6 - this.curser_5)
                 .trim();
         }////extraction du nom du joueur
-        return HealType;
+        return healType;
     }
 
-    HealAmount() {
+    getHealAmount() {
+        /**
+         * here is 2nd step treatment return heal amount
+         * @param {i} index of line log
+         * @param {tabFile}
+         * @returns  {amountOfHeal}
+         **/
         this.curser_7 = this.tabFile[this.i]
             .indexOf(' ', this.curser_6 + 1);
-        let HealOfHeal = this.tabFile[this.i]
+        let amountOfHeal = this.tabFile[this.i]
             .substr(this.curser_6, this.curser_7 - this.curser_6)
             .trim();//extraction du nom du joueur
-        return parseInt(HealOfHeal);
+        return parseInt(amountOfHeal);
     }
 
-    OverHeal() {
+        getSpellHealAmount() {
+        /**
+         * here is 2nd step treatment return spell efficient healing
+         * @param {i} index of line log
+         * @param {tabFile}
+         * @returns  {spellHealAmount}
+         **/
         this.curser_8 = this.tabFile[this.i]
             .indexOf(' ', this.curser_7 + 1);
-        let OverHealAmount = this.tabFile[this.i]
+        let spellHealAmount = this.tabFile[this.i]
             .substr(this.curser_7, 2)
             .trim();//extraction du nom du joueur
-        if (OverHealAmount !== null && OverHealAmount === "(") {
-            OverHealAmount = this.tabFile[this.i]
+        if (spellHealAmount !== null && spellHealAmount === "(") {
+            spellHealAmount = this.tabFile[this.i]
                 .substr(this.curser_7 + 2, this.curser_8 - 3 - this.curser_7)
                 .trim()
         } else {
-            OverHealAmount = 0;
+            spellHealAmount = 0;
         }
-        return parseInt(OverHealAmount);
+        return parseInt(spellHealAmount);
     }
 
-    SpellsUsed() {
+    getSpellsUsed() {
+        /**
+         * here is 2nd step treatment return spell used
+         * @param {i} index of line log
+         * @param {tabFile}
+         * @returns  {SpellsCasted}
+         **/
         let SpellsCasted = "";
         this.curser_9 = this.tabFile[this.i]
             .indexOf('by', this.curser_8);
@@ -321,12 +389,19 @@ class Healed {
                     .trim();
             }
         } else {
+            // if no spell used "NaS" meaning ... Not a Spell
             SpellsCasted = "NaS";
         }
         return SpellsCasted;
     }
 
-    CriticalHitMessage() {
+    getCriticalHitMessage() {
+        /**
+         * here is 2nd step treatment return critical spell message also lucky and any end sentence between ()
+         * @param {i} index of line log
+         * @param {tabFile}
+         * @returns  {messCrtHeal}
+         **/
         let messCrtHeal = "";
         if (this.curser_10 !== null) {
             this.curser_13 = this.tabFile[this.i]
@@ -345,19 +420,28 @@ class Healed {
         return messCrtHeal;
     }
 
-    Logtime() {
-        let logtimer = this.tabFile[this.i]
+    getLogTime() {
+        /**
+         * here is 2nd step treatment return log timer
+         * @param {i} index of line log
+         * @param {tabFile}
+         * @returns  {Date(logtimer)}
+         **/
+        let logTimer = this.tabFile[this.i]
             .substr(this.tabFile[this.i]
                 .indexOf('[') + 1
                 , this.tabFile[this.i]
                 .indexOf(']') - this.tabFile[this.i]
                 .indexOf('[') - 1)
             .trim();
-        return new Date(logtimer)
+        return new Date(logTimer)
             .getTime();
     }
 }
-
+/**
+ * catch et add listener to some html element here listener is a time selecter
+ * @param {HTMLElement}
+ **/
 document.getElementById('radioInputChoice').step = 0.1;
 document.getElementById('Choice1')
     .addEventListener('click', updateBtn);
@@ -373,21 +457,26 @@ document.getElementById('Choice6')
     .addEventListener('click', updateBtn);
 
 function updateBtn() {
-    //>>>>> reduction de la taille du tableau en fonction d'un temp a choisir ... derniere heure.. derniere 6 heure... fichier "entier ... etc....
+    /**
+     * time choice on log treatment 1 hour ,
+     * 6 hours, whole file, free setting time .. 7 days ... based on log date time ... not current time
+     **/
+
     let timeToCheck = 0;
     let startCheck = 0;
+    // getting time of last log file
     let lastentry = logHeal.length - 1;
     let logTimerLastEntry = logHeal[lastentry].logDate;
+    // free setting check and other based on check button value
     if (this.value === "0" || this.value === 0) {
         timeToCheck = logHeal[0].logDate;
     } else if (this.id === 'Choice5') {
         let onChoice = parseFloat(document.getElementById('radioInputChoice').value);
         timeToCheck = logTimerLastEntry - (3600000 * onChoice);
     } else {
-        //let test =;
         timeToCheck = logTimerLastEntry - (3600000 * this.value);
     }
-
+    // check to find 1st log to treat for next step treatment
     for (let j = 0; j < lastentry; j++) {  //loop through the array
 
         if (logHeal[j].logDate >= timeToCheck) {
@@ -395,14 +484,22 @@ function updateBtn() {
             break;
         }
     }
+    // list of player sorted for next step treatment
     timeFilter = logHeal.slice(startCheck, lastentry + 1);
     let listOfPlayerHealed = [...new Set(timeFilter.map(x => x.healed))].sort();
     let listOfPlayersHealer = [...new Set(timeFilter.map(y => y.healer))].sort();
+    //treatment call and both player list
     menuDropPlayers('healed', listOfPlayerHealed);
     menuDropPlayers('healer', listOfPlayersHealer);
 }
 
 function menuDropPlayers(players, playersList) {
+    /**
+     * create list choice from previous function updateBtn()
+     * @param {listOfPlayerHealed}
+     * @param {listOfPlayersHealer}
+     * @returns  {HTMLElement} with listener addActivityItem() on change
+     **/
     let dropdown = document.getElementById(players + '-dropdown');
     dropdown.length = 0;
     dropdown.innerText = "";
@@ -414,8 +511,8 @@ function menuDropPlayers(players, playersList) {
     dropdown.addEventListener("change", function () {
         addActivityItem(dropdown)
     }, false);
+    // list of player
     for (let i = 0; i < playersList.length; i++) {
-
         if (!RegExp("`s").test(playersList[i])) {
             let option = document.createElement('option');
             option.text = playersList[i];
@@ -427,30 +524,44 @@ function menuDropPlayers(players, playersList) {
 }
 
 function addActivityItem(element) {
+    /**
+     * here start front traitment this fonction does :
+     * healer and healed traitment
+     * put log traitment in page element
+     * calculate healing for each player as healer and as healed also on the whole raid.. or from all healer...
+     * split also those calcul in spell used
+     * count log of heal receive .. doing it also by spell used
+     * filter player's pet
+     * @param {element}
+     * @returns  {containerPlayer(spellUsed, playerTargetByHealer, total, total2, counter, counterSpell, counterSpellTotal, e)}
+     **/
     text3 = 0;
     text6 = 0;
     let e = element;
     let mySet;
     let mySet2;
     let targed = e.options[e.selectedIndex].value;
+    //check player selected from list used
     if (e.id === 'healer-dropdown') {
         mySet = timeFilter.filter(it => new RegExp(targed).test(it.healer));
-        mySet2 = [...new Set(mySet.map(x => x.healed))].sort();
+        mySet2 = [...new Set(mySet.map(x => x.healed))];
     } else if (e.id === 'healed-dropdown') {
         mySet = timeFilter.filter(it => new RegExp(targed).test(it.healed));
-        mySet2 = [...new Set(mySet.map(x => x.healer))].sort();
+        mySet2 = [...new Set(mySet.map(x => x.healer))];
     }
     text2 = targed;
+    // cleat tab element on page
     document.getElementById('containertb2').innerText = "";
     document.getElementById('containertb3').innerText = "";
     document.getElementById('containertb4').innerText = "";
     document.getElementById('containertb5').innerText = "";
     document.getElementById('containertb7').innerText = "";
     document.getElementById('Tpl').innerText = "";
-    let total = 0, total2 = 0, counter = 0, total3 = 0, total4 = 0, counterSpell = 0, counterspelltotal = 0;
+    let total = 0, total2 = 0, counter = 0, total3 = 0, total4 = 0, counterSpell = 0, counterSpellTotal = 0;
     let playerTargetByHealer = "";
     let spellUsed = "";
-    mySet2.forEach(function (el) {//par joueur
+
+    mySet2.forEach(function (el) {//by player
         let mySet3;
         if (e.id === 'healer-dropdown') {
             mySet3 = mySet.filter(it => new RegExp(el).test(it.healed));
@@ -464,9 +575,8 @@ function addActivityItem(element) {
                 total += mySet5[i].Heal;  //Do the math!
                 text3 += mySet5[i].Heal;
                 text6 += (mySet5[i].overheal - mySet5[i].Heal);
-
                 total2 += mySet5[i].overheal;
-                counterspelltotal++;
+                counterSpellTotal++;
                 counterSpell++;
                 spellUsed = elMnt;
             }
@@ -484,15 +594,15 @@ function addActivityItem(element) {
         if (!RegExp("`s").test(el)) {
             counter++;
             text1 = counter;
-            containerPlayer("", playerTargetByHealer, total3, total4, counter, "", counterspelltotal, e)
+            containerPlayer("", playerTargetByHealer, total3, total4, counter, "", counterSpellTotal, e)
         }
         total3 = 0;
         total4 = 0;
-        counterspelltotal = 0;
+        counterSpellTotal = 0;
     });
 }
 
-function containerPlayer(spellUsed, playerTargetByHealer, total, total2, counter, counterSpell, counterspelltotal, e) {
+function containerPlayer(spellUsed, playerTargetByHealer, total, total2, counter, counterSpell, counterSpellTotal, e) {
     let div0 = document.createElement('div');
     let div1 = document.createElement('div');
     let div2 = document.createElement('div');
@@ -503,35 +613,35 @@ function containerPlayer(spellUsed, playerTargetByHealer, total, total2, counter
         if (spellUsed !== "")
             innerTab(div0, div10, div1, div2, div3, div4, 'tb2', playerTargetByHealer, spellUsed, total, total2, counter, counterSpell, "", e);
         else {
-            innerTab(div0, div10, div1, div2, div3, div4, 'tb2', playerTargetByHealer, "", total, total2, counter, "", counterspelltotal, e);
+            innerTab(div0, div10, div1, div2, div3, div4, 'tb2', playerTargetByHealer, "", total, total2, counter, "", counterSpellTotal, e);
         }
     } else if (counter >= 17 && counter < 35) {
         let div10 = tagTb('tb3', playerTargetByHealer);
         if (spellUsed !== "")
             innerTab(div0, div10, div1, div2, div3, div4, 'tb3', playerTargetByHealer, spellUsed, total, total2, counter, counterSpell, "", e);
         else {
-            innerTab(div0, div10, div1, div2, div3, div4, 'tb3', playerTargetByHealer, "", total, total2, counter, "", counterspelltotal, e);
+            innerTab(div0, div10, div1, div2, div3, div4, 'tb3', playerTargetByHealer, "", total, total2, counter, "", counterSpellTotal, e);
         }
     } else if (counter >= 35 && counter < 53) {
         let div10 = tagTb('tb4', playerTargetByHealer);
         if (spellUsed !== "")
             innerTab(div0, div10, div1, div2, div3, div4, 'tb4', playerTargetByHealer, spellUsed, total, total2, counter, counterSpell, "", e);
         else {
-            innerTab(div0, div10, div1, div2, div3, div4, 'tb4', playerTargetByHealer, "", total, total2, counter, "", counterspelltotal, e);
+            innerTab(div0, div10, div1, div2, div3, div4, 'tb4', playerTargetByHealer, "", total, total2, counter, "", counterSpellTotal, e);
         }
     } else if (counter >= 53 && counter < 71) {
         let div10 = tagTb('tb5', playerTargetByHealer);
         if (spellUsed !== "")
             innerTab(div0, div10, div1, div2, div3, div4, 'tb5', playerTargetByHealer, spellUsed, total, total2, counter, counterSpell, "", e);
         else {
-            innerTab(div0, div10, div1, div2, div3, div4, 'tb5', playerTargetByHealer, "", total, total2, counter, "", counterspelltotal, e);
+            innerTab(div0, div10, div1, div2, div3, div4, 'tb5', playerTargetByHealer, "", total, total2, counter, "", counterSpellTotal, e);
         }
     } else if (counter >= 71 && counter < 89) {
         let div10 = tagTb('tb7', playerTargetByHealer);
         if (spellUsed !== "")
             innerTab(div0, div10, div1, div2, div3, div4, 'tb7', playerTargetByHealer, spellUsed, total, total2, counter, counterSpell, "", e);
         else {
-            innerTab(div0, div10, div1, div2, div3, div4, 'tb7', playerTargetByHealer, "", total, total2, counter, "", counterspelltotal, e);
+            innerTab(div0, div10, div1, div2, div3, div4, 'tb7', playerTargetByHealer, "", total, total2, counter, "", counterSpellTotal, e);
         }
     }
 }
@@ -573,7 +683,7 @@ function openCity(e, Name) {
 
 /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content
 - This allows the user to have multiple dropdowns without any conflict */
-function innerTab(div0, div10, div1, div2, div3, div4, tb, playerTargetByHealer, spellUsed, total, total2, counter, counterSpell, counterspelltotal, e) {
+function innerTab(div0, div10, div1, div2, div3, div4, tb, playerTargetByHealer, spellUsed, total, total2, counter, counterSpell, counterSpellTotal, e) {
     if (counterSpell !== "") {
         div1.innerText = spellUsed + " " + counterSpell;
         div1.style.backgroundColor = "#ffc8c8";
@@ -592,7 +702,7 @@ function innerTab(div0, div10, div1, div2, div3, div4, tb, playerTargetByHealer,
         div0.appendChild(div4);
         div0.style.display = "none"
     } else {//if(test!==1)
-        div1.innerText = playerTargetByHealer + " | heal received : " + counterspelltotal;
+        div1.innerText = playerTargetByHealer + " | heal received : " + counterSpellTotal;
         div1.style.backgroundColor = "#b4b4ff";
         div2.innerText = " Heal : " + total;
         div2.style.backgroundColor = "#bebeff";

@@ -98,7 +98,7 @@ h2{
 .tab button.active {
     background-color: #ccc;
 }
-.tabcontent {
+.tabContent {
     display: none;
     min-height: 0;
     height: 95%;
@@ -106,7 +106,7 @@ h2{
     opacity: 0.8;
     box-shadow: -1px 1px 2px 1px rgba(71, 66, 70, 0.59);*/
 }
-.tabcontent div{
+.tabContent div{
     padding: 3px 6px 0 6px;
 }
 .sidenav {
